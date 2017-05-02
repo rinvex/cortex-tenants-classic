@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Tenantable\Transformers\Backend;
 
 use Cortex\Tenantable\Models\Tenant;
@@ -8,7 +10,7 @@ use League\Fractal\TransformerAbstract;
 class TenantTransformer extends TransformerAbstract
 {
     /**
-     * @return  array
+     * @return array
      */
     public function transform(Tenant $tenant)
     {

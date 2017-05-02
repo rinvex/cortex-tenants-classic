@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 return [
 
-    'headers'     => [
+    'headers' => [
         'management' => 'Management',
     ],
 
-    'menus'     => [
+    'menus' => [
         'tenants' => 'Tenants',
     ],
 

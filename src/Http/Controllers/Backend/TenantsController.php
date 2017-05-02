@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use Cortex\Fort\Models\User;
+use Illuminate\Http\Request;
 use Cortex\Tenantable\Models\Tenant;
 use Cortex\Tenantable\DataTables\Backend\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -42,7 +42,7 @@ class TenantsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Illuminate\Http\Request        $request
+     * @param \Illuminate\Http\Request         $request
      * @param \Cortex\Tenantable\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\Response
@@ -88,7 +88,7 @@ class TenantsController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request        $request
+     * @param \Illuminate\Http\Request         $request
      * @param \Cortex\Tenantable\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\Response
