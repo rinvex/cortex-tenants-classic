@@ -1,0 +1,78 @@
+{
+    "name": "cortex/tenantable",
+    "type": "cortex-module",
+    "description": "Cortex Tenantable is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
+    "keywords": [
+        "model",
+        "tenant",
+        "laravel",
+        "eloquent",
+        "tenantable",
+        "translatable",
+        "polymorphic",
+        "sluggable",
+        "tenancy",
+        "rinvex",
+        "multi"
+    ],
+    "license": "MIT",
+    "homepage": "https://rinvex.com",
+    "support": {
+        "email": "help@rinvex.com",
+        "issues": "https://github.com/rinvex/cortex-tenantable/issues",
+        "source": "https://github.com/rinvex/cortex-tenantable",
+        "docs": "https://github.com/rinvex/cortex-tenantable/README.md"
+    },
+    "authors": [
+        {
+            "name": "Rinvex LLC",
+            "homepage": "https://rinvex.com",
+            "email": "help@rinvex.com"
+        },
+        {
+            "name": "Abdelrahman Omran",
+            "homepage": "https://omranic.com",
+            "email": "me@omranic.com",
+            "role": "Project Lead"
+        },
+        {
+            "name": "The Generous Laravel Community",
+            "homepage": "https://github.com/rinvex/cortex-tenantable/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "laravel/framework": "~5.4.0",
+        "rinvex/language": "dev-develop",
+        "rinvex/modulable": "dev-develop",
+        "rinvex/tenantable": "dev-develop",
+        "rinvex/composable": "dev-develop",
+        "rinvex/cacheable": "dev-develop"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cortex\\Tenantable\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "cortex-module": {
+            "autoinstall": false,
+            "icon": {
+                "color": "#2196f3",
+                "name": "heartbeat",
+                "background-size": "cover",
+                "background-color": "#e3f2fd",
+                "background-position": "center",
+                "background-repeat": "no-repeat"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
