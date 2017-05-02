@@ -7,7 +7,7 @@ namespace Cortex\Tenantable\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
-class TenancyServiceProvider extends ServiceProvider
+class TenantableServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
