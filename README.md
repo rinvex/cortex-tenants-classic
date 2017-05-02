@@ -7,8 +7,8 @@ Cortex Tenantable is a frontend layer for the contextually intelligent polymorph
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tenantable.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tenantable/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/tenantable.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tenantable)
 [![Travis](https://img.shields.io/travis/cortex/tenantable.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tenantable)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/a2cccb54-31b7-49a3-9df2-176a23400fde.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/a2cccb54-31b7-49a3-9df2-176a23400fde)
-[![StyleCI](https://styleci.io/repos/77746390/shield)](https://styleci.io/repos/77746390)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/0d75eee8-56d9-44c6-9b73-f47e06a801c7.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/0d75eee8-56d9-44c6-9b73-f47e06a801c7)
+[![StyleCI](https://styleci.io/repos/89985515/shield)](https://styleci.io/repos/89985515)
 [![License](https://img.shields.io/packagist/l/cortex/tenantable.svg?label=License&style=flat-square)](https://github.com/cortex/tenantable/blob/develop/LICENSE)
 
 
