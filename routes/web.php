@@ -18,5 +18,4 @@ Route::name('backend.')
         Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs')->where('tenant', '[0-9]+');
         Route::delete('{tenant}')->name('delete')->uses('TenantsController@delete')->where('tenant', '[0-9]+');
     });
-
-});
+     });
