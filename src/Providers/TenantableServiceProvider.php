@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Providers;
 
+use Cortex\Tenantable\Http\Middleware\Tenantable;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +19,7 @@ class TenantableServiceProvider extends ServiceProvider
     {
         // Load routes
         $this->loadRoutes($router);
+        $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         if ($this->app->runningInConsole()) {
             // Publish Resources
