@@ -40,7 +40,7 @@ class TenantableServiceProvider extends ServiceProvider
         // Register menu items
         $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
             app('menus.sidebar')->put('management', app('menus.sidebar.management'));
-            app('menus.sidebar.management')->put('header', '<li class="header">'.trans('coworkit/fort::navigation.headers.management').'</li>');
+            app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
             app('menus.sidebar.management')->put('tenants', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tenants.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tenants.index').'"><i class="fa fa-sitemap"></i> <span>'.trans('cortex/tenantable::navigation.menus.tenants').'</span></a></li>');
         });
     }
