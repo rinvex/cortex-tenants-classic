@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 Route::group(['domain' => domain()], function () {
-
     Route::name('backend.')
          ->namespace('Cortex\Tenantable\Http\Controllers\Backend')
          ->middleware(['web', 'nohttpcache', 'can:access-dashboard'])
@@ -19,6 +18,5 @@ Route::group(['domain' => domain()], function () {
             Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs')->where('tenant', '[0-9]+');
             Route::delete('{tenant}')->name('delete')->uses('TenantsController@delete')->where('tenant', '[0-9]+');
         });
-    });
-
+         });
 });
