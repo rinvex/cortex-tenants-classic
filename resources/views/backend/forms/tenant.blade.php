@@ -171,6 +171,7 @@
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
                                         {{ Form::label('language_code', trans('cortex/tenantable::common.language'), ['class' => 'control-label']) }}
                                         {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_language')]) }}
+{{--                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_language'), 'required' => 'required']) }}--}}
 
                                         @if ($errors->has('language_code'))
                                             <span class="help-block">
@@ -186,7 +187,7 @@
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
                                         {{ Form::label('country_code', trans('cortex/tenantable::common.country'), ['class' => 'control-label']) }}
-                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_country')]) }}
+                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_country'), 'required' => 'required']) }}
 
                                         @if ($errors->has('country_code'))
                                             <span class="help-block">
@@ -203,7 +204,7 @@
                                     {{-- State --}}
                                     <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
                                         {{ Form::label('state', trans('cortex/tenantable::common.state'), ['class' => 'control-label']) }}
-                                        {{ Form::text('state', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.state'), 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('state', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.state')]) }}
 
                                         @if ($errors->has('state'))
                                             <span class="help-block">
@@ -219,7 +220,7 @@
                                     {{-- City --}}
                                     <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                                         {{ Form::label('city', trans('cortex/tenantable::common.city'), ['class' => 'control-label']) }}
-                                        {{ Form::text('city', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.city'), 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('city', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.city')]) }}
 
                                         @if ($errors->has('city'))
                                             <span class="help-block">
@@ -239,7 +240,7 @@
                                     {{-- Postal Code --}}
                                     <div class="form-group{{ $errors->has('postal_code') ? ' has-error' : '' }}">
                                         {{ Form::label('postal_code', trans('cortex/tenantable::common.postal_code'), ['class' => 'control-label']) }}
-                                        {{ Form::text('postal_code', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.postal_code'), 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('postal_code', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.postal_code')]) }}
 
                                         @if ($errors->has('postal_code'))
                                             <span class="help-block">
@@ -298,7 +299,7 @@
                                     {{-- Address --}}
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                         {{ Form::label('address', trans('cortex/tenantable::common.address'), ['class' => 'control-label']) }}
-                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.address'), 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.address')]) }}
 
                                         @if ($errors->has('address'))
                                             <span class="help-block">
