@@ -22,6 +22,10 @@ class TenantableServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         if ($this->app->runningInConsole()) {
+            // Load migrations
+            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+
+            // Publish Resources
             // Publish Resources
             $this->publishResources();
         }
@@ -94,6 +98,8 @@ class TenantableServiceProvider extends ServiceProvider
         $this->publishes([
             realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenantable'),
         ], 'views');
+        // Publish migrations
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
 
         // Publish language phrases
         $this->publishes([
