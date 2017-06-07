@@ -21,6 +21,18 @@ class TenantsDataTable extends AbstractDataTable
     protected $transformer = TenantTransformer::class;
 
     /**
+     * Get the query object to be processed by dataTables.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
+     */
+    public function query()
+    {
+        $query = ($this->model)::query()->with(['owner']);
+
+        return $this->applyScopes($query);
+    }
+
+    /**
      * Get columns.
      *
      * @return array
@@ -31,11 +43,11 @@ class TenantsDataTable extends AbstractDataTable
             'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tenants.edit\', {tenant: full.id})+"\">"+data+"</a>"', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenantable::common.email')],
             'phone' => ['title' => trans('cortex/tenantable::common.phone')],
-            'owner' => ['title' => trans('cortex/tenantable::common.owner'), 'orderable' => false, 'searchable' => false],
-            'country' => ['title' => trans('cortex/tenantable::common.country'), 'orderable' => false, 'searchable' => false],
-            'language' => ['title' => trans('cortex/tenantable::common.language'), 'orderable' => false, 'searchable' => false],
-            'created_at' => ['title' => trans('cortex/tenantable::common.created_at')],
-            'updated_at' => ['title' => trans('cortex/tenantable::common.updated_at')],
+            'owner' => ['title' => trans('cortex/tenantable::common.owner'), 'name' => 'owner.username'],
+            'country_code' => ['title' => trans('cortex/tenantable::common.country')],
+            'language_code' => ['title' => trans('cortex/tenantable::common.language')],
+            'created_at' => ['title' => trans('cortex/tenantable::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'updated_at' => ['title' => trans('cortex/tenantable::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
         ];
     }
 }

@@ -21,8 +21,8 @@ class TenantTransformer extends TransformerAbstract
             'phone' => (string) $tenant->phone,
             'address' => (string) $tenant->address,
             'owner' => (string) $tenant->owner->username,
-            'country' => (string) $tenant->country_code ? $tenant->country->getName().'&nbsp;&nbsp;'.$tenant->country->getEmoji() : '',
-            'language' => (string) $tenant->language_code ? $tenant->language->getName() : '',
+            'country_code' => (string) $tenant->country_code ? $tenant->country->getName().'&nbsp;&nbsp;'.$tenant->country->getEmoji() : '',
+            'language_code' => (string) $tenant->language_code ? $tenant->language->getName() : '',
             'created_at' => (string) $tenant->created_at,
             'updated_at' => (string) $tenant->updated_at,
         ];

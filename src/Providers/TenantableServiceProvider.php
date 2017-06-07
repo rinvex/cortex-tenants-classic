@@ -45,7 +45,7 @@ class TenantableServiceProvider extends ServiceProvider
         $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
             app('menus.sidebar')->put('management', app('menus.sidebar.management'));
             app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
-            app('menus.sidebar.management')->put('tenants', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tenants.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tenants.index').'"><i class="fa fa-sitemap"></i> <span>'.trans('cortex/tenantable::navigation.menus.tenants').'</span></a></li>');
+            app('menus.sidebar.management')->put('tenants', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tenants.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tenants.index').'"><i class="fa fa-briefcase"></i> <span>'.trans('cortex/tenantable::navigation.menus.tenants').'</span></a></li>');
         });
     }
 
@@ -94,16 +94,13 @@ class TenantableServiceProvider extends ServiceProvider
      */
     protected function publishResources()
     {
-        // Publish views
-        $this->publishes([
-            realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenantable'),
-        ], 'views');
         // Publish migrations
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
 
         // Publish language phrases
-        $this->publishes([
-            realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenantable'),
-        ], 'lang');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenantable')], 'lang');
+
+        // Publish views
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenantable')], 'views');
     }
 }
