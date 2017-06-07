@@ -46,8 +46,7 @@
         "rinvex/language": "dev-develop",
         "rinvex/modulable": "dev-develop",
         "rinvex/tenantable": "dev-develop",
-        "rinvex/composable": "dev-develop",
-        "rinvex/cacheable": "dev-develop"
+        "rinvex/composable": "dev-develop"
     },
     "autoload": {
         "psr-4": {
