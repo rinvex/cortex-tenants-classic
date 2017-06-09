@@ -19,7 +19,7 @@ class Tenantable
      */
     public function handle($request, Closure $next)
     {
-        if ($request->route('tenant') && ! $tenant = Tenant::where('slug', $tenantSlug = $request->route('tenant'))->first()) {
+        if (is_string($request->route('tenant')) && $request->route('tenant').'.'.domain() === $request->getHost() && ! $tenant = Tenant::where('slug', $tenantSlug = $request->route('tenant'))->first()) {
             return intend([
                 'url' => route('frontend.home'),
                 'with' => ['warning' => trans('cortex/tenantable::messages.tenant.not_found', ['tenantSlug' => $tenantSlug])],
