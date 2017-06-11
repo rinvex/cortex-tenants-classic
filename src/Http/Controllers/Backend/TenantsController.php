@@ -96,10 +96,10 @@ class TenantsController extends AuthorizedController
     protected function process(Request $request, Tenant $tenant)
     {
         // Prepare required input fields
-        $input = $request->all();
+        $data = $request->all();
 
         // Save tenant
-        $tenant->fill($input)->save();
+        $tenant->fill($data)->save();
 
         return intend([
             'url' => route('backend.tenants.index'),
