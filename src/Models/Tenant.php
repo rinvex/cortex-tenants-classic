@@ -78,9 +78,9 @@ class Tenant extends BaseTenant
         parent::__construct($attributes);
 
         $this->setRules([
-            'name' => 'required|string',
+            'name' => 'required|string|max:250',
             'description' => 'nullable|string',
-            'slug' => 'required|alpha_dash|unique:'.config('rinvex.tenantable.tables.tenants').',slug',
+            'slug' => 'required|alpha_dash|max:250|unique:'.config('rinvex.tenantable.tables.tenants').',slug',
             'owner_id' => 'required|integer|exists:'.config('rinvex.fort.tables.users').',id',
             'email' => 'required|email|max:250|unique:'.config('rinvex.tenantable.tables.tenants').',email',
             'phone' => 'nullable|string',
