@@ -44,7 +44,6 @@
         "php": "^7.0.0",
         "laravel/framework": "~5.4.0|~5.5.0",
         "rinvex/language": "dev-develop",
-        "rinvex/modulable": "dev-develop",
         "rinvex/tenantable": "dev-develop",
         "rinvex/composable": "dev-develop"
     },
