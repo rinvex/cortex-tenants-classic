@@ -70,15 +70,15 @@
 
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#details" data-toggle="tab">{{ trans('cortex/tenantable::common.details') }}</a></li>
-                        <li><a href="#social" data-toggle="tab">{{ trans('cortex/tenantable::common.social') }}</a></li>
+                        <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.details') }}</a></li>
+                        <li><a href="#social-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.social') }}</a></li>
                         @if($tenant->exists) <li><a href="{{ route('backend.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenantable::common.logs') }}</a></li> @endif
                         @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                     </ul>
 
                     <div class="tab-content">
 
-                        <div class="tab-pane active" id="details">
+                        <div class="tab-pane active" id="details-tab">
 
                             <div class="row">
 
@@ -306,7 +306,7 @@
 
                         </div>
 
-                        <div class="tab-pane" id="social">
+                        <div class="tab-pane" id="social-tab">
 
                             <div class="row">
 
