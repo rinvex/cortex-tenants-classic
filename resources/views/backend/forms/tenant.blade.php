@@ -115,7 +115,7 @@
                                     {{-- Owner --}}
                                     <div class="form-group{{ $errors->has('owner_id') ? ' has-error' : '' }}">
                                         {{ Form::label('owner_id', trans('cortex/tenantable::common.owner'), ['class' => 'control-label']) }}
-                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.owner'), 'required' => 'required']) }}
+                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.owner'), 'required' => 'required', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('owner_id'))
                                             <span class="help-block">{{ $errors->first('owner_id') }}</span>
@@ -160,8 +160,7 @@
                                     {{-- Language Code --}}
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
                                         {{ Form::label('language_code', trans('cortex/tenantable::common.language'), ['class' => 'control-label']) }}
-                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_language')]) }}
-{{--                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_language'), 'required' => 'required']) }}--}}
+                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('language_code'))
                                             <span class="help-block">{{ $errors->first('language_code') }}</span>
@@ -175,7 +174,7 @@
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
                                         {{ Form::label('country_code', trans('cortex/tenantable::common.country'), ['class' => 'control-label']) }}
-                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'data-allow-clear' => true, 'placeholder' => trans('cortex/tenantable::common.select_country'), 'required' => 'required']) }}
+                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('country_code'))
                                             <span class="help-block">{{ $errors->first('country_code') }}</span>
@@ -236,7 +235,7 @@
                                     {{-- Active --}}
                                     <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
                                         {{ Form::label('active', trans('cortex/tenantable::common.active'), ['class' => 'control-label']) }}
-                                        {{ Form::select('active', [1 => trans('cortex/tenantable::common.yes'), 0 => trans('cortex/tenantable::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity']) }}
+                                        {{ Form::select('active', [1 => trans('cortex/tenantable::common.yes'), 0 => trans('cortex/tenantable::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('active'))
                                             <span class="help-block">{{ $errors->first('active') }}</span>
