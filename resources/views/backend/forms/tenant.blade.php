@@ -7,6 +7,8 @@
 @stop
 
 @push('scripts')
+    {!! JsValidator::formRequest(Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest::class)->selector('#backend-tenants-save') !!}
+
     <script>
         (function($) {
             $(function() {
@@ -63,9 +65,9 @@
         <section class="content">
 
             @if ($tenant->exists)
-                {{ Form::model($tenant, ['url' => route('backend.tenants.update', ['tenant' => $tenant]), 'method' => 'put']) }}
+                {{ Form::model($tenant, ['url' => route('backend.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => 'backend-tenants-save']) }}
             @else
-                {{ Form::model($tenant, ['url' => route('backend.tenants.store')]) }}
+                {{ Form::model($tenant, ['url' => route('backend.tenants.store'), 'id' => 'backend-tenants-save']) }}
             @endif
 
                 <div class="nav-tabs-custom">

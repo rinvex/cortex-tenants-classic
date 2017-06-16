@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Cortex\Tenantable\Models\Tenant;
 use Cortex\Tenantable\DataTables\Backend\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
+use Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest;
 
 class TenantsController extends AuthorizedController
 {
@@ -30,11 +31,11 @@ class TenantsController extends AuthorizedController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TenantFormRequest $request)
     {
         return $this->process($request, new Tenant());
     }
@@ -42,12 +43,12 @@ class TenantsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Illuminate\Http\Request         $request
+     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest         $request
      * @param \Cortex\Tenantable\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tenant $tenant)
+    public function update(TenantFormRequest $request, Tenant $tenant)
     {
         return $this->process($request, $tenant);
     }
