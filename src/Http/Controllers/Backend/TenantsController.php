@@ -43,8 +43,8 @@ class TenantsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest         $request
-     * @param \Cortex\Tenantable\Models\Tenant $tenant
+     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest $request
+     * @param \Cortex\Tenantable\Models\Tenant                           $tenant
      *
      * @return \Illuminate\Http\Response
      */
