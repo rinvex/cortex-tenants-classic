@@ -73,7 +73,6 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.details') }}</a></li>
-                        <li><a href="#social-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.social') }}</a></li>
                         @if($tenant->exists) <li><a href="{{ route('backend.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenantable::common.logs') }}</a></li> @endif
                         @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                     </ul>
@@ -294,109 +293,6 @@
 
                                         @if ($errors->has('description'))
                                             <span class="help-block">{{ $errors->first('description') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="tab-pane" id="social-tab">
-
-                            <div class="row">
-
-                                <div class="col-md-4">
-
-                                    {{-- Twitter --}}
-                                    <div class="form-group has-feedback{{ $errors->has('twitter') ? ' has-error' : '' }}">
-                                        {{ Form::label('twitter', trans('cortex/tenantable::common.twitter'), ['class' => 'control-label']) }}
-                                        {{ Form::text('twitter', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-twitter form-control-feedback"></span>
-
-                                        @if ($errors->has('twitter'))
-                                            <span class="help-block">{{ $errors->first('twitter') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-4">
-
-                                    {{-- Facebook --}}
-                                    <div class="form-group has-feedback{{ $errors->has('facebook') ? ' has-error' : '' }}">
-                                        {{ Form::label('facebook', trans('cortex/tenantable::common.facebook'), ['class' => 'control-label']) }}
-                                        {{ Form::text('facebook', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-facebook form-control-feedback"></span>
-
-                                        @if ($errors->has('facebook'))
-                                            <span class="help-block">{{ $errors->first('facebook') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-4">
-
-                                    {{-- Linkedin --}}
-                                    <div class="form-group has-feedback{{ $errors->has('linkedin') ? ' has-error' : '' }}">
-                                        {{ Form::label('linkedin', trans('cortex/tenantable::common.linkedin'), ['class' => 'control-label']) }}
-                                        {{ Form::text('linkedin', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-linkedin form-control-feedback"></span>
-
-                                        @if ($errors->has('linkedin'))
-                                            <span class="help-block">{{ $errors->first('linkedin') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-4">
-
-                                    {{-- Google Plus --}}
-                                    <div class="form-group has-feedback{{ $errors->has('google_plus') ? ' has-error' : '' }}">
-                                        {{ Form::label('google_plus', trans('cortex/tenantable::common.google_plus'), ['class' => 'control-label']) }}
-                                        {{ Form::text('google_plus', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-google-plus form-control-feedback"></span>
-
-                                        @if ($errors->has('google_plus'))
-                                            <span class="help-block">{{ $errors->first('google_plus') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-4">
-
-                                    {{-- Skype --}}
-                                    <div class="form-group has-feedback{{ $errors->has('skype') ? ' has-error' : '' }}">
-                                        {{ Form::label('skype', trans('cortex/tenantable::common.skype'), ['class' => 'control-label']) }}
-                                        {{ Form::text('skype', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-skype form-control-feedback"></span>
-
-                                        @if ($errors->has('skype'))
-                                            <span class="help-block">{{ $errors->first('skype') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-md-4">
-
-                                    {{-- Wesbite --}}
-                                    <div class="form-group has-feedback{{ $errors->has('wesbite') ? ' has-error' : '' }}">
-                                        {{ Form::label('wesbite', trans('cortex/tenantable::common.website'), ['class' => 'control-label']) }}
-                                        {{ Form::text('wesbite', null, ['class' => 'form-control']) }}
-                                        <span class="fa fa-globe form-control-feedback"></span>
-
-                                        @if ($errors->has('wesbite'))
-                                            <span class="help-block">{{ $errors->first('wesbite') }}</span>
                                         @endif
                                     </div>
 
