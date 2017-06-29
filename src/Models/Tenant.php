@@ -10,28 +10,27 @@ use Spatie\Activitylog\Traits\LogsActivity;
 /**
  * Cortex\Tenantable\Models\Tenant.
  *
- * @property int                            $id
- * @property string                         $slug
- * @property array                          $name
- * @property array                          $description
- * @property int                            $owner_id
- * @property string                         $email
- * @property string|null                    $phone
- * @property string                         $language_code
- * @property string                         $country_code
- * @property string|null                    $state
- * @property string|null                    $city
- * @property string|null                    $address
- * @property string|null                    $postal_code
- * @property \Carbon\Carbon|null            $launch_date
- * @property string|null                    $group
- * @property int                            $is_active
- * @property \Carbon\Carbon|null            $created_at
- * @property \Carbon\Carbon|null            $updated_at
- * @property \Carbon\Carbon|null            $deleted_at
- * @property-read \Rinvex\Country\Country   $country
- * @property-read \Rinvex\Language\Language $language
- * @property-read \Cortex\Fort\Models\User  $owner
+ * @property int                                                                                 $id
+ * @property string                                                                              $slug
+ * @property array                                                                               $name
+ * @property array                                                                               $description
+ * @property int                                                                                 $owner_id
+ * @property string                                                                              $email
+ * @property string|null                                                                         $phone
+ * @property string                                                                              $language_code
+ * @property string                                                                              $country_code
+ * @property string|null                                                                         $state
+ * @property string|null                                                                         $city
+ * @property string|null                                                                         $address
+ * @property string|null                                                                         $postal_code
+ * @property \Carbon\Carbon|null                                                                 $launch_date
+ * @property string|null                                                                         $group
+ * @property int                                                                                 $is_active
+ * @property \Carbon\Carbon|null                                                                 $created_at
+ * @property \Carbon\Carbon|null                                                                 $updated_at
+ * @property \Carbon\Carbon|null                                                                 $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
+ * @property-read \Cortex\Fort\Models\User                                                       $owner
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereCity($value)
