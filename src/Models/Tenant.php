@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenantable\Models;
 
 use Rinvex\Tenantable\Tenant as BaseTenant;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Cortex\Tenantable\Models\Tenant.
@@ -56,5 +57,46 @@ use Rinvex\Tenantable\Tenant as BaseTenant;
  */
 class Tenant extends BaseTenant
 {
-    //
+    use LogsActivity;
+
+    /**
+     * Indicates whether to log only dirty attributes or all.
+     *
+     * @var bool
+     */
+    protected static $logOnlyDirty = true;
+
+    /**
+     * The attributes that are logged on change.
+     *
+     * @var array
+     */
+    protected static $logAttributes = [
+        'slug',
+        'name',
+        'description',
+        'owner_id',
+        'email',
+        'phone',
+        'language_code',
+        'country_code',
+        'state',
+        'city',
+        'address',
+        'postal_code',
+        'launch_date',
+        'group',
+        'is_active',
+    ];
+
+    /**
+     * The attributes that are ignored on change.
+     *
+     * @var array
+     */
+    protected static $ignoreChangedAttributes = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 }
