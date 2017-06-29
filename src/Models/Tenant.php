@@ -56,36 +56,5 @@ use Rinvex\Tenantable\Tenant as BaseTenant;
  */
 class Tenant extends BaseTenant
 {
-    /**
-     * Create a new Eloquent model instance.
-     *
-     * @param array $attributes
-     */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->setRules([
-            'name' => 'required|string|max:150',
-            'description' => 'nullable|string',
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenantable.tables.tenants').',slug',
-            'owner_id' => 'required|integer|exists:'.config('rinvex.fort.tables.users').',id',
-            'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenantable.tables.tenants').',email',
-            'phone' => 'nullable|numeric|min:4',
-            'language_code' => 'required|string|size:2',
-            'country_code' => 'required|string|size:2',
-        ]);
-    }
-
-    /**
-     * A tenant always belongs to an owner.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function owner()
-    {
-        $userModel = config('auth.providers.'.config('auth.guards.'.config('auth.defaults.guard').'.provider').'.model');
-
-        return $this->belongsTo($userModel, 'owner_id', 'id');
-    }
+    //
 }
