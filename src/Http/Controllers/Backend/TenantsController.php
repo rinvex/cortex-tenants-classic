@@ -28,7 +28,7 @@ class TenantsController extends AuthorizedController
     {
         return app(TenantsDataTable::class)->with([
             'id' => 'cortex-tenantable-tenants',
-            'phrase' => trans('cortex/tenantable::common.tenants')
+            'phrase' => trans('cortex/tenantable::common.tenants'),
         ])->render('cortex/foundation::backend.partials.datatable');
     }
 
@@ -43,7 +43,7 @@ class TenantsController extends AuthorizedController
             'type' => 'tenants',
             'resource' => $tenant,
             'id' => 'cortex-tenantable-tenants-logs',
-            'phrase' => trans('cortex/tenantable::common.tenants')
+            'phrase' => trans('cortex/tenantable::common.tenants'),
         ])->render('cortex/foundation::backend.partials.datatable-logs');
     }
 
