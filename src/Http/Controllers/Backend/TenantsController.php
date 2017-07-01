@@ -7,6 +7,7 @@ namespace Cortex\Tenantable\Http\Controllers\Backend;
 use Cortex\Fort\Models\User;
 use Illuminate\Http\Request;
 use Cortex\Tenantable\Models\Tenant;
+use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tenantable\DataTables\Backend\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest;
@@ -26,6 +27,21 @@ class TenantsController extends AuthorizedController
     public function index()
     {
         return app(TenantsDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-tenantable-tenants', 'phrase' => trans('cortex/tenantable::common.tenants')]);
+    }
+
+    /**
+     * Display a listing of the resource logs.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logs(Tenant $tenant)
+    {
+        return app(LogsDataTable::class)->with([
+            'type' => 'tenants',
+            'resource' => $tenant,
+            'id' => 'cortex-tenantable-tenants-logs',
+            'phrase' => trans('cortex/tenantable::common.tenants')
+        ])->render('cortex/foundation::backend.partials.datatable-logs');
     }
 
     /**
