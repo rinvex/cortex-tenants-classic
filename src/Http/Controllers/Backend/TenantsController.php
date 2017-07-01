@@ -26,7 +26,10 @@ class TenantsController extends AuthorizedController
      */
     public function index()
     {
-        return app(TenantsDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-tenantable-tenants', 'phrase' => trans('cortex/tenantable::common.tenants')]);
+        return app(TenantsDataTable::class)->with([
+            'id' => 'cortex-tenantable-tenants',
+            'phrase' => trans('cortex/tenantable::common.tenants')
+        ])->render('cortex/foundation::backend.partials.datatable');
     }
 
     /**
