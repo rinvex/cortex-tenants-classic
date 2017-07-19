@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenantable\Providers;
 
 use Illuminate\Routing\Router;
+use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 
@@ -40,6 +41,9 @@ class TenantableServiceProvider extends ServiceProvider
         $this->app->singleton('menus.sidebar.management', function ($app) {
             return collect();
         });
+
+        // Register attributable entities
+        app('rinvex.attributable.entities')->push(Tenant::class);
 
         // Register menu items
         $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
