@@ -87,6 +87,7 @@ class TenantableServiceProvider extends ServiceProvider
 
             $this->app->booted(function () use ($router) {
                 $router->getRoutes()->refreshNameLookups();
+                $router->getRoutes()->refreshActionLookups();
             });
         }
     }
