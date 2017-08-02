@@ -51,14 +51,10 @@
     @endif
 
     <div class="content-wrapper">
-        <!-- Breadcrumbs -->
         <section class="content-header">
             <h1>{{ $tenant->exists ? $tenant->slug : trans('cortex/tenantable::common.create_tenant') }}</h1>
-            <ol class="breadcrumb">
-                <li><a href="{{ route('backend.home') }}"><i class="fa fa-dashboard"></i> {{ trans('cortex/foundation::common.backend') }}</a></li>
-                <li><a href="{{ route('backend.tenants.index') }}">{{ trans('cortex/tenantable::common.tenants') }}</a></li>
-                <li class="active">{{ $tenant->exists ? $tenant->slug : trans('cortex/tenantable::common.create_tenant') }}</li>
-            </ol>
+            <!-- Breadcrumbs -->
+            {{ Breadcrumbs::render() }}
         </section>
 
         <!-- Main content -->
