@@ -18,24 +18,16 @@ class TenantableServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        // Load routes
-        $this->loadRoutes($router);
-        $router->pushMiddlewareToGroup('web', Tenantable::class);
-
-        if ($this->app->runningInConsole()) {
-            // Load migrations
-            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
-            // Publish Resources
-            // Publish Resources
-            $this->publishResources();
-        }
-
-        // Register a view file namespace
+        // Load resources
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenantable');
-
-        // Load language phrases
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenantable');
+        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+
+        // Publish Resources
+        ! $this->app->runningInConsole() || $this->publishResources();
+
+        $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         // Register sidebar menus
         $this->app->singleton('menus.sidebar.management', function ($app) {
@@ -68,44 +60,14 @@ class TenantableServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load the module routes.
-     *
-     * @param \Illuminate\Routing\Router $router
-     *
-     * @return void
-     */
-    public function loadRoutes(Router $router)
-    {
-        // Load routes
-        if ($this->app->routesAreCached()) {
-            $this->app->booted(function () {
-                require $this->app->getCachedRoutesPath();
-            });
-        } else {
-            // Load Routes
-            require __DIR__.'/../../routes/web.php';
-
-            $this->app->booted(function () use ($router) {
-                $router->getRoutes()->refreshNameLookups();
-                $router->getRoutes()->refreshActionLookups();
-            });
-        }
-    }
-
-    /**
      * Publish resources.
      *
      * @return void
      */
     protected function publishResources()
     {
-        // Publish migrations
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'migrations');
-
-        // Publish language phrases
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenantable')], 'lang');
-
-        // Publish views
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenantable')], 'views');
     }
 }
