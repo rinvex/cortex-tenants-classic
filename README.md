@@ -1,6 +1,6 @@
 # Cortex Tenantable
 
-Cortex Tenantable is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.
+**Cortex Tenantable** is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/tenantable.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tenantable)
 [![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:tenantable.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:tenantable/)
