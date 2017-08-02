@@ -12,8 +12,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  *
  * @property int                                                                                 $id
  * @property string                                                                              $slug
- * @property array                                                                               $name
- * @property array                                                                               $description
+ * @property string                                                                              $name
+ * @property string                                                                              $description
  * @property int                                                                                 $owner_id
  * @property string                                                                              $email
  * @property string|null                                                                         $phone
