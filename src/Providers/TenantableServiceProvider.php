@@ -7,6 +7,7 @@ namespace Cortex\Tenantable\Providers;
 use Illuminate\Routing\Router;
 use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 
 class TenantableServiceProvider extends ServiceProvider
@@ -29,20 +30,8 @@ class TenantableServiceProvider extends ServiceProvider
 
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
-        // Register sidebar menus
-        $this->app->singleton('menus.sidebar.management', function ($app) {
-            return collect();
-        });
-
         // Register attributable entities
         app('rinvex.attributable.entities')->push(Tenant::class);
-
-        // Register menu items
-        $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
-            app('menus.sidebar')->put('management', app('menus.sidebar.management'));
-            app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
-            app('menus.sidebar.management')->put('tenants', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tenants.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tenants.index').'"><i class="fa fa-briefcase"></i> <span>'.trans('cortex/tenantable::navigation.menus.tenants').'</span></a></li>');
-        });
     }
 
     /**
