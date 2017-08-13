@@ -42,11 +42,20 @@
     ],
     "require": {
         "php": "^7.0.0",
-        "laravel/framework": "~5.5.0",
-        "rinvex/language": "dev-develop",
-        "rinvex/tenantable": "dev-develop",
+        "cortex/foundation": "dev-develop",
+        "cortex/fort": "dev-develop",
+        "davejamesmiller/laravel-breadcrumbs": "4.x-dev",
+        "Illuminate/auth": "~5.5.0",
+        "Illuminate/console": "~5.5.0",
+        "Illuminate/http": "~5.5.0",
+        "Illuminate/routing": "~5.5.0",
+        "Illuminate/support": "~5.5.0",
+        "league/fractal": "^0.16.0",
         "rinvex/composable": "dev-develop",
-        "cortex/foundation": "dev-develop"
+        "rinvex/support": "dev-develop",
+        "rinvex/tenantable": "dev-develop",
+        "spatie/laravel-activitylog": "^1.15.0",
+        "spatie/laravel-menu": "^2.1.0"
     },
     "autoload": {
         "psr-4": {
