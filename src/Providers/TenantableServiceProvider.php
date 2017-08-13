@@ -7,7 +7,6 @@ namespace Cortex\Tenantable\Providers;
 use Illuminate\Routing\Router;
 use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 
 class TenantableServiceProvider extends ServiceProvider

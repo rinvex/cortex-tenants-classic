@@ -41,8 +41,8 @@ class TenantPolicy
     /**
      * Determine whether the user can update the tenant.
      *
-     * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param string                           $ability
+     * @param \Cortex\Fort\Models\User         $user
      * @param \Cortex\Tenantable\Models\Tenant $resource
      *
      * @return bool
@@ -55,8 +55,8 @@ class TenantPolicy
     /**
      * Determine whether the user can delete the tenant.
      *
-     * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param string                           $ability
+     * @param \Cortex\Fort\Models\User         $user
      * @param \Cortex\Tenantable\Models\Tenant $resource
      *
      * @return bool
