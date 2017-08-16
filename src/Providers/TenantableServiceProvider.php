@@ -41,6 +41,9 @@ class TenantableServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenantable');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->commands([SeedCommand::class, MigrateCommand::class]);
+        $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus.php';
+        });
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
