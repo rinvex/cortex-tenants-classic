@@ -8,6 +8,8 @@ use Illuminate\Routing\Router;
 use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
+use Cortex\Tenantable\Console\Commands\SeedCommand;
+use Cortex\Tenantable\Console\Commands\MigrateCommand;
 
 class TenantableServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class TenantableServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenantable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenantable');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->commands([SeedCommand::class, MigrateCommand::class]);
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
