@@ -30,7 +30,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property \Carbon\Carbon|null                                                                 $updated_at
  * @property \Carbon\Carbon|null                                                                 $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
- * @property-read \Cortex\Fort\Models\User                                                       $owner
+ * @property-read \Rinvex\Fort\Models\User                                                       $owner
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereCity($value)

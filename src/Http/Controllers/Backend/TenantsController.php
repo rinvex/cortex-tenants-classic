@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Http\Controllers\Backend;
 
-use Cortex\Fort\Models\User;
+use Rinvex\Fort\Models\User;
 use Illuminate\Http\Request;
 use Cortex\Tenantable\Models\Tenant;
 use Cortex\Foundation\DataTables\LogsDataTable;

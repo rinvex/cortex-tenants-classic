@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Policies;
 
-use Cortex\Fort\Models\User;
+use Rinvex\Fort\Models\User;
 use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -16,7 +16,7 @@ class TenantPolicy
      * Determine whether the user can list tenants.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
@@ -29,7 +29,7 @@ class TenantPolicy
      * Determine whether the user can create tenants.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
@@ -42,7 +42,7 @@ class TenantPolicy
      * Determine whether the user can update the tenant.
      *
      * @param string                           $ability
-     * @param \Cortex\Fort\Models\User         $user
+     * @param \Rinvex\Fort\Models\User         $user
      * @param \Cortex\Tenantable\Models\Tenant $resource
      *
      * @return bool
@@ -56,7 +56,7 @@ class TenantPolicy
      * Determine whether the user can delete the tenant.
      *
      * @param string                           $ability
-     * @param \Cortex\Fort\Models\User         $user
+     * @param \Rinvex\Fort\Models\User         $user
      * @param \Cortex\Tenantable\Models\Tenant $resource
      *
      * @return bool
