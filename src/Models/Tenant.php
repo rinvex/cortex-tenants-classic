@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Models;
 
-use Rinvex\Tenantable\Tenant as BaseTenant;
+use Rinvex\Tenantable\Models\Tenant as BaseTenant;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -51,7 +51,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenantable\Tenant withGroup($group = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenantable\Models\Tenant withGroup($group = null)
  * @mixin \Eloquent
  */
 class Tenant extends BaseTenant
