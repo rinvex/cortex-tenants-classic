@@ -35,6 +35,8 @@ class SeedCommand extends Command
      */
     public function handle()
     {
+        $this->warn('Seed cortex/tenantable:');
+
         if ($this->ensureExistingTenantableTables()) {
             // No seed data at the moment!
         }
