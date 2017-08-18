@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Models;
 
-use Rinvex\Tenantable\Models\Tenant as BaseTenant;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Rinvex\Tenantable\Models\Tenant as BaseTenant;
 
 /**
  * Cortex\Tenantable\Models\Tenant.
