@@ -14,6 +14,16 @@ use Cortex\Tenantable\Console\Commands\MigrateCommand;
 class TenantableServiceProvider extends ServiceProvider
 {
     /**
+     * The commands to be registered.
+     *
+     * @var array
+     */
+    protected $commands = [
+        MigrateCommand::class => 'command.cortex.tenantable.migrate',
+        SeedCommand::class => 'command.cortex.tenantable.seed',
+    ];
+
+    /**
      * Register any application services.
      *
      * This service provider is a great spot to register your various container
@@ -24,7 +34,14 @@ class TenantableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Register artisan commands
+        foreach ($this->commands as $key => $value) {
+            $this->app->singleton($value, function ($app) use ($key) {
+                return new $key();
+            });
+        }
+
+        $this->commands(array_values($this->commands));
     }
 
     /**
@@ -40,7 +57,6 @@ class TenantableServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenantable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenantable');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        $this->commands([SeedCommand::class, MigrateCommand::class]);
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
