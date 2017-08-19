@@ -7,7 +7,7 @@ Route::group(['domain' => domain()], function () {
     Route::name('backend.')
          ->namespace('Cortex\Tenantable\Http\Controllers\Backend')
          ->middleware(['web', 'nohttpcache', 'can:access-dashboard'])
-         ->prefix(config('rinvex.cortex.route.locale_prefix') ? '{locale}/backend' : 'backend')->group(function () {
+         ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/backend' : 'backend')->group(function () {
 
         // Tenants Routes
         Route::name('tenants.')->prefix('tenants')->group(function () {
