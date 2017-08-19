@@ -26,7 +26,7 @@ class TenantFormRequest extends FormRequest
      */
     public function rules()
     {
-        $tenant = $this->route('tenant') ?? new Tenant();
+        $tenant = $this->route('tenant') ?? app('rinvex.tenantable.tenant');
         $tenant->updateRulesUniques();
 
         return $tenant->getRules();

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\DataTables\Backend;
 
-use Cortex\Tenantable\Models\Tenant;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Tenantable\Transformers\Backend\TenantTransformer;
 
@@ -13,7 +12,7 @@ class TenantsDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = Tenant::class;
+    protected $model = 'rinvex.tenantable.tenant';
 
     /**
      * {@inheritdoc}
@@ -27,7 +26,7 @@ class TenantsDataTable extends AbstractDataTable
      */
     public function query()
     {
-        $query = ($this->model)::query()->with(['owner']);
+        $query = app($this->model)->query()->with(['owner']);
 
         return $this->applyScopes($query);
     }

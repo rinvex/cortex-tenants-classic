@@ -56,7 +56,7 @@ class TenantsController extends AuthorizedController
      */
     public function store(TenantFormRequest $request)
     {
-        return $this->process($request, new Tenant());
+        return $this->process($request, app('rinvex.tenantable.tenant'));
     }
 
     /**
