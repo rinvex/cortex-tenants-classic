@@ -99,7 +99,7 @@ class TenantsController extends AuthorizedController
     public function form(Tenant $tenant)
     {
         $countries = countries();
-        $owners = User::all()->pluck('username', 'id');
+        $owners = app('rinvex.fort.user')->all()->pluck('username', 'id');
         $languages = collect(languages())->pluck('name', 'iso_639_1');
 
         return view('cortex/tenantable::backend.forms.tenant', compact('tenant', 'owners', 'countries', 'languages'));
