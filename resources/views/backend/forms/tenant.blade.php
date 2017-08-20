@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/tenantable::common.tenants') }} » {{ $tenant->exists ? $tenant->slug : trans('cortex/tenantable::common.create_tenant') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/tenantable::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}
 @stop
 
 @push('scripts')
@@ -52,7 +52,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $tenant->exists ? $tenant->slug : trans('cortex/tenantable::common.create_tenant') }}</h1>
+            <h1>{{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
