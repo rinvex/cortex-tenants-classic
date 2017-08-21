@@ -9,6 +9,8 @@ use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 use Cortex\Tenantable\Console\Commands\SeedCommand;
+use Cortex\Tenantable\Console\Commands\InstallCommand;
+use Cortex\Tenantable\Console\Commands\PublishCommand;
 use Cortex\Tenantable\Console\Commands\MigrateCommand;
 
 class TenantableServiceProvider extends ServiceProvider
@@ -20,6 +22,8 @@ class TenantableServiceProvider extends ServiceProvider
      */
     protected $commands = [
         MigrateCommand::class => 'command.cortex.tenantable.migrate',
+        PublishCommand::class => 'command.cortex.tenantable.publish',
+        InstallCommand::class => 'command.cortex.tenantable.install',
         SeedCommand::class => 'command.cortex.tenantable.seed',
     ];
 
