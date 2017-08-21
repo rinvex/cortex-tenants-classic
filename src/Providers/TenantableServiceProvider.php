@@ -10,8 +10,8 @@ use Illuminate\Support\ServiceProvider;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 use Cortex\Tenantable\Console\Commands\SeedCommand;
 use Cortex\Tenantable\Console\Commands\InstallCommand;
-use Cortex\Tenantable\Console\Commands\PublishCommand;
 use Cortex\Tenantable\Console\Commands\MigrateCommand;
+use Cortex\Tenantable\Console\Commands\PublishCommand;
 
 class TenantableServiceProvider extends ServiceProvider
 {
