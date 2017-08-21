@@ -47,7 +47,7 @@
 @section('content')
 
     @if($tenant->exists)
-        @include('cortex/foundation::backend.partials.confirm-deletion', ['type' => 'tenant'])
+        @include('cortex/foundation::common.partials.confirm-deletion', ['type' => 'tenant'])
     @endif
 
     <div class="content-wrapper">
