@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Http\Requests\Backend;
 
-use Cortex\Tenantable\Models\Tenant;
 use Rinvex\Support\Http\Requests\FormRequest;
 
 class TenantFormRequest extends FormRequest

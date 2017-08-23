@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Transformers\Backend;
 
-use Cortex\Tenantable\Models\Tenant;
 use League\Fractal\TransformerAbstract;
+use Rinvex\Tenantable\Contracts\TenantContract;
 
 class TenantTransformer extends TransformerAbstract
 {
     /**
      * @return array
      */
-    public function transform(Tenant $tenant)
+    public function transform(TenantContract $tenant)
     {
         return [
             'id' => (int) $tenant->id,

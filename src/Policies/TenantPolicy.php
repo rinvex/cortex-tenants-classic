@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\Policies;
 
-use Rinvex\Fort\Models\User;
-use Cortex\Tenantable\Models\Tenant;
+use Rinvex\Fort\Contracts\UserContract;
+use Rinvex\Tenantable\Contracts\TenantContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TenantPolicy
@@ -16,11 +16,11 @@ class TenantPolicy
      * Determine whether the user can list tenants.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function list($ability, User $user)
+    public function list($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -29,11 +29,11 @@ class TenantPolicy
      * Determine whether the user can create tenants.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function create($ability, User $user)
+    public function create($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -42,12 +42,12 @@ class TenantPolicy
      * Determine whether the user can update the tenant.
      *
      * @param string                           $ability
-     * @param \Rinvex\Fort\Models\User         $user
-     * @param \Cortex\Tenantable\Models\Tenant $resource
+     * @param \Rinvex\Fort\Contracts\UserContract         $user
+     * @param \Rinvex\Tenantable\Contracts\TenantContract $resource
      *
      * @return bool
      */
-    public function update($ability, User $user, Tenant $resource)
+    public function update($ability, UserContract $user, TenantContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can update tenants
     }
@@ -56,12 +56,12 @@ class TenantPolicy
      * Determine whether the user can delete the tenant.
      *
      * @param string                           $ability
-     * @param \Rinvex\Fort\Models\User         $user
-     * @param \Cortex\Tenantable\Models\Tenant $resource
+     * @param \Rinvex\Fort\Contracts\UserContract         $user
+     * @param \Rinvex\Tenantable\Contracts\TenantContract $resource
      *
      * @return bool
      */
-    public function delete($ability, User $user, Tenant $resource)
+    public function delete($ability, UserContract $user, TenantContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete tenants
     }

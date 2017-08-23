@@ -38,9 +38,6 @@ class TenantableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bind eloquent models to IoC container
-        $this->app->alias('rinvex.tenantable.tenant', Tenant::class);
-
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }

@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenantable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use Rinvex\Fort\Models\User;
-use Cortex\Tenantable\Models\Tenant;
+use Rinvex\Tenantable\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tenantable\DataTables\Backend\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -37,7 +36,7 @@ class TenantsController extends AuthorizedController
      *
      * @return \Illuminate\Http\Response
      */
-    public function logs(Tenant $tenant)
+    public function logs(TenantContract $tenant)
     {
         return app(LogsDataTable::class)->with([
             'type' => 'tenants',
@@ -63,11 +62,11 @@ class TenantsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest $request
-     * @param \Cortex\Tenantable\Models\Tenant                           $tenant
+     * @param \Rinvex\Tenantable\Contracts\TenantContract                           $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(TenantFormRequest $request, Tenant $tenant)
+    public function update(TenantFormRequest $request, TenantContract $tenant)
     {
         return $this->process($request, $tenant);
     }
@@ -75,11 +74,11 @@ class TenantsController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Cortex\Tenantable\Models\Tenant $tenant
+     * @param \Rinvex\Tenantable\Contracts\TenantContractContract $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(Tenant $tenant)
+    public function delete(TenantContract $tenant)
     {
         $tenant->delete();
 
@@ -92,11 +91,11 @@ class TenantsController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Cortex\Tenantable\Models\Tenant $tenant
+     * @param \Rinvex\Tenantable\Contracts\TenantContractContract $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    public function form(Tenant $tenant)
+    public function form(TenantContract $tenant)
     {
         $countries = countries();
         $owners = app('rinvex.fort.user')->all()->pluck('username', 'id');
@@ -109,11 +108,11 @@ class TenantsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request         $request
-     * @param \Cortex\Tenantable\Models\Tenant $tenant
+     * @param \Rinvex\Tenantable\Contracts\TenantContractContract $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, Tenant $tenant)
+    protected function process(Request $request, TenantContract $tenant)
     {
         // Prepare required input fields
         $data = $request->all();

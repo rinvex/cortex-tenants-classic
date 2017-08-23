@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenantable\DataTables\Backend;
 
-use Cortex\Tenantable\Models\Tenant;
+use Rinvex\Tenantable\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Tenantable\Transformers\Backend\TenantTransformer;
 
@@ -13,7 +13,7 @@ class TenantsDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = Tenant::class;
+    protected $model = TenantContract::class;
 
     /**
      * {@inheritdoc}
