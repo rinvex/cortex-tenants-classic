@@ -35,7 +35,7 @@ class SeedCommand extends Command
         $this->warn('Seed cortex/tenantable:');
 
         if ($this->ensureExistingDatabaseTables('rinvex/fort')) {
-            $this->seedResources(app('rinvex.fort.ability'), realpath(__DIR__.'/../../../resources/data/abilities.json'), ['name', 'description']);
+            $this->seedResources(app('rinvex.fort.ability'), realpath(__DIR__.'/../../../resources/data/abilities.json'), ['name', 'description', 'policy']);
         }
     }
 }
