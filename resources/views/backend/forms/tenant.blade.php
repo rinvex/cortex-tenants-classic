@@ -157,7 +157,7 @@
                                     {{-- Language Code --}}
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
                                         {{ Form::label('language_code', trans('cortex/tenantable::common.language'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('language_code', '') }}
+                                        {{ Form::hidden('language_code') }}
                                         {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('language_code'))
@@ -172,7 +172,7 @@
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
                                         {{ Form::label('country_code', trans('cortex/tenantable::common.country'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('country_code', '') }}
+                                        {{ Form::hidden('country_code') }}
                                         {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('country_code'))
