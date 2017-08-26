@@ -26,7 +26,6 @@ return [
     'no' => 'No',
     'active' => 'Active',
     'submit' => 'Submit',
-    'reset' => 'Reset',
     'select_language' => 'Select Language',
     'select_country' => 'Select Country',
     'select_owner' => 'Select Owner',
