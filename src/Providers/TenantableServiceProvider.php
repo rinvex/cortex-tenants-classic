@@ -7,6 +7,7 @@ namespace Cortex\Tenantable\Providers;
 use Illuminate\Routing\Router;
 use Cortex\Tenantable\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Tenantable\Contracts\TenantContract;
 use Cortex\Tenantable\Http\Middleware\Tenantable;
 use Cortex\Tenantable\Console\Commands\SeedCommand;
 use Cortex\Tenantable\Console\Commands\InstallCommand;
@@ -49,6 +50,9 @@ class TenantableServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        // Bind models explicitly
+        $router->model('tenant', TenantContract::class);
+
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');

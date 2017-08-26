@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-use Rinvex\Tenantable\Contracts\TenantContract;
-
-Route::model('tenant', TenantContract::class);
-
 Route::group(['domain' => domain()], function () {
 
     Route::name('backend.')
