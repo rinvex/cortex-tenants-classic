@@ -40,7 +40,7 @@ class TenantsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tenants.edit\', {tenant: full.id})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenantable::common.email')],
             'phone' => ['title' => trans('cortex/tenantable::common.phone')],
             'owner' => ['title' => trans('cortex/tenantable::common.owner'), 'name' => 'owner.username'],
