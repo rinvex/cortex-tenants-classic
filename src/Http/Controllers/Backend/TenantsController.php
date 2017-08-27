@@ -84,7 +84,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('backend.tenants.index'),
-            'with' => ['warning' => trans('cortex/tenantable::messages.tenant.deleted', ['tenantId' => $tenant->id])],
+            'with' => ['warning' => trans('cortex/tenantable::messages.tenant.deleted', ['slug' => $tenant->slug])],
         ]);
     }
 
@@ -122,7 +122,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('backend.tenants.index'),
-            'with' => ['success' => trans('cortex/tenantable::messages.tenant.saved', ['tenantId' => $tenant->id])],
+            'with' => ['success' => trans('cortex/tenantable::messages.tenant.saved', ['slug' => $tenant->slug])],
         ]);
     }
 }
