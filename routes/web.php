@@ -14,10 +14,10 @@ Route::group(['domain' => domain()], function () {
             Route::get('/')->name('index')->uses('TenantsController@index');
             Route::get('create')->name('create')->uses('TenantsController@form');
             Route::post('create')->name('store')->uses('TenantsController@store');
-            Route::get('{tenant}')->name('edit')->uses('TenantsController@form')->where('tenant', '[a-z0-9-]+');
-            Route::put('{tenant}')->name('update')->uses('TenantsController@update')->where('tenant', '[a-z0-9-]+');
-            Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs')->where('tenant', '[a-z0-9-]+');
-            Route::delete('{tenant}')->name('delete')->uses('TenantsController@delete')->where('tenant', '[a-z0-9-]+');
+            Route::get('{tenant}')->name('edit')->uses('TenantsController@form');
+            Route::put('{tenant}')->name('update')->uses('TenantsController@update');
+            Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs');
+            Route::delete('{tenant}')->name('delete')->uses('TenantsController@delete');
         });
 
     });

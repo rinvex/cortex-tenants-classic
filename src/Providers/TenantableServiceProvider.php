@@ -50,7 +50,8 @@ class TenantableServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        // Bind models explicitly
+        // Bind route models and constrains
+        $router->pattern('tenant', '[a-z0-9-]+');
         $router->model('tenant', TenantContract::class);
 
         // Load resources
