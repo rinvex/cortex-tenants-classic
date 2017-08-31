@@ -59,7 +59,10 @@
         "rinvex/support": "dev-develop",
         "rinvex/tenantable": "dev-develop",
         "spatie/laravel-activitylog": "^2.0.0",
-        "spatie/laravel-menu": "^3.0.0"
+        "spatie/laravel-menu": "^3.0.0",
+        "yajra/laravel-datatables-buttons": "^3.0.0",
+        "yajra/laravel-datatables-html": "^3.0.0",
+        "yajra/laravel-datatables-oracle": "^8.0.0"
     },
     "autoload": {
         "psr-4": {
