@@ -54,7 +54,7 @@
         "league/fractal": "^0.16.0",
         "proengsoft/laravel-jsvalidation": "^2.1.0",
         "rinvex/attributable": "dev-develop",
-        "rinvex/composable": "dev-develop",
+        "rinvex/composer": "dev-develop",
         "rinvex/fort": "dev-develop",
         "rinvex/support": "dev-develop",
         "rinvex/tenantable": "dev-develop",
