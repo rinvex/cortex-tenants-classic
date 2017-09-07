@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Transformers\Backend;
+namespace Cortex\Tenantable\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
 use Rinvex\Tenantable\Contracts\TenantContract;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\DataTables\Backend;
+namespace Cortex\Tenantable\DataTables\Adminarea;
 
 use Rinvex\Tenantable\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Tenantable\Transformers\Backend\TenantTransformer;
+use Cortex\Tenantable\Transformers\Adminarea\TenantTransformer;
 
 class TenantsDataTable extends AbstractDataTable
 {
@@ -40,7 +40,7 @@ class TenantsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenantable::common.email')],
             'phone' => ['title' => trans('cortex/tenantable::common.phone')],
             'owner' => ['title' => trans('cortex/tenantable::common.owner'), 'name' => 'owner.username'],

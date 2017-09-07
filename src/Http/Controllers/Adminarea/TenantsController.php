@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Http\Controllers\Backend;
+namespace Cortex\Tenantable\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Rinvex\Tenantable\Contracts\TenantContract;
-use Cortex\Tenantable\DataTables\Backend\TenantsDataTable;
+use Cortex\Tenantable\DataTables\Adminarea\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
-use Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest;
+use Cortex\Tenantable\Http\Requests\Adminarea\TenantFormRequest;
 
 class TenantsController extends AuthorizedController
 {
@@ -28,7 +28,7 @@ class TenantsController extends AuthorizedController
         return app(TenantsDataTable::class)->with([
             'id' => 'cortex-tenantable-tenants',
             'phrase' => trans('cortex/tenantable::common.tenants'),
-        ])->render('cortex/foundation::backend.pages.datatable');
+        ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 
     /**
@@ -43,13 +43,13 @@ class TenantsController extends AuthorizedController
             'resource' => $tenant,
             'id' => 'cortex-tenantable-tenants-logs',
             'phrase' => trans('cortex/tenantable::common.tenants'),
-        ])->render('cortex/foundation::backend.pages.datatable-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest $request
+     * @param \Cortex\Tenantable\Http\Requests\Adminarea\TenantFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -61,7 +61,7 @@ class TenantsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest $request
+     * @param \Cortex\Tenantable\Http\Requests\Adminarea\TenantFormRequest $request
      * @param \Rinvex\Tenantable\Contracts\TenantContract                $tenant
      *
      * @return \Illuminate\Http\Response
@@ -83,7 +83,7 @@ class TenantsController extends AuthorizedController
         $tenant->delete();
 
         return intend([
-            'url' => route('backend.tenants.index'),
+            'url' => route('adminarea.tenants.index'),
             'with' => ['warning' => trans('cortex/tenantable::messages.tenant.deleted', ['slug' => $tenant->slug])],
         ]);
     }
@@ -101,7 +101,7 @@ class TenantsController extends AuthorizedController
         $owners = app('rinvex.fort.user')->all()->pluck('username', 'id');
         $languages = collect(languages())->pluck('name', 'iso_639_1');
 
-        return view('cortex/tenantable::backend.forms.tenant', compact('tenant', 'owners', 'countries', 'languages'));
+        return view('cortex/tenantable::adminarea.forms.tenant', compact('tenant', 'owners', 'countries', 'languages'));
     }
 
     /**
@@ -121,7 +121,7 @@ class TenantsController extends AuthorizedController
         $tenant->fill($data)->save();
 
         return intend([
-            'url' => route('backend.tenants.index'),
+            'url' => route('adminarea.tenants.index'),
             'with' => ['success' => trans('cortex/tenantable::messages.tenant.saved', ['slug' => $tenant->slug])],
         ]);
     }

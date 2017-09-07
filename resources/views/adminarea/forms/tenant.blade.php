@@ -1,13 +1,13 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::backend.layouts.default')
+@extends('cortex/foundation::adminarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/tenantable::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tenantable::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Tenantable\Http\Requests\Backend\TenantFormRequest::class)->selector('#backend-tenants-save') !!}
+    {!! JsValidator::formRequest(Cortex\Tenantable\Http\Requests\Adminarea\TenantFormRequest::class)->selector('#adminarea-tenants-save') !!}
 
     <script>
         (function($) {
@@ -63,8 +63,8 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.details') }}</a></li>
-                    @if($tenant->exists) <li><a href="{{ route('backend.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenantable::common.logs') }}</a></li> @endif
-                    @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
+                    @if($tenant->exists) <li><a href="{{ route('adminarea.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenantable::common.logs') }}</a></li> @endif
+                    @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
                 <div class="tab-content">
@@ -72,9 +72,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tenant->exists)
-                            {{ Form::model($tenant, ['url' => route('backend.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => 'backend-tenants-save']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => 'adminarea-tenants-save']) }}
                         @else
-                            {{ Form::model($tenant, ['url' => route('backend.tenants.store'), 'id' => 'backend-tenants-save']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-save']) }}
                         @endif
 
                             <div class="row">
@@ -303,7 +303,7 @@
                                         {{ Form::button(trans('cortex/tenantable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::backend.partials.timestamps', ['model' => $tenant])
+                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $tenant])
 
                                 </div>
 

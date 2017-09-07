@@ -5,23 +5,23 @@ declare(strict_types=1);
 use Rinvex\Tenantable\Contracts\TenantContract;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
-Breadcrumbs::register('backend.tenants.index', function (BreadcrumbsGenerator $breadcrumbs) {
-    $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.trans('cortex/foundation::common.backend'), route('backend.home'));
-    $breadcrumbs->push(trans('cortex/tenantable::common.tenants'), route('backend.tenants.index'));
+Breadcrumbs::register('adminarea.tenants.index', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.trans('cortex/foundation::common.adminarea'), route('adminarea.home'));
+    $breadcrumbs->push(trans('cortex/tenantable::common.tenants'), route('adminarea.tenants.index'));
 });
 
-Breadcrumbs::register('backend.tenants.create', function (BreadcrumbsGenerator $breadcrumbs) {
-    $breadcrumbs->parent('backend.tenants.index');
-    $breadcrumbs->push(trans('cortex/tenantable::common.create_tenant'), route('backend.tenants.create'));
+Breadcrumbs::register('adminarea.tenants.create', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.tenants.index');
+    $breadcrumbs->push(trans('cortex/tenantable::common.create_tenant'), route('adminarea.tenants.create'));
 });
 
-Breadcrumbs::register('backend.tenants.edit', function (BreadcrumbsGenerator $breadcrumbs, TenantContract $tenant) {
-    $breadcrumbs->parent('backend.tenants.index');
-    $breadcrumbs->push($tenant->name, route('backend.tenants.edit', ['tenant' => $tenant]));
+Breadcrumbs::register('adminarea.tenants.edit', function (BreadcrumbsGenerator $breadcrumbs, TenantContract $tenant) {
+    $breadcrumbs->parent('adminarea.tenants.index');
+    $breadcrumbs->push($tenant->name, route('adminarea.tenants.edit', ['tenant' => $tenant]));
 });
 
-Breadcrumbs::register('backend.tenants.logs', function (BreadcrumbsGenerator $breadcrumbs, TenantContract $tenant) {
-    $breadcrumbs->parent('backend.tenants.index');
-    $breadcrumbs->push($tenant->name, route('backend.tenants.edit', ['tenant' => $tenant]));
-    $breadcrumbs->push(trans('cortex/tenantable::common.logs'), route('backend.tenants.logs', ['tenant' => $tenant]));
+Breadcrumbs::register('adminarea.tenants.logs', function (BreadcrumbsGenerator $breadcrumbs, TenantContract $tenant) {
+    $breadcrumbs->parent('adminarea.tenants.index');
+    $breadcrumbs->push($tenant->name, route('adminarea.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->push(trans('cortex/tenantable::common.logs'), route('adminarea.tenants.logs', ['tenant' => $tenant]));
 });

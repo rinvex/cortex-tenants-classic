@@ -20,7 +20,7 @@ class Tenantable
     {
         if (is_string($request->route('tenant')) && $request->route('tenant').'.'.domain() === $request->getHost() && ! $tenant = app('rinvex.tenantable.tenant')->where('slug', $tenantSlug = $request->route('tenant'))->first()) {
             return intend([
-                'url' => route('frontend.home'),
+                'url' => route('guestarea.home'),
                 'with' => ['warning' => trans('cortex/tenantable::messages.tenant.not_found', ['tenantSlug' => $tenantSlug])],
             ]);
         }
