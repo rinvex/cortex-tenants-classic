@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
-use Cortex\Foundation\DataTables\LogsDataTable;
 use Rinvex\Tenants\Contracts\TenantContract;
+use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest;
@@ -62,7 +62,7 @@ class TenantsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract                $tenant
+     * @param \Rinvex\Tenants\Contracts\TenantContract                  $tenant
      *
      * @return \Illuminate\Http\Response
      */
@@ -107,7 +107,7 @@ class TenantsController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request                    $request
+     * @param \Illuminate\Http\Request                 $request
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
      * @return \Illuminate\Http\Response
