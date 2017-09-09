@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Console\Commands;
+namespace Cortex\Tenants\Console\Commands;
 
 use Illuminate\Console\Command;
 use Rinvex\Support\Traits\SeederHelper;
@@ -16,14 +16,14 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:seed:tenantable';
+    protected $signature = 'cortex:seed:tenants';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Seed Cortex Tenantable Data.';
+    protected $description = 'Seed Cortex Tenants Data.';
 
     /**
      * Execute the console command.
@@ -32,7 +32,7 @@ class SeedCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Seed cortex/tenantable:');
+        $this->warn('Seed cortex/tenants:');
 
         if ($this->ensureExistingDatabaseTables('rinvex/fort')) {
             $this->seedResources(app('rinvex.fort.ability'), realpath(__DIR__.'/../../../resources/data/abilities.json'), ['name', 'description', 'policy']);

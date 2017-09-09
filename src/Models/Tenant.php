@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Models;
+namespace Cortex\Tenants\Models;
 
 use Spatie\Activitylog\Traits\LogsActivity;
-use Rinvex\Tenantable\Models\Tenant as BaseTenant;
+use Rinvex\Tenants\Models\Tenant as BaseTenant;
 
 /**
- * Cortex\Tenantable\Models\Tenant.
+ * Cortex\Tenants\Models\Tenant.
  *
  * @property int                                                                           $id
  * @property string                                                                        $slug
@@ -32,28 +32,28 @@ use Rinvex\Tenantable\Models\Tenant as BaseTenant;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  * @property-read \Cortex\Fort\Models\User                                                 $owner
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenantable\Models\Tenant active()
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenantable\Models\Tenant inactive()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereCountryCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereGroup($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereLanguageCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereLaunchDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereOwnerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenantable\Models\Tenant whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenantable\Models\Tenant withGroup($group = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant inactive()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereGroup($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLanguageCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLaunchDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant withGroup($group = null)
  * @mixin \Eloquent
  */
 class Tenant extends BaseTenant

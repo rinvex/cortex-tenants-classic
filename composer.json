@@ -1,7 +1,7 @@
 {
-    "name": "cortex/tenantable",
+    "name": "cortex/tenants",
     "type": "cortex-module",
-    "description": "Cortex Tenantable is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
+    "description": "Cortex Tenants is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
     "keywords": [
         "model",
         "tenant",
@@ -19,9 +19,9 @@
     "homepage": "https://rinvex.com",
     "support": {
         "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/cortex-tenantable/issues",
-        "source": "https://github.com/rinvex/cortex-tenantable",
-        "docs": "https://github.com/rinvex/cortex-tenantable/README.md"
+        "issues": "https://github.com/rinvex/cortex-tenants/issues",
+        "source": "https://github.com/rinvex/cortex-tenants",
+        "docs": "https://github.com/rinvex/cortex-tenants/README.md"
     },
     "authors": [
         {
@@ -37,7 +37,7 @@
         },
         {
             "name": "The Generous Laravel Community",
-            "homepage": "https://github.com/rinvex/cortex-tenantable/contributors"
+            "homepage": "https://github.com/rinvex/cortex-tenants/contributors"
         }
     ],
     "require": {
@@ -57,7 +57,7 @@
         "rinvex/composer": "dev-develop",
         "rinvex/fort": "dev-develop",
         "rinvex/support": "dev-develop",
-        "rinvex/tenantable": "dev-develop",
+        "rinvex/tenants": "dev-develop",
         "spatie/laravel-activitylog": "^2.0.0",
         "spatie/laravel-menu": "^3.0.0",
         "yajra/laravel-datatables-fractal": "^1.0.0",
@@ -67,7 +67,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cortex\\Tenantable\\": "src/"
+            "Cortex\\Tenants\\": "src/"
         }
     },
     "config": {
@@ -81,7 +81,7 @@
         },
         "laravel": {
             "providers": [
-                "Cortex\\Tenantable\\Providers\\TenantableServiceProvider"
+                "Cortex\\Tenants\\Providers\\TenantsServiceProvider"
             ]
         },
         "cortex-module": {

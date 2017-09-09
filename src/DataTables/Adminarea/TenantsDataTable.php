@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\DataTables\Adminarea;
+namespace Cortex\Tenants\DataTables\Adminarea;
 
-use Rinvex\Tenantable\Contracts\TenantContract;
+use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Tenantable\Transformers\Adminarea\TenantTransformer;
+use Cortex\Tenants\Transformers\Adminarea\TenantTransformer;
 
 class TenantsDataTable extends AbstractDataTable
 {
@@ -40,14 +40,14 @@ class TenantsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/tenantable::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
-            'email' => ['title' => trans('cortex/tenantable::common.email')],
-            'phone' => ['title' => trans('cortex/tenantable::common.phone')],
-            'owner' => ['title' => trans('cortex/tenantable::common.owner'), 'name' => 'owner.username'],
-            'country_code' => ['title' => trans('cortex/tenantable::common.country')],
-            'language_code' => ['title' => trans('cortex/tenantable::common.language')],
-            'created_at' => ['title' => trans('cortex/tenantable::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
-            'updated_at' => ['title' => trans('cortex/tenantable::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'email' => ['title' => trans('cortex/tenants::common.email')],
+            'phone' => ['title' => trans('cortex/tenants::common.phone')],
+            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'name' => 'owner.username'],
+            'country_code' => ['title' => trans('cortex/tenants::common.country')],
+            'language_code' => ['title' => trans('cortex/tenants::common.language')],
+            'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'updated_at' => ['title' => trans('cortex/tenants::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
         ];
     }
 }

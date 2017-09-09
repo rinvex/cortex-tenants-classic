@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Transformers\Adminarea;
+namespace Cortex\Tenants\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
-use Rinvex\Tenantable\Contracts\TenantContract;
+use Rinvex\Tenants\Contracts\TenantContract;
 
 class TenantTransformer extends TransformerAbstract
 {

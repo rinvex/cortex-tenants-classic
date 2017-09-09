@@ -2,25 +2,25 @@
     {
         "action": "list",
         "resource": "tenants",
-        "policy": "Cortex\\Tenantable\\Policies\\TenantPolicy@list",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@list",
         "name": "Can List Existing Tenants"
     },
     {
         "action": "create",
         "resource": "tenants",
-        "policy": "Cortex\\Tenantable\\Policies\\TenantPolicy@create",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@create",
         "name": "Can Create New Tenants"
     },
     {
         "action": "update",
         "resource": "tenants",
-        "policy": "Cortex\\Tenantable\\Policies\\TenantPolicy@update",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@update",
         "name": "Can Update Existing Tenants"
     },
     {
         "action": "delete",
         "resource": "tenants",
-        "policy": "Cortex\\Tenantable\\Policies\\TenantPolicy@delete",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@delete",
         "name": "Can Delete Existing Tenants"
     }
 ]

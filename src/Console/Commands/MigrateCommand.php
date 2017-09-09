@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Console\Commands;
+namespace Cortex\Tenants\Console\Commands;
 
-use Rinvex\Tenantable\Console\Commands\MigrateCommand as BaseMigrateCommand;
+use Rinvex\Tenants\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
 class MigrateCommand extends BaseMigrateCommand
 {
@@ -13,12 +13,12 @@ class MigrateCommand extends BaseMigrateCommand
      *
      * @var string
      */
-    protected $signature = 'cortex:migrate:tenantable';
+    protected $signature = 'cortex:migrate:tenants';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Cortex Tenantable Tables.';
+    protected $description = 'Migrate Cortex Tenants Tables.';
 }

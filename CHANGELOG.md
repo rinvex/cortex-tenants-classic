@@ -1,4 +1,4 @@
-# Cortex Tenantable Change Log
+# Cortex Tenants Change Log
 
 All notable changes to this project will be documented in this file.
 

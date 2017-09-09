@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Console\Commands;
+namespace Cortex\Tenants\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:tenantable';
+    protected $signature = 'cortex:publish:tenants';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Cortex Tenantable Resources.';
+    protected $description = 'Publish Cortex Tenants Resources.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/tenantable:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-tenantable-config']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-tenantable-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-tenantable-lang']);
+        $this->warn('Publish cortex/tenants:');
+        $this->call('vendor:publish', ['--tag' => 'rinvex-tenants-config']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tenants-views']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tenants-lang']);
     }
 }

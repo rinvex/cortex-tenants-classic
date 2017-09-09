@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Http\Requests\Adminarea;
+namespace Cortex\Tenants\Http\Requests\Adminarea;
 
 use Rinvex\Support\Http\Requests\FormRequest;
 
@@ -25,7 +25,7 @@ class TenantFormRequest extends FormRequest
      */
     public function rules()
     {
-        $tenant = $this->route('tenant') ?? app('rinvex.tenantable.tenant');
+        $tenant = $this->route('tenant') ?? app('rinvex.tenants.tenant');
         $tenant->updateRulesUniques();
 
         return $tenant->getRules();

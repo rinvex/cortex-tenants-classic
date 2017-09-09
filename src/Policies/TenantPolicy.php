@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Policies;
+namespace Cortex\Tenants\Policies;
 
 use Rinvex\Fort\Contracts\UserContract;
-use Rinvex\Tenantable\Contracts\TenantContract;
+use Rinvex\Tenants\Contracts\TenantContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TenantPolicy
@@ -43,7 +43,7 @@ class TenantPolicy
      *
      * @param string                                      $ability
      * @param \Rinvex\Fort\Contracts\UserContract         $user
-     * @param \Rinvex\Tenantable\Contracts\TenantContract $resource
+     * @param \Rinvex\Tenants\Contracts\TenantContract $resource
      *
      * @return bool
      */
@@ -57,7 +57,7 @@ class TenantPolicy
      *
      * @param string                                      $ability
      * @param \Rinvex\Fort\Contracts\UserContract         $user
-     * @param \Rinvex\Tenantable\Contracts\TenantContract $resource
+     * @param \Rinvex\Tenants\Contracts\TenantContract $resource
      *
      * @return bool
      */

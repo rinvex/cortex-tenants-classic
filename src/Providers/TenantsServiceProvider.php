@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Providers;
+namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
-use Cortex\Tenantable\Models\Tenant;
+use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Tenantable\Contracts\TenantContract;
-use Cortex\Tenantable\Http\Middleware\Tenantable;
-use Cortex\Tenantable\Console\Commands\SeedCommand;
-use Cortex\Tenantable\Console\Commands\InstallCommand;
-use Cortex\Tenantable\Console\Commands\MigrateCommand;
-use Cortex\Tenantable\Console\Commands\PublishCommand;
+use Rinvex\Tenants\Contracts\TenantContract;
+use Cortex\Tenants\Http\Middleware\Tenantable;
+use Cortex\Tenants\Console\Commands\SeedCommand;
+use Cortex\Tenants\Console\Commands\InstallCommand;
+use Cortex\Tenants\Console\Commands\MigrateCommand;
+use Cortex\Tenants\Console\Commands\PublishCommand;
 
-class TenantableServiceProvider extends ServiceProvider
+class TenantsServiceProvider extends ServiceProvider
 {
     /**
      * The commands to be registered.
@@ -22,10 +22,10 @@ class TenantableServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        MigrateCommand::class => 'command.cortex.tenantable.migrate',
-        PublishCommand::class => 'command.cortex.tenantable.publish',
-        InstallCommand::class => 'command.cortex.tenantable.install',
-        SeedCommand::class => 'command.cortex.tenantable.seed',
+        MigrateCommand::class => 'command.cortex.tenants.migrate',
+        PublishCommand::class => 'command.cortex.tenants.publish',
+        InstallCommand::class => 'command.cortex.tenants.install',
+        SeedCommand::class => 'command.cortex.tenants.seed',
     ];
 
     /**
@@ -57,8 +57,8 @@ class TenantableServiceProvider extends ServiceProvider
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenantable');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenantable');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
@@ -69,8 +69,8 @@ class TenantableServiceProvider extends ServiceProvider
 
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
-        // Register attributable entities
-        app('rinvex.attributable.entities')->push(Tenant::class);
+        // Register attributes entities
+        app('rinvex.attributes.entities')->push(Tenant::class);
     }
 
     /**
@@ -80,8 +80,8 @@ class TenantableServiceProvider extends ServiceProvider
      */
     protected function publishResources()
     {
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenantable')], 'cortex-tenantable-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenantable')], 'cortex-tenantable-views');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenants')], 'cortex-tenants-lang');
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenants')], 'cortex-tenants-views');
     }
 
     /**

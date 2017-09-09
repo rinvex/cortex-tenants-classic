@@ -3,11 +3,11 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tenantable::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tenants::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenants::common.create_tenant') }}
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Tenantable\Http\Requests\Adminarea\TenantFormRequest::class)->selector('#adminarea-tenants-save') !!}
+    {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector('#adminarea-tenants-save') !!}
 
     <script>
         (function($) {
@@ -52,7 +52,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $tenant->exists ? $tenant->name : trans('cortex/tenantable::common.create_tenant') }}</h1>
+            <h1>{{ $tenant->exists ? $tenant->name : trans('cortex/tenants::common.create_tenant') }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
@@ -62,8 +62,8 @@
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenantable::common.details') }}</a></li>
-                    @if($tenant->exists) <li><a href="{{ route('adminarea.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenantable::common.logs') }}</a></li> @endif
+                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenants::common.details') }}</a></li>
+                    @if($tenant->exists) <li><a href="{{ route('adminarea.tenants.logs', ['tenant' => $tenant]) }}">{{ trans('cortex/tenants::common.logs') }}</a></li> @endif
                     @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
@@ -83,8 +83,8 @@
 
                                     {{-- Name --}}
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        {{ Form::label('name', trans('cortex/tenantable::common.name'), ['class' => 'control-label']) }}
-                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.name'), 'data-slugify' => '#slug', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                        {{ Form::label('name', trans('cortex/tenants::common.name'), ['class' => 'control-label']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.name'), 'data-slugify' => '#slug', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
                                         @if ($errors->has('name'))
                                             <span class="help-block">{{ $errors->first('name') }}</span>
@@ -97,8 +97,8 @@
 
                                     {{-- Slug --}}
                                     <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                                        {{ Form::label('slug', trans('cortex/tenantable::common.slug'), ['class' => 'control-label']) }}
-                                        {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.slug'), 'required' => 'required']) }}
+                                        {{ Form::label('slug', trans('cortex/tenants::common.slug'), ['class' => 'control-label']) }}
+                                        {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.slug'), 'required' => 'required']) }}
 
                                         @if ($errors->has('slug'))
                                             <span class="help-block">{{ $errors->first('slug') }}</span>
@@ -111,8 +111,8 @@
 
                                     {{-- Owner --}}
                                     <div class="form-group{{ $errors->has('owner_id') ? ' has-error' : '' }}">
-                                        {{ Form::label('owner_id', trans('cortex/tenantable::common.owner'), ['class' => 'control-label']) }}
-                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_owner'), 'required' => 'required', 'data-width' => '100%']) }}
+                                        {{ Form::label('owner_id', trans('cortex/tenants::common.owner'), ['class' => 'control-label']) }}
+                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_owner'), 'required' => 'required', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('owner_id'))
                                             <span class="help-block">{{ $errors->first('owner_id') }}</span>
@@ -128,8 +128,8 @@
 
                                     {{-- Email --}}
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        {{ Form::label('email', trans('cortex/tenantable::common.email'), ['class' => 'control-label']) }}
-                                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.email'), 'required' => 'required']) }}
+                                        {{ Form::label('email', trans('cortex/tenants::common.email'), ['class' => 'control-label']) }}
+                                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.email'), 'required' => 'required']) }}
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">{{ $errors->first('email') }}</span>
@@ -142,8 +142,8 @@
 
                                     {{-- Phone --}}
                                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                        {{ Form::label('phone', trans('cortex/tenantable::common.phone'), ['class' => 'control-label']) }}
-                                        {{ Form::number('phone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.phone')]) }}
+                                        {{ Form::label('phone', trans('cortex/tenants::common.phone'), ['class' => 'control-label']) }}
+                                        {{ Form::number('phone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.phone')]) }}
 
                                         @if ($errors->has('phone'))
                                             <span class="help-block">{{ $errors->first('phone') }}</span>
@@ -156,9 +156,9 @@
 
                                     {{-- Language Code --}}
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
-                                        {{ Form::label('language_code', trans('cortex/tenantable::common.language'), ['class' => 'control-label']) }}
+                                        {{ Form::label('language_code', trans('cortex/tenants::common.language'), ['class' => 'control-label']) }}
                                         {{ Form::hidden('language_code', '') }}
-                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                        {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('language_code'))
                                             <span class="help-block">{{ $errors->first('language_code') }}</span>
@@ -171,9 +171,9 @@
 
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
-                                        {{ Form::label('country_code', trans('cortex/tenantable::common.country'), ['class' => 'control-label']) }}
+                                        {{ Form::label('country_code', trans('cortex/tenants::common.country'), ['class' => 'control-label']) }}
                                         {{ Form::hidden('country_code', '') }}
-                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenantable::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                        {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('country_code'))
                                             <span class="help-block">{{ $errors->first('country_code') }}</span>
@@ -187,8 +187,8 @@
 
                                     {{-- State --}}
                                     <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
-                                        {{ Form::label('state', trans('cortex/tenantable::common.state'), ['class' => 'control-label']) }}
-                                        {{ Form::text('state', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.state')]) }}
+                                        {{ Form::label('state', trans('cortex/tenants::common.state'), ['class' => 'control-label']) }}
+                                        {{ Form::text('state', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.state')]) }}
 
                                         @if ($errors->has('state'))
                                             <span class="help-block">{{ $errors->first('state') }}</span>
@@ -201,8 +201,8 @@
 
                                     {{-- City --}}
                                     <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                                        {{ Form::label('city', trans('cortex/tenantable::common.city'), ['class' => 'control-label']) }}
-                                        {{ Form::text('city', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.city')]) }}
+                                        {{ Form::label('city', trans('cortex/tenants::common.city'), ['class' => 'control-label']) }}
+                                        {{ Form::text('city', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.city')]) }}
 
                                         @if ($errors->has('city'))
                                             <span class="help-block">{{ $errors->first('city') }}</span>
@@ -219,8 +219,8 @@
 
                                     {{-- Postal Code --}}
                                     <div class="form-group{{ $errors->has('postal_code') ? ' has-error' : '' }}">
-                                        {{ Form::label('postal_code', trans('cortex/tenantable::common.postal_code'), ['class' => 'control-label']) }}
-                                        {{ Form::text('postal_code', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.postal_code')]) }}
+                                        {{ Form::label('postal_code', trans('cortex/tenants::common.postal_code'), ['class' => 'control-label']) }}
+                                        {{ Form::text('postal_code', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.postal_code')]) }}
 
                                         @if ($errors->has('postal_code'))
                                             <span class="help-block">{{ $errors->first('postal_code') }}</span>
@@ -233,8 +233,8 @@
 
                                     {{-- Active --}}
                                     <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
-                                        {{ Form::label('is_active', trans('cortex/tenantable::common.active'), ['class' => 'control-label']) }}
-                                        {{ Form::select('is_active', [1 => trans('cortex/tenantable::common.yes'), 0 => trans('cortex/tenantable::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%']) }}
+                                        {{ Form::label('is_active', trans('cortex/tenants::common.active'), ['class' => 'control-label']) }}
+                                        {{ Form::select('is_active', [1 => trans('cortex/tenants::common.yes'), 0 => trans('cortex/tenants::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('is_active'))
                                             <span class="help-block">{{ $errors->first('is_active') }}</span>
@@ -247,7 +247,7 @@
 
                                     {{-- Launch Date --}}
                                     <div class="form-group has-feedback{{ $errors->has('launch_date') ? ' has-error' : '' }}">
-                                        {{ Form::label('launch_date', trans('cortex/tenantable::common.launch_date'), ['class' => 'control-label']) }}
+                                        {{ Form::label('launch_date', trans('cortex/tenants::common.launch_date'), ['class' => 'control-label']) }}
                                         {{ Form::text('launch_date', null, ['class' => 'form-control datepicker', 'data-auto-update-input' => 'false']) }}
                                         <span class="fa fa-calendar form-control-feedback"></span>
 
@@ -266,8 +266,8 @@
 
                                     {{-- Address --}}
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                        {{ Form::label('address', trans('cortex/tenantable::common.address'), ['class' => 'control-label']) }}
-                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.address')]) }}
+                                        {{ Form::label('address', trans('cortex/tenants::common.address'), ['class' => 'control-label']) }}
+                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.address')]) }}
 
                                         @if ($errors->has('address'))
                                             <span class="help-block">{{ $errors->first('address') }}</span>
@@ -284,8 +284,8 @@
 
                                     {{-- Description --}}
                                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                        {{ Form::label('description', trans('cortex/tenantable::common.description'), ['class' => 'control-label']) }}
-                                        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenantable::common.description'), 'rows' => 3]) }}
+                                        {{ Form::label('description', trans('cortex/tenants::common.description'), ['class' => 'control-label']) }}
+                                        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.description'), 'rows' => 3]) }}
 
                                         @if ($errors->has('description'))
                                             <span class="help-block">{{ $errors->first('description') }}</span>
@@ -300,7 +300,7 @@
                                 <div class="col-md-12">
 
                                     <div class="pull-right">
-                                        {{ Form::button(trans('cortex/tenantable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                        {{ Form::button(trans('cortex/tenants::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
                                     @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $tenant])

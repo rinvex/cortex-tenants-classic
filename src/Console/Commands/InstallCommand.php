@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenantable\Console\Commands;
+namespace Cortex\Tenants\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:tenantable';
+    protected $signature = 'cortex:install:tenants';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Cortex Tenantable Module.';
+    protected $description = 'Install Cortex Tenants Module.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/tenantable:');
-        $this->call('cortex:migrate:tenantable');
-        $this->call('cortex:seed:tenantable');
-        $this->call('cortex:publish:tenantable');
+        $this->warn('Install cortex/tenants:');
+        $this->call('cortex:migrate:tenants');
+        $this->call('cortex:seed:tenants');
+        $this->call('cortex:publish:tenants');
     }
 }
