@@ -1,7 +1,7 @@
 {
-    "name": "cortex/tenantable",
+    "name": "cortex/tenants",
     "type": "cortex-module",
-    "description": "Cortex Tenantable is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
+    "description": "Cortex Tenants is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
     "keywords": [
         "model",
         "tenant",
@@ -19,9 +19,9 @@
     "homepage": "https://rinvex.com",
     "support": {
         "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/cortex-tenantable/issues",
-        "source": "https://github.com/rinvex/cortex-tenantable",
-        "docs": "https://github.com/rinvex/cortex-tenantable/README.md"
+        "issues": "https://github.com/rinvex/cortex-tenants/issues",
+        "source": "https://github.com/rinvex/cortex-tenants",
+        "docs": "https://github.com/rinvex/cortex-tenants/README.md"
     },
     "authors": [
         {
@@ -37,29 +37,52 @@
         },
         {
             "name": "The Generous Laravel Community",
-            "homepage": "https://github.com/rinvex/cortex-tenantable/contributors"
+            "homepage": "https://github.com/rinvex/cortex-tenants/contributors"
         }
     ],
     "require": {
         "php": "^7.0.0",
-        "laravel/framework": "~5.4.0",
-        "rinvex/language": "dev-develop",
-        "rinvex/modulable": "dev-develop",
-        "rinvex/tenantable": "dev-develop",
-        "rinvex/composable": "dev-develop",
-        "rinvex/cacheable": "dev-develop"
+        "barryvdh/laravel-snappy": "^0.4.0",
+        "cortex/foundation": "dev-develop",
+        "davejamesmiller/laravel-breadcrumbs": "^4.0.0",
+        "Illuminate/auth": "~5.5.0",
+        "Illuminate/console": "~5.5.0",
+        "Illuminate/http": "~5.5.0",
+        "Illuminate/routing": "~5.5.0",
+        "Illuminate/support": "~5.5.0",
+        "laravelcollective/html": "~5.5.0",
+        "league/fractal": "^0.16.0",
+        "proengsoft/laravel-jsvalidation": "^2.1.0",
+        "rinvex/attributes": "dev-develop",
+        "rinvex/composer": "dev-develop",
+        "rinvex/fort": "dev-develop",
+        "rinvex/support": "dev-develop",
+        "rinvex/tenants": "dev-develop",
+        "spatie/laravel-activitylog": "^2.0.0",
+        "spatie/laravel-menu": "^3.0.0",
+        "yajra/laravel-datatables-fractal": "^1.0.0",
+        "yajra/laravel-datatables-buttons": "^3.0.0",
+        "yajra/laravel-datatables-html": "^3.0.0",
+        "yajra/laravel-datatables-oracle": "^8.0.0"
     },
     "autoload": {
         "psr-4": {
-            "Cortex\\Tenantable\\": "src/"
+            "Cortex\\Tenants\\": "src/"
         }
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Cortex\\Tenants\\Providers\\TenantsServiceProvider"
+            ]
         },
         "cortex-module": {
             "autoinstall": false,
