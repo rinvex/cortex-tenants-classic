@@ -6,7 +6,7 @@ Route::group(['domain' => domain()], function () {
 
     Route::name('adminarea.')
          ->namespace('Cortex\Tenants\Http\Controllers\Adminarea')
-         ->middleware(['web', 'nohttpcache', 'can:access-dashboard'])
+         ->middleware(['web', 'nohttpcache', 'can:access-adminarea'])
          ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/'.config('cortex.foundation.route.prefix.adminarea') : config('cortex.foundation.route.prefix.adminarea'))->group(function () {
 
         // Tenants Routes
