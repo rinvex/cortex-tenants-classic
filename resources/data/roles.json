@@ -1,0 +1,7 @@
+[
+    {
+        "slug": "tenant",
+        "name": "Tenant",
+        "description": "Default role for tenants."
+    }
+]
