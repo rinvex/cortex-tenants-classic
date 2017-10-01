@@ -12,5 +12,5 @@
         "title": "Tenant About",
         "route": "guestarea.tenant.about",
         "view": "cortex/tenants::guestarea.about"
-    },
+    }
 ]
