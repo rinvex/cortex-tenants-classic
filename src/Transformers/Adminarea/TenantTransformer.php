@@ -16,6 +16,7 @@ class TenantTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $tenant->id,
+            'slug' => (string) $tenant->slug,
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
             'phone' => (string) $tenant->phone,
