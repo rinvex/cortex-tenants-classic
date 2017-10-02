@@ -41,7 +41,6 @@ class SeedCommand extends Command
                 // Update page route domain
                 app('rinvex.pages.page')->whereIn('id', $ids)->update(['domain' => '{subdomain}.'.domain()]);
             });
-
         }
     }
 }
