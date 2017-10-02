@@ -28,6 +28,10 @@ class Tenantable
             ]);
         }
 
+        // unBind {subdomain} route parameter
+        ! $request->route('subdomain') || $request->route()->forgetParameter('subdomain');
+
+        // Activate current tenant
         ! $tenant || config(['rinvex.tenants.tenant.active' => $tenant]);
 
         return $next($request);
