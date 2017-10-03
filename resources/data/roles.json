@@ -1,7 +1,7 @@
 [
     {
-        "slug": "tenant",
-        "name": "Tenant",
-        "description": "Default role for tenants."
+        "slug": "manager",
+        "name": "Manager",
+        "description": "Default role for Managers."
     }
 ]
