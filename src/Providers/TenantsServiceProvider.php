@@ -13,6 +13,7 @@ use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -67,6 +68,12 @@ class TenantsServiceProvider extends ServiceProvider
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
 
+        // Inject tenantable middleware before route bindings substitution
+        $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
+        $before = array_slice($router->middlewarePriority, 0, $pointer);
+        $after = array_slice($router->middlewarePriority, $pointer);
+
+        $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         // Register attributes entities
