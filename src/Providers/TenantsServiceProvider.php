@@ -13,6 +13,7 @@ use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
@@ -54,6 +55,11 @@ class TenantsServiceProvider extends ServiceProvider
         // Bind route models and constrains
         $router->pattern('tenant', '[a-z0-9-]+');
         $router->model('tenant', TenantContract::class);
+
+        // Map relations
+        Relation::morphMap([
+            'tenant' => config('rinvex.tenants.models.tenant'),
+        ]);
 
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
