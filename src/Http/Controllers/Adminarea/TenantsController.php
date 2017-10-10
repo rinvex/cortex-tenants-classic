@@ -39,6 +39,7 @@ class TenantsController extends AuthorizedController
     public function logs(TenantContract $tenant)
     {
         return app(LogsDataTable::class)->with([
+            'tab' => 'logs',
             'type' => 'tenants',
             'resource' => $tenant,
             'id' => 'cortex-tenants-tenants-logs',
