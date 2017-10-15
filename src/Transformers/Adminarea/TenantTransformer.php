@@ -21,6 +21,7 @@ class TenantTransformer extends TransformerAbstract
             'email' => (string) $tenant->email,
             'phone' => (string) $tenant->phone,
             'address' => (string) $tenant->address,
+            'is_active' => (bool) $tenant->is_active,
             'owner' => (string) $tenant->owner->username,
             'country_code' => (string) $tenant->country_code ? country($tenant->country_code)->getName().'&nbsp;&nbsp;'.country($tenant->country_code)->getEmoji() : '',
             'language_code' => (string) $tenant->language_code ? language($tenant->language_code)->getName() : '',
