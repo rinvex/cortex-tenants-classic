@@ -29,6 +29,7 @@ return [
     'select_language' => 'Select Language',
     'select_country' => 'Select Country',
     'select_owner' => 'Select Owner',
+    'style' => 'Style',
 
     // Tenants
     'tenants' => 'Tenants',

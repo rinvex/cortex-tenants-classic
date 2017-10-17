@@ -61,6 +61,49 @@ class Tenant extends BaseTenant
     use LogsActivity;
 
     /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [
+        'slug',
+        'name',
+        'description',
+        'owner_id',
+        'email',
+        'phone',
+        'language_code',
+        'country_code',
+        'state',
+        'city',
+        'address',
+        'postal_code',
+        'launch_date',
+        'group',
+        'style',
+        'is_active',
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'slug' => 'string',
+        'owner_id' => 'integer',
+        'email' => 'string',
+        'phone' => 'string',
+        'country_code' => 'string',
+        'language_code' => 'string',
+        'state' => 'string',
+        'city' => 'string',
+        'address' => 'string',
+        'postal_code' => 'string',
+        'launch_date' => 'string',
+        'group' => 'string',
+        'style' => 'string',
+        'is_active' => 'boolean',
+        'deleted_at' => 'datetime',
+    ];
+
+    /**
      * Indicates whether to log only dirty attributes or all.
      *
      * @var bool
@@ -87,6 +130,7 @@ class Tenant extends BaseTenant
         'postal_code',
         'launch_date',
         'group',
+        'style',
         'is_active',
     ];
 
@@ -100,6 +144,39 @@ class Tenant extends BaseTenant
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        // Get users model
+        $userModel = config('auth.providers.'.config('auth.guards.'.config('auth.defaults.guard').'.provider').'.model');
+
+        $this->setTable(config('rinvex.tenants.tables.tenants'));
+        $this->setRules([
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
+            'name' => 'required|string|max:150',
+            'description' => 'nullable|string|max:10000',
+            'owner_id' => 'required|integer|exists:'.(new $userModel())->getTable().',id',
+            'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
+            'phone' => 'nullable|numeric|min:4',
+            'country_code' => 'required|alpha|size:2|country',
+            'language_code' => 'required|alpha|size:2|language',
+            'state' => 'nullable|string',
+            'city' => 'nullable|string',
+            'address' => 'nullable|string',
+            'postal_code' => 'nullable|string',
+            'launch_date' => 'nullable|date_format:Y-m-d',
+            'group' => 'nullable|string|max:150',
+            'style' => 'nullable|string|max:150',
+            'is_active' => 'sometimes|boolean',
+        ]);
+    }
 
     /**
      * Get the route key for the model.

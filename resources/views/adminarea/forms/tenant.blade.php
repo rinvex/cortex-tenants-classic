@@ -262,7 +262,36 @@
 
                             <div class="row">
 
-                                <div class="col-md-12">
+                                <div class="col-md-4">
+
+                                    {{-- Style --}}
+                                    <div class="form-group{{ $errors->has('style') ? ' has-error' : '' }}">
+                                        {{ Form::label('style', trans('cortex/tenants::common.style'), ['class' => 'control-label']) }}
+                                        {{ Form::text('style', null, ['class' => 'form-control style-picker', 'placeholder' => trans('cortex/tenants::common.style'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
+
+                                        @if ($errors->has('style'))
+                                            <span class="help-block">{{ $errors->first('style') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    {{-- Group --}}
+                                    <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
+                                        {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
+                                        {{ Form::hidden('group', '') }}
+                                        {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+
+                                        @if ($errors->has('group'))
+                                            <span class="help-block">{{ $errors->first('group') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
 
                                     {{-- Address --}}
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
