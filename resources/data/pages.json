@@ -5,12 +5,5 @@
         "title": "Tenant Homepage",
         "route": "guestarea.tenant.home",
         "view": "cortex/tenants::guestarea.home"
-    },
-    {
-        "uri": "about",
-        "slug": "tenant-about",
-        "title": "Tenant About",
-        "route": "guestarea.tenant.about",
-        "view": "cortex/tenants::guestarea.about"
     }
 ]
