@@ -3,7 +3,6 @@
 **Cortex Tenants** is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/tenants.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tenants)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/rinvex:tenants.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/rinvex:tenants/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tenants.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tenants/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/tenants.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tenants)
 [![Travis](https://img.shields.io/travis/cortex/tenants.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tenants)
