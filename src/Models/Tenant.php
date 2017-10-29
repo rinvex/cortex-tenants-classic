@@ -26,6 +26,7 @@ use Rinvex\Tenants\Models\Tenant as BaseTenant;
  * @property string                                                                        $launch_date
  * @property string                                                                        $group
  * @property bool                                                                          $is_active
+ * @property string                                                                        $style
  * @property \Carbon\Carbon|null                                                           $created_at
  * @property \Carbon\Carbon|null                                                           $updated_at
  * @property \Carbon\Carbon|null                                                           $deleted_at
@@ -53,6 +54,7 @@ use Rinvex\Tenants\Models\Tenant as BaseTenant;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant withGroup($group)
  * @mixin \Eloquent
  */
