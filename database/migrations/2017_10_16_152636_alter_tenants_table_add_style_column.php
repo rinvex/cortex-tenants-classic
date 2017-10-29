@@ -16,7 +16,7 @@ class AlterTenantsTableAddStyleColumn extends Migration
     public function up()
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
-            $table->string('style')->nullable();
+            $table->string('style')->after('group')->nullable();
         });
     }
 
