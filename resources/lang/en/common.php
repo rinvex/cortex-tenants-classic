@@ -7,6 +7,7 @@ return [
     'name' => 'Name',
     'slug' => 'Slug',
     'email' => 'Email',
+    'website' => 'Website',
     'description' => 'Description',
     'phone' => 'Phone',
     'address' => 'Address',
@@ -30,6 +31,8 @@ return [
     'select_country' => 'Select Country',
     'select_owner' => 'Select Owner',
     'style' => 'Style',
+    'thumbnail' => 'Thumbnail',
+    'cover_photo' => 'Cover Photo',
 
     // Tenants
     'tenants' => 'Tenants',

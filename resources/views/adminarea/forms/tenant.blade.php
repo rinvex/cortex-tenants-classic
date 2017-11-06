@@ -140,6 +140,20 @@
 
                                 <div class="col-md-4">
 
+                                    {{-- Website --}}
+                                    <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
+                                        {{ Form::label('website', trans('cortex/tenants::common.website'), ['class' => 'control-label']) }}
+                                        {{ Form::text('website', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.website'), 'required' => 'required']) }}
+
+                                        @if ($errors->has('website'))
+                                            <span class="help-block">{{ $errors->first('website') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
                                     {{-- Phone --}}
                                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                                         {{ Form::label('phone', trans('cortex/tenants::common.phone'), ['class' => 'control-label']) }}
@@ -151,6 +165,10 @@
                                     </div>
 
                                 </div>
+
+                            </div>
+
+                            <div class="row">
 
                                 <div class="col-md-4">
 
@@ -182,7 +200,6 @@
 
                                 </div>
 
-
                                 <div class="col-md-4">
 
                                     {{-- State --}}
@@ -197,6 +214,10 @@
 
                                 </div>
 
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-md-4">
 
                                     {{-- City --}}
@@ -210,10 +231,6 @@
                                     </div>
 
                                 </div>
-
-                            </div>
-
-                            <div class="row">
 
                                 <div class="col-md-4">
 
@@ -243,6 +260,10 @@
 
                                 </div>
 
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-md-4">
 
                                     {{-- Launch Date --}}
@@ -257,10 +278,6 @@
                                     </div>
 
                                 </div>
-
-                            </div>
-
-                            <div class="row">
 
                                 <div class="col-md-4">
 
@@ -291,7 +308,11 @@
 
                                 </div>
 
-                                <div class="col-md-4">
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
 
                                     {{-- Address --}}
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
@@ -300,6 +321,42 @@
 
                                         @if ($errors->has('address'))
                                             <span class="help-block">{{ $errors->first('address') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    {{-- Thumbnail --}}
+                                    <div class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }}">
+                                        {{ Form::label('thumbnail', trans('cortex/tenants::common.thumbnail'), ['class' => 'control-label']) }}
+                                        {{ Form::text('thumbnail', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.thumbnail')]) }}
+
+                                        @if ($errors->has('thumbnail'))
+                                            <span class="help-block">{{ $errors->first('thumbnail') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    {{-- Cover Photo --}}
+                                    <div class="form-group{{ $errors->has('cover_photo') ? ' has-error' : '' }}">
+                                        {{ Form::label('cover_photo', trans('cortex/tenants::common.cover_photo'), ['class' => 'control-label']) }}
+                                        {{ Form::text('cover_photo', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.cover_photo')]) }}
+
+                                        @if ($errors->has('cover_photo'))
+                                            <span class="help-block">{{ $errors->first('cover_photo') }}</span>
                                         @endif
                                     </div>
 
