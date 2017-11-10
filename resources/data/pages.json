@@ -1,9 +1,0 @@
-[
-    {
-        "uri": "/",
-        "slug": "tenant-homepage",
-        "title": "Tenant Homepage",
-        "route": "guestarea.tenant.home",
-        "view": "cortex/tenants::guestarea.home"
-    }
-]
