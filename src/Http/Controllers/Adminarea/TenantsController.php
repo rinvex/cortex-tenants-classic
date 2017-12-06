@@ -21,11 +21,13 @@ class TenantsController extends AuthorizedController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Tenants\DataTables\Adminarea\TenantsDataTable $tenantsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(TenantsDataTable $tenantsDataTable)
     {
-        return app(TenantsDataTable::class)->with([
+        return $tenantsDataTable->with([
             'id' => 'cortex-tenants-tenants',
             'phrase' => trans('cortex/tenants::common.tenants'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
@@ -34,11 +36,14 @@ class TenantsController extends AuthorizedController
     /**
      * Display a listing of the resource logs.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Rinvex\Tenants\Contracts\TenantContract    $tenant
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function logs(TenantContract $tenant)
+    public function logs(TenantContract $tenant, LogsDataTable $logsDataTable)
     {
-        return app(LogsDataTable::class)->with([
+        return $logsDataTable->with([
             'tab' => 'logs',
             'type' => 'tenants',
             'resource' => $tenant,
