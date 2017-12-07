@@ -28,7 +28,7 @@ class TenantsController extends AuthorizedController
     public function index(TenantsDataTable $tenantsDataTable)
     {
         return $tenantsDataTable->with([
-            'id' => 'cortex-tenants-tenants',
+            'id' => 'cortex-tenants',
             'phrase' => trans('cortex/tenants::common.tenants'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -47,7 +47,7 @@ class TenantsController extends AuthorizedController
             'tab' => 'logs',
             'type' => 'tenants',
             'resource' => $tenant,
-            'id' => 'cortex-tenants-tenants-logs',
+            'id' => 'cortex-tenants-logs',
             'phrase' => trans('cortex/tenants::common.tenants'),
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
