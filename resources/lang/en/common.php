@@ -33,6 +33,9 @@ return [
     'style' => 'Style',
     'thumbnail' => 'Thumbnail',
     'cover_photo' => 'Cover Photo',
+    'managerarea' => 'Managerarea',
+    'welcome' => 'Welcome to managerarea',
+    'welcome_body' => 'This is your dashboard, a place with your taste to get a glimpse about your account, and feature highlights.',
 
     // Tenants
     'tenants' => 'Tenants',

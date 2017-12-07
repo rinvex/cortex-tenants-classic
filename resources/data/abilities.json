@@ -1,5 +1,11 @@
 [
     {
+        "action": "access",
+        "resource": "managerarea",
+        "policy": "Cortex\\Tenants\\Policies\\ManagerareaPolicy@access",
+        "name": "Access Managerarea"
+    },
+    {
         "action": "list",
         "resource": "tenants",
         "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@list",

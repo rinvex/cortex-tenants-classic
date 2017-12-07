@@ -22,3 +22,23 @@ Route::domain(domain())->group(function () {
     });
 
 });
+
+Route::domain('{subdomain}.'.domain())->group(function () {
+    Route::name('managerarea.')
+         ->namespace('Cortex\Tenants\Http\Controllers\Managerarea')
+         ->middleware(['web', 'nohttpcache', 'can:access-managerarea'])
+         ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/'.config('cortex.tenants.route.prefix.managerarea') : config('cortex.tenants.route.prefix.managerarea'))->group(function () {
+
+            // Managerarea Home route
+            Route::get('/')->name('home')->uses('HomeController@index');
+        });
+
+    Route::name('tenantarea.')
+         ->middleware(['web', 'nohttpcache'])
+         ->namespace('Cortex\Tenants\Http\Controllers\Tenantarea')
+         ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/'.config('cortex.foundation.route.prefix.frontarea') : config('cortex.foundation.route.prefix.frontarea'))->group(function () {
+
+            // Homepage Routes
+            Route::get('/')->name('home')->uses('HomeController@index');
+        });
+});
