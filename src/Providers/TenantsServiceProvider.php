@@ -14,6 +14,7 @@ use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
+use Cortex\Tenants\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Cortex\Tenants\Overrides\Illuminate\Auth\EloquentUserProvider;
@@ -26,10 +27,11 @@ class TenantsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.tenants.seed',
+        InstallCommand::class => 'command.cortex.tenants.install',
         MigrateCommand::class => 'command.cortex.tenants.migrate',
         PublishCommand::class => 'command.cortex.tenants.publish',
-        InstallCommand::class => 'command.cortex.tenants.install',
-        SeedCommand::class => 'command.cortex.tenants.seed',
+        RollbackCommand::class => 'command.cortex.tenants.rollback',
     ];
 
     /**
