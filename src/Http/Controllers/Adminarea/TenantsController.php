@@ -108,7 +108,7 @@ class TenantsController extends AuthorizedController
         $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
-        return view('cortex/tenants::adminarea.forms.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups'));
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups'));
     }
 
     /**
