@@ -15,8 +15,7 @@ if (config('cortex.foundation.route.locale_prefix')) {
         }
     };
 
-    Menu::adminareaTopbar()->submenu($langSwitcherHeader, $langSwitcherBody);
-    Menu::frontareaTopbar()->submenu($langSwitcherHeader, $langSwitcherBody);
+    Menu::managerareaTopbar()->submenu($langSwitcherHeader, $langSwitcherBody);
 }
 
 Menu::adminareaSidebar('resources')->routeIfCan('list-tenants', 'adminarea.tenants.index', '<i class="fa fa-building-o"></i> <span>'.trans('cortex/tenants::common.tenants').'</span>');
