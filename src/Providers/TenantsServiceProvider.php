@@ -98,6 +98,9 @@ class TenantsServiceProvider extends ServiceProvider
             return new EloquentUserProvider($app['hash'], $config['model']);
         });
 
+        // Override fort controllers
+        $this->app->singleton(\Cortex\Fort\Http\Controllers\Frontarea\RegistrationController::class, \Cortex\Tenants\Http\Controllers\Frontarea\RegistrationController::class);
+
         // Register attributes entities
         app('rinvex.attributes.entities')->push(Tenant::class);
     }
