@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Frontarea;
 
 use Rinvex\Fort\Contracts\UserContract;
+use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Foundation\Http\Controllers\AbstractController;
 use Cortex\Tenants\Http\Requests\Frontarea\RegistrationRequest;
 use Cortex\Tenants\Http\Requests\Frontarea\RegistrationProcessRequest;
-use Rinvex\Tenants\Contracts\TenantContract;
 
 class RegistrationController extends AbstractController
 {

@@ -32,12 +32,16 @@ class RegistrationProcessRequest extends RegistrationRequest
         $userRules = app('rinvex.fort.user')->getRules();
         $userRules['password'] = 'required|confirmed|min:'.config('rinvex.fort.password_min_chars');
         $userRules = array_combine(
-            array_map(function($key) { return 'user.'.$key; }, array_keys($userRules)), $userRules
+            array_map(function ($key) {
+                return 'user.'.$key;
+            }, array_keys($userRules)), $userRules
         );
 
         $tenantRules = app('rinvex.tenants.tenant')->getRules();
         $tenantRules = array_combine(
-            array_map(function($key) { return 'tenant.'.$key; }, array_keys($tenantRules)), $tenantRules
+            array_map(function ($key) {
+                return 'tenant.'.$key;
+            }, array_keys($tenantRules)), $tenantRules
         );
 
         // We set owner_id in the controller
