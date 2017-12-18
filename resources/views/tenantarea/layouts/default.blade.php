@@ -25,11 +25,11 @@
     </script>
 </head>
 <body @yield('body-attributes')>
-    @include('cortex/foundation::frontarea.partials.header')
+    @include('cortex/tenants::tenantarea.partials.header')
 
     @yield('content')
 
-    @include('cortex/foundation::frontarea.partials.footer')
+    @include('cortex/tenants::tenantarea.partials.footer')
 
     <!-- JavaScripts -->
     <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>

@@ -1,9 +1,9 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::frontarea.layouts.default')
+@extends('cortex/tenants::tenantarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.frontarea') }}
+    {{ config('app.name') }} » {{ trans('cortex/tenants::common.tenantarea') }}
 @stop
 
 @section('body-attributes')data-spy="scroll" data-offset="0" data-target="#navigation"@endsection
