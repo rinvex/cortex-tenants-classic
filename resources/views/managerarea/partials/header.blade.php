@@ -13,7 +13,7 @@
         </ul>
 
         <div class="navbar-custom-menu">
-            {!! Menu::managerareaTopbar()->addClass('nav navbar-nav')->setActiveFromRequest() !!}
+            {!! Menu::render('managerarea.topbar') !!}
         </div>
     </nav>
 </header>

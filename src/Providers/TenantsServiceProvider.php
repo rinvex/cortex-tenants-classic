@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
+use Rinvex\Menus\Facades\Menu;
 use Cortex\Tenants\Models\Tenant;
-use Cortex\Foundation\Models\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Menus\Factories\MenuFactory;
 use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
@@ -51,8 +52,6 @@ class TenantsServiceProvider extends ServiceProvider
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
-
-        $this->registerManagerareaMenus();
     }
 
     /**
@@ -103,6 +102,21 @@ class TenantsServiceProvider extends ServiceProvider
 
         // Register attributes entities
         app('rinvex.attributes.entities')->push(Tenant::class);
+
+        // Register menus
+        $this->registerMenus();
+    }
+
+    /**
+     * Register menus.
+     *
+     * @return void
+     */
+    protected function registerMenus()
+    {
+        Menu::make('tenantarea.topbar', function(MenuFactory $menu) {});
+        Menu::make('managerarea.topbar', function(MenuFactory $menu) {});
+        Menu::make('managerarea.sidebar', function(MenuFactory $menu) {});
     }
 
     /**
@@ -132,31 +146,5 @@ class TenantsServiceProvider extends ServiceProvider
         }
 
         $this->commands(array_values($this->commands));
-    }
-
-    /**
-     * Register managerarea menus.
-     *
-     * @return void
-     */
-    protected function registerManagerareaMenus()
-    {
-        $app = $this->app;
-
-        Menu::macro('managerareaSidebar', function ($section = null) use ($app) {
-            $app->bound('menu.managerarea.sidebar') || $app->singleton('menu.managerarea.sidebar', function () {
-                return Menu::new();
-            });
-
-            return $app['menu.managerarea.sidebar']->setSection($section);
-        });
-
-        Menu::macro('managerareaTopbar', function ($section = null) use ($app) {
-            $app->bound('menu.managerarea.topbar') || $app->singleton('menu.managerarea.topbar', function () {
-                return Menu::new();
-            });
-
-            return $app['menu.managerarea.topbar']->setSection($section);
-        });
     }
 }

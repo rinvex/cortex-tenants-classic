@@ -2,20 +2,24 @@
 
 declare(strict_types=1);
 
-use Spatie\Menu\Laravel\Link;
-use Cortex\Foundation\Models\Menu as MenuModel;
+use Rinvex\Menus\Models\MenuItem;
+use Rinvex\Menus\Factories\MenuFactory;
+
+Menu::modify('adminarea.sidebar', function(MenuFactory $menu) {
+    $menu->findBy('title', trans('cortex/foundation::common.crm'), function (MenuItem $dropdown) {
+        $dropdown->route(['adminarea.tenants.index'], trans('cortex/tenants::common.tenants'), 20, 'fa fa-building-o')->can('list-tenants');
+    });
+});
 
 if (config('cortex.foundation.route.locale_prefix')) {
-    $langSwitcherHeader = Link::to('#', '<span class="fa fa-globe"></span> '.app('laravellocalization')->getCurrentLocaleNative().' <span class="caret"></span>')->addClass('dropdown-toggle')->setAttribute('data-toggle', 'dropdown');
-    $langSwitcherBody = function (MenuModel $menu) {
-        $menu->addClass('dropdown-menu');
-        $menu->addParentClass('dropdown');
-        foreach (app('laravellocalization')->getSupportedLocales() as $key => $locale) {
-            $menu->url(app('laravellocalization')->localizeURL(request()->fullUrl(), $key), $locale['name']);
-        }
+    $languageMenu = function(MenuFactory $menu) {
+        $menu->dropdown(function(MenuItem $dropdown) {
+            foreach (app('laravellocalization')->getSupportedLocales() as $key => $locale) {
+                $dropdown->url(app('laravellocalization')->localizeURL(request()->fullUrl(), $key), $locale['name']);
+            }
+        }, app('laravellocalization')->getCurrentLocaleNative(), 10, 'fa fa-globe');
     };
 
-    Menu::managerareaTopbar()->submenu($langSwitcherHeader, $langSwitcherBody);
+    Menu::modify('tenantarea.topbar', $languageMenu);
+    Menu::modify('managerarea.topbar', $languageMenu);
 }
-
-Menu::adminareaSidebar('resources')->routeIfCan('list-tenants', 'adminarea.tenants.index', '<i class="fa fa-building-o"></i> <span>'.trans('cortex/tenants::common.tenants').'</span>');

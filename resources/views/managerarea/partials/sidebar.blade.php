@@ -2,7 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        {!! Menu::managerareaSidebar()->addClass('sidebar-menu')->setActiveFromRequest() !!}
+        {!! Menu::render('managerarea.sidebar', 'adminlte', [], true) !!}
     </section>
     <!-- /.sidebar -->
 </aside>
