@@ -6,7 +6,7 @@ use Rinvex\Menus\Models\MenuItem;
 use Rinvex\Menus\Factories\MenuFactory;
 
 Menu::modify('adminarea.sidebar', function (MenuFactory $menu) {
-    $menu->findBy('title', trans('cortex/foundation::common.crm'), function (MenuItem $dropdown) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.crm'), 50, 'fa fa-briefcase', [], function (MenuItem $dropdown) {
         $dropdown->route(['adminarea.tenants.index'], trans('cortex/tenants::common.tenants'), 20, 'fa fa-building-o')->can('list-tenants');
     });
 });
