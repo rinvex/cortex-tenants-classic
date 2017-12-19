@@ -20,6 +20,6 @@ if (config('cortex.foundation.route.locale_prefix')) {
         }, app('laravellocalization')->getCurrentLocaleNative(), 10, 'fa fa-globe');
     };
 
-    Menu::modify('tenantarea.topbar', $languageMenu);
-    Menu::modify('managerarea.topbar', $languageMenu);
+    Menu::modify('tenantarea.header', $languageMenu);
+    Menu::modify('managerarea.header', $languageMenu);
 }

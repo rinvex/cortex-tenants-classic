@@ -13,7 +13,7 @@
         </ul>
 
         <div class="navbar-custom-menu">
-            {!! Menu::render('managerarea.topbar') !!}
+            {!! Menu::render('managerarea.header') !!}
         </div>
     </nav>
 </header>
