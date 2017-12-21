@@ -36,8 +36,6 @@ use Rinvex\Tenants\Models\Tenant as BaseTenant;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  * @property-read \Cortex\Fort\Models\User                                                 $owner
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant active()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant inactive()
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)
@@ -58,7 +56,6 @@ use Rinvex\Tenants\Models\Tenant as BaseTenant;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereStyle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant withGroup($group)
  * @mixin \Eloquent
  */
 class Tenant extends BaseTenant
