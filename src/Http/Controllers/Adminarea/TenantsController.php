@@ -47,6 +47,7 @@ class TenantsController extends AuthorizedController
             'tab' => 'logs',
             'type' => 'tenants',
             'resource' => $tenant,
+            'title' => $tenant->name,
             'id' => 'cortex-tenants-logs',
             'phrase' => trans('cortex/tenants::common.tenants'),
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');

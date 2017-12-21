@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/tenants::common.managerarea') }} » {{ $phrase }} » {{ $resource->username ?? $resource->name ?? $resource->slug ?? '' }}
+    {{ config('app.name') }} » {{ trans('cortex/tenants::common.managerarea') }} » {{ $phrase }} » {{ $title }}
 @stop
 
 {{-- Main Content --}}
@@ -11,7 +11,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>@yield('name', $resource->username ?? $resource->name ?? $resource->slug ?? '')</h1>
+            <h1>{{ $title }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
