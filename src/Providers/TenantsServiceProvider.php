@@ -6,7 +6,6 @@ namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
 use Rinvex\Menus\Facades\Menu;
-use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Menus\Factories\MenuFactory;
@@ -99,9 +98,6 @@ class TenantsServiceProvider extends ServiceProvider
 
         // Override fort controllers
         $this->app->singleton(\Cortex\Fort\Http\Controllers\Frontarea\RegistrationController::class, \Cortex\Tenants\Http\Controllers\Frontarea\RegistrationController::class);
-
-        // Register attributes entities
-        app('rinvex.attributes.entities')->push(Tenant::class);
 
         // Register menus
         $this->registerMenus();
