@@ -8,9 +8,11 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-        <ul class="nav navbar-nav">
-            <li><a href="{{ route('adminarea.home') }}"><i class="fa fa-home"></i> {{ trans('cortex/foundation::common.home') }}</a></li>
-        </ul>
+        <div class="navbar-custom-menu pull-left">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('managerarea.home') }}"><i class="fa fa-home"></i> {{ trans('cortex/foundation::common.home') }}</a></li>
+            </ul>
+        </div>
 
         <div class="navbar-custom-menu">
             {!! Menu::render('managerarea.header') !!}
