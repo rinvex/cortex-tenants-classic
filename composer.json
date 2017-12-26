@@ -70,6 +70,9 @@
         "codedungeon/phpunit-result-printer": "^0.4.0"
     },
     "autoload": {
+        "classmap": [
+            "database"
+        ],
         "psr-4": {
             "Cortex\\Tenants\\": "src/"
         }
