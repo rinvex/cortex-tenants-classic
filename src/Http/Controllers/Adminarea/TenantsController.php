@@ -34,23 +34,17 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Display a listing of the resource logs.
+     * Get a listing of the resource logs.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract    $tenant
-     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function logs(TenantContract $tenant, LogsDataTable $logsDataTable)
+    public function logs(TenantContract $tenant)
     {
-        return $logsDataTable->with([
-            'tab' => 'logs',
-            'type' => 'tenants',
-            'resource' => $tenant,
-            'title' => $tenant->name,
-            'id' => 'cortex-tenants-logs',
-            'phrase' => trans('cortex/tenants::common.tenants'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+        return request()->ajax() && request()->wantsJson()
+            ? app(LogsDataTable::class)->with(['resource' => $tenant])->ajax()
+            : intend(['url' => route('adminarea.tenants.edit', ['tenant' => $tenant]).'#logs-tab']);
     }
 
     /**
@@ -108,8 +102,9 @@ class TenantsController extends AuthorizedController
         $languages = collect(languages())->pluck('name', 'iso_639_1');
         $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
 
-        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups'));
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs'));
     }
 
     /**
