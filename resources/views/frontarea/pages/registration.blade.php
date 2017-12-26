@@ -117,7 +117,7 @@
                                     <div class="wizard-step-body">
 
                                         <div class="form-group has-feedback{{ $errors->has('tenant.name') ? ' has-error' : '' }}">
-                                            {{ Form::text('tenant[name]', old('tenant.name'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.name'), 'data-slugify' => '[name="tenant\[slug\]"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                            {{ Form::text('tenant[name]', old('tenant.name'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.name'), 'data-slugify' => '[name="tenant\[slug\]"]', 'required' => 'required']) }}
 
                                             @if ($errors->has('tenant.name'))
                                                 <span class="help-block">{{ $errors->first('tenant.name') }}</span>
@@ -125,7 +125,7 @@
                                         </div>
 
                                         <div class="form-group has-feedback{{ $errors->has('tenant.slug') ? ' has-error' : '' }}">
-                                            {{ Form::text('tenant[slug]', old('tenant.slug'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.slug'), 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                            {{ Form::text('tenant[slug]', old('tenant.slug'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.slug'), 'required' => 'required']) }}
 
                                             @if ($errors->has('tenant.slug'))
                                                 <span class="help-block">{{ $errors->first('tenant.slug') }}</span>
@@ -133,7 +133,7 @@
                                         </div>
 
                                         <div class="form-group has-feedback{{ $errors->has('tenant.email') ? ' has-error' : '' }}">
-                                            {{ Form::text('tenant[email]', old('tenant.email'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.email'), 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                            {{ Form::text('tenant[email]', old('tenant.email'), ['class' => 'form-control input-lg', 'placeholder' => trans('cortex/tenants::common.email'), 'required' => 'required']) }}
 
                                             @if ($errors->has('tenant.email'))
                                                 <span class="help-block">{{ $errors->first('tenant.email') }}</span>
