@@ -56,9 +56,10 @@ class RegistrationController extends AbstractController
 
         $user->fill($userInput)->save();
 
-        // Save hub
+        // Save tenant
         $tenantInput = $request->get('tenant') + ['owner_id' => $user->id];
         $tenant->fill($tenantInput)->save();
+        $user->attachTenants($tenant);
 
         // Fire the register success event
         event('rinvex.fort.register.success', [$user]);
