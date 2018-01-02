@@ -41,7 +41,7 @@
         }
     ],
     "require": {
-        "php": "^7.0.0",
+        "php": "^7.1.0",
         "barryvdh/laravel-snappy": "^0.4.0",
         "cortex/foundation": "dev-develop",
         "davejamesmiller/laravel-breadcrumbs": "^4.0.0",
