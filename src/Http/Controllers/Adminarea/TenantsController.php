@@ -7,6 +7,7 @@ namespace Cortex\Tenants\Http\Controllers\Adminarea;
 use Illuminate\Http\Request;
 use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
+use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest;
@@ -103,8 +104,9 @@ class TenantsController extends AuthorizedController
         $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
         $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
+        $media = app(MediaDataTable::class)->with(['id' => 'media-table'])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
 
-        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs'));
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs', 'media'));
     }
 
     /**

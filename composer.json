@@ -59,6 +59,7 @@
         "rinvex/support": "dev-develop",
         "rinvex/tenants": "dev-develop",
         "spatie/laravel-activitylog": "^2.0.0",
+        "spatie/laravel-medialibrary": "v7.x-dev",
         "rinvex/menus": "dev-develop",
         "roave/security-advisories": "dev-master",
         "yajra/laravel-datatables-fractal": "^1.0.0",

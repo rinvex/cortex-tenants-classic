@@ -63,6 +63,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenants::common.details') }}</a></li>
+                    @if($tenant->exists) <li><a href="#media-tab" data-toggle="tab">{{ trans('cortex/tenants::common.media') }}</a></li> @endif
                     @if($tenant->exists) <li><a href="#logs-tab" data-toggle="tab">{{ trans('cortex/tenants::common.logs') }}</a></li> @endif
                     @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.tenants.delete', ['tenant' => $tenant]) }}" data-item-name="{{ $tenant->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
@@ -401,6 +402,11 @@
 
                     @if($tenant->exists)
 
+                        <div class="tab-pane" id="media-tab">
+                            {{ Form::open(['url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]), 'class' => 'dropzone', 'id' => 'media-dropzone']) }} {{ Form::close() }}
+                            {!! $media->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'media-table']) !!}
+                        </div>
+
                         <div class="tab-pane" id="logs-tab">
                             {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'logs-table']) !!}
                         </div>
@@ -428,6 +434,7 @@
     @endpush
 
     @push('scripts')
+        {!! $media->scripts() !!}
         {!! $logs->scripts() !!}
     @endpush
 

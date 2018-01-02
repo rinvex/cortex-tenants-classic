@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Models;
 
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * Cortex\Tenants\Models\Tenant.
@@ -58,9 +60,10 @@ use Rinvex\Tenants\Models\Tenant as BaseTenant;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereStyle($value)
  * @mixin \Eloquent
  */
-class Tenant extends BaseTenant
+class Tenant extends BaseTenant implements HasMedia
 {
     use LogsActivity;
+    use HasMediaTrait;
 
     /**
      * {@inheritdoc}
