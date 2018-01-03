@@ -51,7 +51,9 @@ class TenantsMediaController extends AuthorizedController
     public function store(ImageFormRequest $request, TenantContract $tenant)
     {
         $tenant->addMediaFromRequest('file')
-               ->sanitizingFileName(function($fileName) { return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION); })
+               ->sanitizingFileName(function ($fileName) {
+                   return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
+               })
                ->toMediaCollection('default', config('cortex.tenants.media.disk'));
     }
 
@@ -65,7 +67,7 @@ class TenantsMediaController extends AuthorizedController
      */
     public function delete(TenantContract $tenant, Media $media)
     {
-        $tenant->media()->where('id' , $media->id)->first()->delete();
+        $tenant->media()->where('id', $media->id)->first()->delete();
 
         return intend([
             'url' => route('adminarea.tenants.media.index', ['tenant' => $tenant]),
