@@ -103,7 +103,7 @@ class TenantsController extends AuthorizedController
     protected function process(Request $request, TenantContract $tenant)
     {
         // Prepare required input fields
-        $data = $request->all();
+        $data = $request->validated();
 
         // Save tenant
         $tenant->fill($data)->save();
