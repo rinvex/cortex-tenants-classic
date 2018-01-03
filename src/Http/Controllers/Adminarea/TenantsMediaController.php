@@ -51,7 +51,7 @@ class TenantsMediaController extends AuthorizedController
     public function store(ImageFormRequest $request, TenantContract $tenant)
     {
         $tenant->addMediaFromRequest('file')
-               ->toMediaCollection();
+               ->toMediaCollection('default', config('cortex.tenants.media.disk'));
     }
 
     /**
