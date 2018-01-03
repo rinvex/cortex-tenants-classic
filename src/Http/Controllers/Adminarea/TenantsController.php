@@ -49,6 +49,25 @@ class TenantsController extends AuthorizedController
     }
 
     /**
+     * Show the form for create/update of the given resource.
+     *
+     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form(TenantContract $tenant)
+    {
+        $countries = countries();
+        $languages = collect(languages())->pluck('name', 'iso_639_1');
+        $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
+        $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
+        $media = app(MediaDataTable::class)->with(['id' => 'media-table'])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
+
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs', 'media'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
@@ -74,42 +93,6 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
-     *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(TenantContract $tenant)
-    {
-        $tenant->delete();
-
-        return intend([
-            'url' => route('adminarea.tenants.index'),
-            'with' => ['warning' => trans('cortex/tenants::messages.tenant.deleted', ['slug' => $tenant->slug])],
-        ]);
-    }
-
-    /**
-     * Show the form for create/update of the given resource.
-     *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function form(TenantContract $tenant)
-    {
-        $countries = countries();
-        $languages = collect(languages())->pluck('name', 'iso_639_1');
-        $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
-        $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
-        $media = app(MediaDataTable::class)->with(['id' => 'media-table'])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
-
-        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs', 'media'));
-    }
-
-    /**
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request                 $request
@@ -128,6 +111,23 @@ class TenantsController extends AuthorizedController
         return intend([
             'url' => route('adminarea.tenants.index'),
             'with' => ['success' => trans('cortex/tenants::messages.tenant.saved', ['slug' => $tenant->slug])],
+        ]);
+    }
+
+    /**
+     * Delete the given resource from storage.
+     *
+     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(TenantContract $tenant)
+    {
+        $tenant->delete();
+
+        return intend([
+            'url' => route('adminarea.tenants.index'),
+            'with' => ['warning' => trans('cortex/tenants::messages.tenant.deleted', ['slug' => $tenant->slug])],
         ]);
     }
 }
