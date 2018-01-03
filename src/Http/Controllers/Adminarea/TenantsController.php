@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\DataTables\MediaDataTable;
@@ -95,12 +95,12 @@ class TenantsController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request                 $request
+     * @param \Illuminate\Foundation\Http\FormRequest  $request
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, TenantContract $tenant)
+    protected function process(FormRequest $request, TenantContract $tenant)
     {
         // Prepare required input fields
         $data = $request->validated();
