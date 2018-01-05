@@ -51,9 +51,6 @@ class RegistrationController extends AbstractController
         // Prepare registration data
         $userInput = $request->get('user');
 
-        // Fire the register start event
-        event('rinvex.fort.register.start', [$userInput]);
-
         $user->fill($userInput)->save();
 
         // Save tenant
