@@ -67,7 +67,7 @@ class TenantsMediaController extends AuthorizedController
      */
     public function delete(TenantContract $tenant, Media $media)
     {
-        $tenant->media()->where('id', $media->id)->first()->delete();
+        $tenant->media()->where($media->getKeyName(), $media->getKey())->first()->delete();
 
         return intend([
             'url' => route('adminarea.tenants.media.index', ['tenant' => $tenant]),

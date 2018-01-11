@@ -15,7 +15,7 @@ class TenantTransformer extends TransformerAbstract
     public function transform(TenantContract $tenant)
     {
         return [
-            'id' => (int) $tenant->id,
+            'id' => (int) $tenant->getKey(),
             'slug' => (string) $tenant->slug,
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
