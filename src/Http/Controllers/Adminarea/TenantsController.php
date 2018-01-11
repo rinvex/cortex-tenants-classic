@@ -59,7 +59,7 @@ class TenantsController extends AuthorizedController
     {
         $countries = countries();
         $languages = collect(languages())->pluck('name', 'iso_639_1');
-        $owners = app('rinvex.fort.user')->role('manager')->get()->pluck('username', 'id');
+        $owners = app('rinvex.fort.user')->withAnyRoles(['manager'])->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
         $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
         $media = app(MediaDataTable::class)->with(['id' => 'media-table'])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
