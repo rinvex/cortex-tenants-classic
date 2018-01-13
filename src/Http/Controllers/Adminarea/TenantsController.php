@@ -29,7 +29,7 @@ class TenantsController extends AuthorizedController
     public function index(TenantsDataTable $tenantsDataTable)
     {
         return $tenantsDataTable->with([
-            'id' => 'cortex-tenants',
+            'id' => 'adminarea-tenants-index-table',
             'phrase' => trans('cortex/tenants::common.tenants'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -61,8 +61,8 @@ class TenantsController extends AuthorizedController
         $languages = collect(languages())->pluck('name', 'iso_639_1');
         $owners = app('rinvex.fort.user')->withAnyRoles(['manager'])->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
-        $media = app(MediaDataTable::class)->with(['id' => 'media-table'])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
+        $logs = app(LogsDataTable::class)->with(['id' => "adminarea-tenants-{$tenant->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.tenants.logs', ['tenant' => $tenant]));
+        $media = app(MediaDataTable::class)->with(['id' => "adminarea-tenants-{$tenant->getKey()}-media-table"])->html()->minifiedAjax(route('adminarea.tenants.media.index', ['tenant' => $tenant]));
 
         return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'groups', 'logs', 'media'));
     }

@@ -7,7 +7,7 @@
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector('#adminarea-tenants-save') !!}
+    {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector("#adminarea-tenants-create-form, #adminarea-tenants-{$tenant->getKey()}-update-form") !!}
 
     <script>
         (function($) {
@@ -71,9 +71,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tenant->exists)
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => 'adminarea-tenants-save']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => "adminarea-tenants-{$tenant->getKey()}-update-form"]) }}
                         @else
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-save']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-create-form']) }}
                         @endif
 
                             <div class="row">
@@ -402,11 +402,11 @@
 
                         <div class="tab-pane" id="media-tab">
                             {{ Form::open(['url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]), 'class' => 'dropzone', 'id' => 'media-dropzone']) }} {{ Form::close() }}
-                            {!! $media->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'media-table']) !!}
+                            {!! $media->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-tenants-{$tenant->getKey()}-media-table"]) !!}
                         </div>
 
                         <div class="tab-pane" id="logs-tab">
-                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'logs-table']) !!}
+                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-tenants-{$tenant->getKey()}-logs-table"]) !!}
                         </div>
 
                     @endif

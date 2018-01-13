@@ -8,7 +8,7 @@
 
 {{-- Scripts --}}
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Fort\Http\Requests\Frontarea\RegistrationProcessRequest::class)->selector('#frontarea-registration-process') !!}
+    {!! JsValidator::formRequest(Cortex\Fort\Http\Requests\Frontarea\RegistrationProcessRequest::class)->selector("#frontarea-registration-form") !!}
 
     <script>
         (function($) {
@@ -57,7 +57,7 @@
 
                 <section class="auth-form">
 
-                    {{ Form::open(['url' => route('frontarea.register.process'), 'id' => 'frontarea-registration-process', 'role' => 'auth']) }}
+                    {{ Form::open(['url' => route('frontarea.register.process'), 'id' => 'frontarea-registration-form', 'role' => 'auth']) }}
 
                         <div class="centered"><strong>{{ trans('cortex/fort::common.account_register') }}</strong></div>
 
