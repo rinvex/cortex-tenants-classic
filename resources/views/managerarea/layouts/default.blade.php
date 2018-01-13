@@ -6,6 +6,7 @@
 
     <!-- Meta Data -->
     @include('cortex/foundation::common.partials.meta')
+    @stack('head-elements')
 
     <!-- Styles -->
     <link href="{{ mix('css/vendor.css', 'assets') }}" rel="stylesheet">
