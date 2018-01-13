@@ -33,9 +33,9 @@
     <!-- JavaScripts -->
     <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>
     <script src="{{ mix('js/vendor.js', 'assets') }}" type="text/javascript"></script>
-    @stack('scripts-vendor')
+    @stack('vendor-scripts')
         <script src="{{ mix('js/app.js', 'assets') }}" type="text/javascript"></script>
-    @stack('scripts')
+    @stack('inline-scripts')
 
     <!-- Alerts -->
     @alerts('default')

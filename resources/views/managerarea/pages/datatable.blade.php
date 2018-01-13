@@ -41,10 +41,10 @@
     <link href="{{ mix('css/datatables.css', 'assets') }}" rel="stylesheet">
 @endpush
 
-@push('scripts-vendor')
+@push('vendor-scripts')
     <script src="{{ mix('js/datatables.js', 'assets') }}" type="text/javascript"></script>
 @endpush
 
-@push('scripts')
+@push('inline-scripts')
     {!! $dataTable->scripts() !!}
 @endpush
