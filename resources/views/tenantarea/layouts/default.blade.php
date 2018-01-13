@@ -23,6 +23,10 @@
         window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>;
         window.Accessarea = "<?php echo request('accessarea'); ?>";
     </script>
+    <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/vendor.js', 'assets') }}" type="text/javascript"></script>
+    @stack('vendor-scripts')
+    <script src="{{ mix('js/app.js', 'assets') }}" type="text/javascript"></script>
 </head>
 <body @yield('body-attributes')>
     @include('cortex/tenants::tenantarea.partials.header')
@@ -31,11 +35,6 @@
 
     @include('cortex/tenants::tenantarea.partials.footer')
 
-    <!-- JavaScripts -->
-    <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>
-    <script src="{{ mix('js/vendor.js', 'assets') }}" type="text/javascript"></script>
-    @stack('vendor-scripts')
-    <script src="{{ mix('js/app.js', 'assets') }}" type="text/javascript"></script>
     @stack('inline-scripts')
 
     <!-- Alerts -->

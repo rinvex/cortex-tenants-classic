@@ -18,6 +18,10 @@
         window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>;
         window.Accessarea = "<?php echo request('accessarea'); ?>";
     </script>
+    <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/vendor.js', 'assets') }}" type="text/javascript"></script>
+    @stack('vendor-scripts')
+    <script src="{{ mix('js/app.js', 'assets') }}" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-green fixed sidebar-mini">
     <!-- Main Content -->
@@ -30,11 +34,6 @@
         @include('cortex/tenants::managerarea.partials.footer')
     </div>
 
-    <!-- JavaScripts -->
-    <script src="{{ mix('js/manifest.js', 'assets') }}" type="text/javascript"></script>
-    <script src="{{ mix('js/vendor.js', 'assets') }}" type="text/javascript"></script>
-    @stack('vendor-scripts')
-        <script src="{{ mix('js/app.js', 'assets') }}" type="text/javascript"></script>
     @stack('inline-scripts')
 
     <!-- Alerts -->
