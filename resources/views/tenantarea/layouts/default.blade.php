@@ -36,6 +36,7 @@
 
     @include('cortex/tenants::tenantarea.partials.footer')
 
+    <!-- Scripts -->
     @stack('inline-scripts')
 
     <!-- Alerts -->

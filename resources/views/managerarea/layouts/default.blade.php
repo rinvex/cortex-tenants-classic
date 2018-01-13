@@ -35,6 +35,7 @@
         @include('cortex/tenants::managerarea.partials.footer')
     </div>
 
+    <!-- Scripts -->
     @stack('inline-scripts')
 
     <!-- Alerts -->
