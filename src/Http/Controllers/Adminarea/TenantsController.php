@@ -57,7 +57,13 @@ class TenantsController extends AuthorizedController
      */
     public function form(TenantContract $tenant)
     {
-        $countries = countries();
+        $countries = collect(countries())->map(function ($country, $code) {
+            return [
+                'id' => $code,
+                'text' => $country['name'],
+                'emoji' => $country['emoji'],
+            ];
+        })->values();
         $languages = collect(languages())->pluck('name', 'iso_639_1');
         $owners = app('rinvex.fort.user')->withAnyRoles(['manager'])->get()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();

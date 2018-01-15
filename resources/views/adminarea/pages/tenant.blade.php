@@ -10,36 +10,8 @@
     {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector("#adminarea-tenants-create-form, #adminarea-tenants-{$tenant->getKey()}-update-form") !!}
 
     <script>
-        (function($) {
-            $(function() {
-                var countries = [
-                        @foreach($countries as $code => $country)
-                    { id: '{{ $code }}', text: '{{ $country['name'] }}', emoji: '{{ $country['emoji'] }}' },
-                    @endforeach
-                ];
-
-                function formatCountry (country) {
-                    if (! country.id) {
-                        return country.text;
-                    }
-
-                    var $country = $(
-                        '<span style="padding-right: 10px">' + country.emoji + '</span>' +
-                        '<span>' + country.text + '</span>'
-                    );
-
-                    return $country;
-                };
-
-                $("select[name='country_code']").select2({
-                    placeholder: "Select a country",
-                    templateSelection: formatCountry,
-                    templateResult: formatCountry,
-                    data: countries
-                }).val('{{ $tenant->country_code }}').trigger('change');
-
-            });
-        })(jQuery);
+        window.countries = {!! $countries !!};
+        window.selectedCountry = '{{ old('country_code', $tenant->country_code) }}';
     </script>
 @endpush
 
