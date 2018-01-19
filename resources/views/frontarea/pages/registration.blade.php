@@ -12,6 +12,7 @@
 
     <script>
         window.countries = {!! $countries !!};
+        window.selectedCountry = '{{ old('country_code') }}';
     </script>
 @endpush
 
