@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tenants::common.tenants') }} » {{ $tenant->exists ? $tenant->name : trans('cortex/tenants::common.create_tenant') }}
-@stop
+@endsection
 
 @push('inline-scripts')
     {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector("#adminarea-tenants-create-form, #adminarea-tenants-{$tenant->getKey()}-update-form") !!}

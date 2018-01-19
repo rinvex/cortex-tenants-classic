@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/fort::common.register') }}
-@stop
+@endsection
 
 @section('body-attributes')class="auth-page"@endsection
 

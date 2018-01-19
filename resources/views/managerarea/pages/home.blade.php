@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/tenants::common.managerarea') }}
-@stop
+@endsection
 
 {{-- Main Content --}}
 @section('content')

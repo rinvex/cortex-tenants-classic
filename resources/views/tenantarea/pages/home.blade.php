@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/tenants::common.tenantarea') }}
-@stop
+@endsection
 
 @section('body-attributes')data-spy="scroll" data-offset="0" data-target="#navigation"@endsection
 
