@@ -303,42 +303,6 @@
 
                                 <div class="col-md-12">
 
-                                    {{-- Thumbnail --}}
-                                    <div class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }}">
-                                        {{ Form::label('thumbnail', trans('cortex/tenants::common.thumbnail'), ['class' => 'control-label']) }}
-                                        {{ Form::text('thumbnail', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.thumbnail')]) }}
-
-                                        @if ($errors->has('thumbnail'))
-                                            <span class="help-block">{{ $errors->first('thumbnail') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-12">
-
-                                    {{-- Cover Photo --}}
-                                    <div class="form-group{{ $errors->has('cover_photo') ? ' has-error' : '' }}">
-                                        {{ Form::label('cover_photo', trans('cortex/tenants::common.cover_photo'), ['class' => 'control-label']) }}
-                                        {{ Form::text('cover_photo', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.cover_photo')]) }}
-
-                                        @if ($errors->has('cover_photo'))
-                                            <span class="help-block">{{ $errors->first('cover_photo') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-12">
-
                                     {{-- Description --}}
                                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                         {{ Form::label('description', trans('cortex/tenants::common.description'), ['class' => 'control-label']) }}
