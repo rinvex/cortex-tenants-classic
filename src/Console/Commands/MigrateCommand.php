@@ -27,7 +27,7 @@ class MigrateCommand extends BaseMigrateCommand
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         parent::handle();
 

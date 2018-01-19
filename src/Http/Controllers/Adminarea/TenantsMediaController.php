@@ -48,7 +48,7 @@ class TenantsMediaController extends AuthorizedController
      *
      * @return void
      */
-    public function store(ImageFormRequest $request, TenantContract $tenant)
+    public function store(ImageFormRequest $request, TenantContract $tenant): void
     {
         $tenant->addMediaFromRequest('file')
                ->sanitizingFileName(function ($fileName) {

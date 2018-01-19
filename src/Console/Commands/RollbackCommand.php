@@ -27,7 +27,7 @@ class RollbackCommand extends BaseRollbackCommand
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         parent::handle();
 

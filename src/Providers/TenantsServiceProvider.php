@@ -44,7 +44,7 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Merge config
         $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.tenants');
@@ -58,7 +58,7 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $router): void
     {
         // Bind route models and constrains
         $router->pattern('tenant', '[a-z0-9-]+');
@@ -108,7 +108,7 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerMenus()
+    protected function registerMenus(): void
     {
         Menu::make('tenantarea.header', function (MenuFactory $menu) {
         });
@@ -123,7 +123,7 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tenants-migrations');
         $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('cortex.tenants.php')], 'cortex-tenants-config');
@@ -136,7 +136,7 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {

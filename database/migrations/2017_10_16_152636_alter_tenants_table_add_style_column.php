@@ -13,7 +13,7 @@ class AlterTenantsTableAddStyleColumn extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
             $table->string('style')->after('group')->nullable();
@@ -25,7 +25,7 @@ class AlterTenantsTableAddStyleColumn extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
             $table->dropColumn('style');
