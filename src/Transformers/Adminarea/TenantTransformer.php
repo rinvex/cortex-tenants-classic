@@ -12,7 +12,7 @@ class TenantTransformer extends TransformerAbstract
     /**
      * @return array
      */
-    public function transform(TenantContract $tenant)
+    public function transform(TenantContract $tenant): array
     {
         return [
             'id' => (int) $tenant->getKey(),

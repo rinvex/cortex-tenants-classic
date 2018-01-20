@@ -189,7 +189,7 @@ class Tenant extends BaseTenant implements HasMedia
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }

@@ -59,7 +59,7 @@ class EloquentUserProvider extends BaseEloquentUserProvider
     public function retrieveByCredentials(array $credentials)
     {
         if (empty($credentials)) {
-            return;
+            return null;
         }
 
         // First we will add each credential element to the query as a where clause.
