@@ -10,7 +10,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/vendor.css', 'assets') }}" rel="stylesheet">
-    <link href="{{ mix('css/theme-adminlte.css', 'assets') }}" rel="stylesheet">
+    <link href="{{ mix('css/theme-adminarea.css', 'assets') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css', 'assets') }}" rel="stylesheet">
     @stack('styles')
 

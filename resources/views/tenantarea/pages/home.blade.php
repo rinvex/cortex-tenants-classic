@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 centered">
-                    <h1>Welcome To <b>Pratt</b></h1>
+                    <h1>Welcome To <b>Homepage</b></h1>
                     <h3>Show your product with this handsome theme.</h3>
                     <br>
                 </div>
