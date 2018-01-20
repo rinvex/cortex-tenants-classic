@@ -11,7 +11,7 @@ class HomeController extends AbstractController
     /**
      * Show index page.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {

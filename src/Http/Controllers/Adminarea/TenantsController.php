@@ -39,7 +39,7 @@ class TenantsController extends AuthorizedController
      *
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function logs(TenantContract $tenant)
     {
@@ -53,7 +53,7 @@ class TenantsController extends AuthorizedController
      *
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function form(TenantContract $tenant)
     {
@@ -78,7 +78,7 @@ class TenantsController extends AuthorizedController
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(TenantFormRequest $request)
     {
@@ -91,7 +91,7 @@ class TenantsController extends AuthorizedController
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
      * @param \Rinvex\Tenants\Contracts\TenantContract                  $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function update(TenantFormRequest $request, TenantContract $tenant)
     {
@@ -104,7 +104,7 @@ class TenantsController extends AuthorizedController
      * @param \Illuminate\Foundation\Http\FormRequest  $request
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     protected function process(FormRequest $request, TenantContract $tenant)
     {
@@ -125,7 +125,7 @@ class TenantsController extends AuthorizedController
      *
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function delete(TenantContract $tenant)
     {

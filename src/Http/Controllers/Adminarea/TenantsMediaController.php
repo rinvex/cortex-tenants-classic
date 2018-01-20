@@ -31,7 +31,7 @@ class TenantsMediaController extends AuthorizedController
      *
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function index(TenantContract $tenant)
     {
@@ -63,7 +63,7 @@ class TenantsMediaController extends AuthorizedController
      * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
      * @param \Spatie\MediaLibrary\Models\Media        $media
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function delete(TenantContract $tenant, Media $media)
     {

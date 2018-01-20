@@ -21,7 +21,7 @@ class HomeController extends AuthorizedController
     /**
      * Show the managerarea home.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
