@@ -9,7 +9,7 @@ use Rinvex\Menus\Facades\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Menus\Factories\MenuFactory;
-use Rinvex\Tenants\Contracts\TenantContract;
+use Rinvex\Tenants\Models\Tenant;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
@@ -62,7 +62,7 @@ class TenantsServiceProvider extends ServiceProvider
     {
         // Bind route models and constrains
         $router->pattern('tenant', '[a-z0-9-]+');
-        $router->model('tenant', TenantContract::class);
+        $router->model('tenant', Tenant::class);
 
         // Map relations
         Relation::morphMap([

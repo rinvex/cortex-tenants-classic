@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
+use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
-use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;
@@ -37,11 +37,11 @@ class TenantsController extends AuthorizedController
     /**
      * Get a listing of the resource logs.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(TenantContract $tenant)
+    public function logs(Tenant $tenant)
     {
         return request()->ajax() && request()->wantsJson()
             ? app(LogsDataTable::class)->with(['resource' => $tenant])->ajax()
@@ -51,11 +51,11 @@ class TenantsController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\View\View
      */
-    public function form(TenantContract $tenant)
+    public function form(Tenant $tenant)
     {
         $countries = collect(countries())->map(function ($country, $code) {
             return [
@@ -89,11 +89,11 @@ class TenantsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract                  $tenant
+     * @param \Rinvex\Tenants\Models\Tenant                  $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update(TenantFormRequest $request, TenantContract $tenant)
+    public function update(TenantFormRequest $request, Tenant $tenant)
     {
         return $this->process($request, $tenant);
     }
@@ -102,11 +102,11 @@ class TenantsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Foundation\Http\FormRequest  $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function process(FormRequest $request, TenantContract $tenant)
+    protected function process(FormRequest $request, Tenant $tenant)
     {
         // Prepare required input fields
         $data = $request->validated();
@@ -123,11 +123,11 @@ class TenantsController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(TenantContract $tenant)
+    public function delete(Tenant $tenant)
     {
         $tenant->delete();
 

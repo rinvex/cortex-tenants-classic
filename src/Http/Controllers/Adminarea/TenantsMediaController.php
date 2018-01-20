@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
 use Spatie\MediaLibrary\Models\Media;
-use Rinvex\Tenants\Contracts\TenantContract;
+use Rinvex\Tenants\Models\Tenant;
 use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Foundation\Http\Requests\ImageFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -29,11 +29,11 @@ class TenantsMediaController extends AuthorizedController
     /**
      * Get a listing of the resource media.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function index(TenantContract $tenant)
+    public function index(Tenant $tenant)
     {
         return request()->ajax() && request()->wantsJson()
             ? app(MediaDataTable::class)->with(['resource' => $tenant])->ajax()
@@ -44,11 +44,11 @@ class TenantsMediaController extends AuthorizedController
      * Store a newly created resource in storage.
      *
      * @param \Cortex\Foundation\Http\Requests\ImageFormRequest $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract          $tenant
+     * @param \Rinvex\Tenants\Models\Tenant          $tenant
      *
      * @return void
      */
-    public function store(ImageFormRequest $request, TenantContract $tenant): void
+    public function store(ImageFormRequest $request, Tenant $tenant): void
     {
         $tenant->addMediaFromRequest('file')
                ->sanitizingFileName(function ($fileName) {
@@ -60,12 +60,12 @@ class TenantsMediaController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Rinvex\Tenants\Models\Tenant $tenant
      * @param \Spatie\MediaLibrary\Models\Media        $media
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(TenantContract $tenant, Media $media)
+    public function delete(Tenant $tenant, Media $media)
     {
         $tenant->media()->where($media->getKeyName(), $media->getKey())->first()->delete();
 
