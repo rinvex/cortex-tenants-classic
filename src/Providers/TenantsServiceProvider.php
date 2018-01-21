@@ -6,10 +6,10 @@ namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
 use Rinvex\Menus\Facades\Menu;
+use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Menus\Factories\MenuFactory;
-use Rinvex\Tenants\Models\Tenant;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;

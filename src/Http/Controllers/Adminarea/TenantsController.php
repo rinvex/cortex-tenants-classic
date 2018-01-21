@@ -89,7 +89,7 @@ class TenantsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
-     * @param \Rinvex\Tenants\Models\Tenant                  $tenant
+     * @param \Rinvex\Tenants\Models\Tenant                             $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -101,8 +101,8 @@ class TenantsController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest  $request
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Rinvex\Tenants\Models\Tenant           $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

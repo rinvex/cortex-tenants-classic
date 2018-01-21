@@ -15,7 +15,7 @@ class TenantPolicy
     /**
      * Determine whether the user can list tenants.
      *
-     * @param string                              $ability
+     * @param string                   $ability
      * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
@@ -28,7 +28,7 @@ class TenantPolicy
     /**
      * Determine whether the user can create tenants.
      *
-     * @param string                              $ability
+     * @param string                   $ability
      * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
@@ -41,7 +41,7 @@ class TenantPolicy
     /**
      * Determine whether the user can update the tenant.
      *
-     * @param string                                   $ability
+     * @param string                        $ability
      * @param \Rinvex\Fort\Models\User      $user
      * @param \Rinvex\Tenants\Models\Tenant $resource
      *
@@ -55,7 +55,7 @@ class TenantPolicy
     /**
      * Determine whether the user can delete the tenant.
      *
-     * @param string                                   $ability
+     * @param string                        $ability
      * @param \Rinvex\Fort\Models\User      $user
      * @param \Rinvex\Tenants\Models\Tenant $resource
      *
