@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Transformers\Adminarea;
 
-use League\Fractal\TransformerAbstract;
 use Rinvex\Tenants\Models\Tenant;
+use League\Fractal\TransformerAbstract;
 
 class TenantTransformer extends TransformerAbstract
 {

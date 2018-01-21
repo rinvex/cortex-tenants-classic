@@ -14,7 +14,7 @@ class ManagerareaPolicy
     /**
      * Determine whether the user can access the managerarea.
      *
-     * @param string                              $ability
+     * @param string                   $ability
      * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool

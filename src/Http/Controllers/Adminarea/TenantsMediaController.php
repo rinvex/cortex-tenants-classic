@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
-use Spatie\MediaLibrary\Models\Media;
 use Rinvex\Tenants\Models\Tenant;
+use Spatie\MediaLibrary\Models\Media;
 use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Foundation\Http\Requests\ImageFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -44,7 +44,7 @@ class TenantsMediaController extends AuthorizedController
      * Store a newly created resource in storage.
      *
      * @param \Cortex\Foundation\Http\Requests\ImageFormRequest $request
-     * @param \Rinvex\Tenants\Models\Tenant          $tenant
+     * @param \Rinvex\Tenants\Models\Tenant                     $tenant
      *
      * @return void
      */
@@ -60,8 +60,8 @@ class TenantsMediaController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
-     * @param \Spatie\MediaLibrary\Models\Media        $media
+     * @param \Rinvex\Tenants\Models\Tenant     $tenant
+     * @param \Spatie\MediaLibrary\Models\Media $media
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
