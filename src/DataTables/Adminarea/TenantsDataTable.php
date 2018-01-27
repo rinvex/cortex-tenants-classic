@@ -6,7 +6,6 @@ namespace Cortex\Tenants\DataTables\Adminarea;
 
 use Rinvex\Tenants\Models\Tenant;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Tenants\Transformers\Adminarea\TenantTransformer;
 
 class TenantsDataTable extends AbstractDataTable
 {
@@ -14,11 +13,6 @@ class TenantsDataTable extends AbstractDataTable
      * {@inheritdoc}
      */
     protected $model = Tenant::class;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $transformer = TenantTransformer::class;
 
     /**
      * Get the query object to be processed by dataTables.
@@ -47,7 +41,7 @@ class TenantsDataTable extends AbstractDataTable
             'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
-            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'name' => 'owner.username'],
+            'owner.username' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username'],
             'country_code' => ['title' => trans('cortex/tenants::common.country')],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
