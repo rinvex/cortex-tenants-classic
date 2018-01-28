@@ -55,7 +55,7 @@
                                     {{-- Name --}}
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                         {{ Form::label('name', trans('cortex/tenants::common.name'), ['class' => 'control-label']) }}
-                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.name'), 'data-slugify' => '#slug', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.name'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
                                         @if ($errors->has('name'))
                                             <span class="help-block">{{ $errors->first('name') }}</span>
