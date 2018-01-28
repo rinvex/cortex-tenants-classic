@@ -6,6 +6,7 @@ namespace Cortex\Tenants\Http\Controllers\Frontarea;
 
 use Rinvex\Fort\Models\User;
 use Rinvex\Tenants\Models\Tenant;
+use Illuminate\Auth\Events\Registered;
 use Cortex\Foundation\Http\Controllers\AbstractController;
 use Cortex\Tenants\Http\Requests\Frontarea\RegistrationRequest;
 use Cortex\Tenants\Http\Requests\Frontarea\RegistrationProcessRequest;
@@ -65,7 +66,7 @@ class RegistrationController extends AbstractController
         $user->attachTenants($tenant);
 
         // Fire the register success event
-        event('rinvex.fort.register.success', [$user]);
+        event(new Registered($user));
 
         // Send verification if required
         ! config('rinvex.fort.emailverification.required')
