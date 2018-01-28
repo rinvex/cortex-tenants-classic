@@ -41,7 +41,7 @@ return [
     'access_links' => 'You can access your newly created space via the following links',
     'congratulations' => 'Congratulations <strong>:username</strong>!',
     'created' => 'Your <strong>:tenant</strong> registration completed successfully 🎉',
-    'activation_required' => '👋&nbsp;&nbsp;&nbsp;Email activation required for login!',
+    'activation_required' => '👋&nbsp;&nbsp;&nbsp;Email verification link sent to your inbox!',
     'media' => 'Media',
 
     // Tenants
