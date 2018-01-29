@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
-use Rinvex\Menus\Facades\Menu;
 use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Menus\Factories\MenuFactory;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
@@ -98,21 +96,6 @@ class TenantsServiceProvider extends ServiceProvider
 
         // Override fort controllers
         $this->app->singleton(\Cortex\Fort\Http\Controllers\Frontarea\RegistrationController::class, \Cortex\Tenants\Http\Controllers\Frontarea\RegistrationController::class);
-
-        // Register menus
-        $this->registerMenus();
-    }
-
-    /**
-     * Register menus.
-     *
-     * @return void
-     */
-    protected function registerMenus(): void
-    {
-        Menu::make('tenantarea.header');
-        Menu::make('managerarea.header');
-        Menu::make('managerarea.sidebar');
     }
 
     /**

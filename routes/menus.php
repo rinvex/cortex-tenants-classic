@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 use Rinvex\Menus\Models\MenuItem;
-use Rinvex\Menus\Factories\MenuFactory;
+use Rinvex\Menus\Models\MenuGenerator;
 
-Menu::modify('adminarea.sidebar', function (MenuFactory $menu) {
+Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
     $menu->findByTitleOrAdd(trans('cortex/foundation::common.crm'), 50, 'fa fa-briefcase', [], function (MenuItem $dropdown) {
         $dropdown->route(['adminarea.tenants.index'], trans('cortex/tenants::common.tenants'), 20, 'fa fa-building-o')->ifCan('list-tenants')->activateOnRoute('adminarea.tenants');
     });
 });
 
 if (config('cortex.foundation.route.locale_prefix')) {
-    $languageMenu = function (MenuFactory $menu) {
+    $languageMenu = function (MenuGenerator $menu) {
         $menu->dropdown(function (MenuItem $dropdown) {
             foreach (app('laravellocalization')->getSupportedLocales() as $key => $locale) {
                 $dropdown->url(app('laravellocalization')->localizeURL(request()->fullUrl(), $key), $locale['name']);
@@ -20,6 +20,6 @@ if (config('cortex.foundation.route.locale_prefix')) {
         }, app('laravellocalization')->getCurrentLocaleNative(), 10, 'fa fa-globe');
     };
 
-    Menu::modify('tenantarea.header', $languageMenu);
-    Menu::modify('managerarea.header', $languageMenu);
+    Menu::register('tenantarea.header', $languageMenu);
+    Menu::register('managerarea.header', $languageMenu);
 }
