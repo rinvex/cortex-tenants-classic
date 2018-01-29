@@ -110,12 +110,9 @@ class TenantsServiceProvider extends ServiceProvider
      */
     protected function registerMenus(): void
     {
-        Menu::make('tenantarea.header', function (MenuFactory $menu) {
-        });
-        Menu::make('managerarea.header', function (MenuFactory $menu) {
-        });
-        Menu::make('managerarea.sidebar', function (MenuFactory $menu) {
-        });
+        Menu::make('tenantarea.header');
+        Menu::make('managerarea.header');
+        Menu::make('managerarea.sidebar');
     }
 
     /**
