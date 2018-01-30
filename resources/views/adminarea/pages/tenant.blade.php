@@ -32,11 +32,7 @@
 
             <div class="nav-tabs-custom">
                 @if($tenant->exists && $currentUser->can('delete-tenants', $tenant)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tenants.delete', ['tenant' => $tenant]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'tenant', 'name' => $tenant->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tenants::common.details') }}</a></li>
-                    @if($tenant->exists) <li><a href="#media-tab" data-toggle="tab">{{ trans('cortex/tenants::common.media') }}</a></li> @endif
-                    @if($tenant->exists) <li><a href="#logs-tab" data-toggle="tab">{{ trans('cortex/tenants::common.logs') }}</a></li> @endif
-                </ul>
+                {!! Menu::render('adminarea.tenants.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
 
@@ -334,19 +330,6 @@
 
                     </div>
 
-                    @if($tenant->exists)
-
-                        <div class="tab-pane" id="media-tab">
-                            {{ Form::open(['url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]), 'class' => 'dropzone', 'id' => 'media-dropzone']) }} {{ Form::close() }}
-                            {!! $media->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-tenants-{$tenant->getKey()}-media-table"]) !!}
-                        </div>
-
-                        <div class="tab-pane" id="logs-tab">
-                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-tenants-{$tenant->getKey()}-logs-table"]) !!}
-                        </div>
-
-                    @endif
-
                 </div>
 
             </div>
@@ -356,24 +339,3 @@
     </div>
 
 @endsection
-
-@if($tenant->exists)
-
-    @push('head-elements')
-        <meta name="turbolinks-cache-control" content="no-cache">
-    @endpush
-
-    @push('styles')
-        <link href="{{ mix('css/datatables.css', 'assets') }}" rel="stylesheet">
-    @endpush
-
-    @push('vendor-scripts')
-        <script src="{{ mix('js/datatables.js', 'assets') }}" defer></script>
-    @endpush
-
-    @push('inline-scripts')
-        {!! $media->scripts() !!}
-        {!! $logs->scripts() !!}
-    @endpush
-
-@endif

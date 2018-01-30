@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Cortex\Tenants\Models\Tenant;
 use Rinvex\Menus\Models\MenuItem;
 use Rinvex\Menus\Models\MenuGenerator;
 
@@ -23,3 +24,10 @@ if (config('cortex.foundation.route.locale_prefix')) {
     Menu::register('tenantarea.header', $languageMenu);
     Menu::register('managerarea.header', $languageMenu);
 }
+
+Menu::register('adminarea.tenants.tabs', function (MenuGenerator $menu, Tenant $tenant) {
+    $menu->route(['adminarea.tenants.create'], trans('cortex/tenants::common.details'))->ifCan('create-tenants')->if(! $tenant->exists);
+    $menu->route(['adminarea.tenants.edit', ['tenant' => $tenant]], trans('cortex/tenants::common.details'))->ifCan('update-tenants')->if($tenant->exists);
+    $menu->route(['adminarea.tenants.logs', ['tenant' => $tenant]], trans('cortex/tenants::common.logs'))->ifCan('update-tenants')->if($tenant->exists);
+    $menu->route(['adminarea.tenants.media.index', ['tenant' => $tenant]], trans('cortex/tenants::common.media'))->ifCan('list-media-tenants')->if($tenant->exists);
+});

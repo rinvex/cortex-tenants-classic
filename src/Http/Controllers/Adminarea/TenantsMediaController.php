@@ -33,11 +33,15 @@ class TenantsMediaController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function index(Tenant $tenant)
+    public function index(Tenant $tenant, MediaDataTable $mediaDataTable)
     {
-        return request()->ajax() && request()->wantsJson()
-            ? app(MediaDataTable::class)->with(['resource' => $tenant])->ajax()
-            : intend(['url' => route('adminarea.tenants.edit', ['tenant' => $tenant]).'#media-tab']);
+        return $mediaDataTable->with([
+            'resource' => $tenant,
+            'tabs' => 'adminarea.tenants.tabs',
+            'phrase' => trans('cortex/tenants::common.tenants'),
+            'id' => "adminarea-tenants-{$tenant->getKey()}-media-table",
+            'url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]),
+        ])->render('cortex/foundation::adminarea.pages.datatable-media');
     }
 
     /**
