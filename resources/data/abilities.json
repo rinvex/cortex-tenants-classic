@@ -28,5 +28,23 @@
         "resource": "tenants",
         "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@delete",
         "name": "Can Delete Existing Tenants"
+    },
+    {
+        "action": "list-media",
+        "resource": "tenants",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@listMedia",
+        "name": "Can List Media for Existing Tenants"
+    },
+    {
+        "action": "create-media",
+        "resource": "tenants",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@createMedia",
+        "name": "Can Create Media for Existing Tenants"
+    },
+    {
+        "action": "delete-media",
+        "resource": "tenants",
+        "policy": "Cortex\\Tenants\\Policies\\TenantPolicy@deleteMedia",
+        "name": "Can Delete Media for Existing Tenants"
     }
 ]

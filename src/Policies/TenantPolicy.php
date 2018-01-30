@@ -65,4 +65,44 @@ class TenantPolicy
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete tenants
     }
+
+    /**
+     * Determine whether the user can list tenant media.
+     *
+     * @param string                   $ability
+     * @param \Rinvex\Fort\Models\User $user
+     *
+     * @return bool
+     */
+    public function listMedia($ability, User $user): bool
+    {
+        return $user->allAbilities->pluck('slug')->contains($ability);
+    }
+
+    /**
+     * Determine whether the user can create tenant media.
+     *
+     * @param string                   $ability
+     * @param \Rinvex\Fort\Models\User $user
+     *
+     * @return bool
+     */
+    public function createMedia($ability, User $user): bool
+    {
+        return $user->allAbilities->pluck('slug')->contains($ability);
+    }
+
+    /**
+     * Determine whether the user can delete the tenant media.
+     *
+     * @param string                        $ability
+     * @param \Rinvex\Fort\Models\User      $user
+     * @param \Rinvex\Tenants\Models\Tenant $resource
+     *
+     * @return bool
+     */
+    public function deleteMedia($ability, User $user, Tenant $resource): bool
+    {
+        return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete tenant media
+    }
 }
