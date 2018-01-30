@@ -14,26 +14,27 @@
             <h1>{{ Breadcrumbs::render() }}</h1>
         </section>
 
-        <!-- Main content -->
+        {{-- Main content --}}
         <section class="content">
+
             <div class="row">
+
                 <div class="col-md-12">
+
                     <div class="box">
                         <div class="box-body">
-
                             {!! $dataTable->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "{$id}"]) !!}
-
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
+
                 </div>
-                <!-- /.col -->
+
             </div>
-            <!-- /.row -->
+
         </section>
-        <!-- /.content -->
+
     </div>
+
 
 @endsection
 

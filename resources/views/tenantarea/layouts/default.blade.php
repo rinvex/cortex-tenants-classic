@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <title>@yield('title', config('app.name'))</title>
 
-    <!-- Meta Data -->
+    {{-- Meta Data --}}
     @include('cortex/foundation::common.partials.meta')
     @stack('head-elements')
 
-    <!-- Fonts -->
+    {{-- Fonts --}}
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- Styles -->
+    {{-- Styles --}}
     <link href="{{ mix('css/vendor.css', 'assets') }}" rel="stylesheet">
     <link href="{{ mix('css/theme-frontarea.css', 'assets') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css', 'assets') }}" rel="stylesheet">
     @stack('styles')
 
-    <!-- Scripts -->
+    {{-- Scripts --}}
     <script>
         window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>;
         window.Accessarea = "<?php echo request('accessarea'); ?>";
@@ -35,10 +35,10 @@
 
     @include('cortex/tenants::tenantarea.partials.footer')
 
-    <!-- Scripts -->
+    {{-- Scripts --}}
     @stack('inline-scripts')
 
-    <!-- Alerts -->
+    {{-- Alerts --}}
     @alerts('default')
 </body>
 </html>
