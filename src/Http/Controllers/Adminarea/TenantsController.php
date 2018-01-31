@@ -7,7 +7,6 @@ namespace Cortex\Tenants\Http\Controllers\Adminarea;
 use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest;
