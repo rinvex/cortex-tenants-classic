@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Models;
 
+use Cortex\Foundation\Traits\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
@@ -60,6 +61,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  */
 class Tenant extends BaseTenant implements HasMedia
 {
+    use Auditable;
     use LogsActivity;
     use HasMediaTrait;
 
