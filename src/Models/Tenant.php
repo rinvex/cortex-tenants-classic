@@ -161,15 +161,12 @@ class Tenant extends BaseTenant implements HasMedia
     {
         parent::__construct($attributes);
 
-        // Get users model
-        $userModel = config('auth.providers.'.config('auth.guards.'.config('auth.defaults.guard').'.provider').'.model');
-
         $this->setTable(config('rinvex.tenants.tables.tenants'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
-            'owner_id' => 'required|integer|exists:'.(new $userModel())->getTable().',id',
+            'owner_id' => 'required|integer|exists:'.config('rinvex.fort.tables.users').',id',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
             'website' => 'nullable|string|max:150',
             'phone' => 'nullable|numeric|min:4',
