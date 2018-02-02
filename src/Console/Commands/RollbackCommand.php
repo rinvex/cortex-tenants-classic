@@ -29,8 +29,8 @@ class RollbackCommand extends BaseRollbackCommand
      */
     public function handle(): void
     {
-        parent::handle();
-
         $this->call('migrate:reset', ['--path' => 'app/cortex/tenants/database/migrations', '--force' => $this->option('force')]);
+
+        parent::handle();
     }
 }
