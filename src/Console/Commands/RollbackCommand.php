@@ -13,7 +13,7 @@ class RollbackCommand extends BaseRollbackCommand
      *
      * @var string
      */
-    protected $signature = 'cortex:rollback:tenants';
+    protected $signature = 'cortex:rollback:tenants {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
@@ -31,6 +31,6 @@ class RollbackCommand extends BaseRollbackCommand
     {
         parent::handle();
 
-        $this->call('migrate:reset', ['--path' => 'app/cortex/tenants/database/migrations']);
+        $this->call('migrate:reset', ['--path' => 'app/cortex/tenants/database/migrations', '--force' => $this->option('force')]);
     }
 }
