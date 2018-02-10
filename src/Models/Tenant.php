@@ -121,25 +121,7 @@ class Tenant extends BaseTenant implements HasMedia
      *
      * @var array
      */
-    protected static $logAttributes = [
-        'slug',
-        'name',
-        'description',
-        'owner_id',
-        'email',
-        'website',
-        'phone',
-        'language_code',
-        'country_code',
-        'state',
-        'city',
-        'address',
-        'postal_code',
-        'launch_date',
-        'group',
-        'style',
-        'is_active',
-    ];
+    protected static $logFillable = true;
 
     /**
      * The attributes that are ignored on change.
