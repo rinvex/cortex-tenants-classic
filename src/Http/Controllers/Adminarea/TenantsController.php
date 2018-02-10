@@ -16,7 +16,7 @@ class TenantsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tenants';
+    protected $resource = 'tenant';
 
     /**
      * Display a listing of the resource.

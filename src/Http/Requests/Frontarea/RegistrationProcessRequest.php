@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Requests\Frontarea;
 
+use Silber\Bouncer\Database\Models;
+
 class RegistrationProcessRequest extends RegistrationRequest
 {
     /**
@@ -15,7 +17,7 @@ class RegistrationProcessRequest extends RegistrationRequest
     {
         $data = $this->all();
 
-        $role = app('rinvex.fort.role')->where('slug', 'manager')->first();
+        $role = Models::role()->where('slug', 'manager')->first();
         $data['user']['is_active'] = ! config('rinvex.fort.registration.moderated');
         ! $role || $data['user']['roles'] = [$role->getKey()];
 

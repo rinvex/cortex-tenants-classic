@@ -16,7 +16,6 @@ use Cortex\Tenants\Console\Commands\PublishCommand;
 use Cortex\Tenants\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Cortex\Tenants\Overrides\Illuminate\Auth\EloquentUserProvider;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -87,12 +86,6 @@ class TenantsServiceProvider extends ServiceProvider
 
         $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
         $router->pushMiddlewareToGroup('web', Tenantable::class);
-
-        // Override EloquentUserProvider to remove tenantable
-        // global scope when retrieving authenticated user instance
-        Auth::provider('eloquent', function ($app, array $config) {
-            return new EloquentUserProvider($app['hash'], $config['model']);
-        });
 
         // Override fort controllers
         $this->app->singleton(\Cortex\Fort\Http\Controllers\Frontarea\RegistrationController::class, \Cortex\Tenants\Http\Controllers\Frontarea\RegistrationController::class);
