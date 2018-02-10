@@ -34,10 +34,6 @@
                         {{ trans('cortex/tenants::common.homepage') }}: <a href="{{ route('tenantarea.home', ['subdomain' => $tenant->slug]) }}" target="_blank">{{ route('tenantarea.home', ['subdomain' => $tenant->slug]) }}</a><br />
                     </p>
 
-                    @if (config('rinvex.fort.emailverification.required'))
-                        <p class="centered"><small><mark>{{ trans('cortex/tenants::common.activation_required') }}</mark></small></p>
-                    @endif
-
                 </section>
 
             </div>

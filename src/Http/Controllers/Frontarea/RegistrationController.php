@@ -69,7 +69,7 @@ class RegistrationController extends AbstractController
         event(new Registered($user));
 
         // Send verification if required
-        ! config('rinvex.fort.emailverification.required')
+        ! config('rinvex.fort.emails.verification')
         || app('rinvex.fort.emailverification')->broker()->sendVerificationLink(['email' => $user->email]);
 
         // Registration completed successfully
