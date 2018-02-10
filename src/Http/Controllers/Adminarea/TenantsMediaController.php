@@ -39,9 +39,10 @@ class TenantsMediaController extends AuthorizedController
     }
 
     /**
-     * Get a listing of the resource media.
+     * List tenant media.
      *
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
+     * @param \Cortex\Tenants\Models\Tenant                $tenant
+     * @param \Cortex\Foundation\DataTables\MediaDataTable $mediaDataTable
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -57,10 +58,10 @@ class TenantsMediaController extends AuthorizedController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new tenant media.
      *
      * @param \Cortex\Foundation\Http\Requests\ImageFormRequest $request
-     * @param \Rinvex\Tenants\Models\Tenant                     $tenant
+     * @param \Cortex\Tenants\Models\Tenant                     $tenant
      *
      * @return void
      */
@@ -74,9 +75,9 @@ class TenantsMediaController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
+     * Destroy given tenant media.
      *
-     * @param \Rinvex\Tenants\Models\Tenant     $tenant
+     * @param \Cortex\Tenants\Models\Tenant     $tenant
      * @param \Spatie\MediaLibrary\Models\Media $media
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse

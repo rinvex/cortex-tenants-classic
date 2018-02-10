@@ -19,7 +19,7 @@ class TenantsController extends AuthorizedController
     protected $resource = 'tenant';
 
     /**
-     * Display a listing of the resource.
+     * List all tenants.
      *
      * @param \Cortex\Tenants\DataTables\Adminarea\TenantsDataTable $tenantsDataTable
      *
@@ -34,9 +34,10 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Get a listing of the resource logs.
+     * List tenant logs.
      *
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
+     * @param \Cortex\Tenants\Models\Tenant               $tenant
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -51,9 +52,9 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Show the form for create/update of the given resource.
+     * Create new tenant.
      *
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
+     * @param \Cortex\Fort\Models\Role $tenant
      *
      * @return \Illuminate\View\View
      */
@@ -98,22 +99,23 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new tenant.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
+     * @param \Cortex\Tenants\Models\Tenant                             $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function store(TenantFormRequest $request)
+    public function store(TenantFormRequest $request, Tenant $tenant)
     {
-        return $this->process($request, app('rinvex.tenants.tenant'));
+        return $this->process($request, $tenant);
     }
 
     /**
-     * Update the given resource in storage.
+     * Update given tenant.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
-     * @param \Rinvex\Tenants\Models\Tenant                             $tenant
+     * @param \Cortex\Tenants\Models\Tenant                             $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -123,10 +125,10 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Process the form for store/update of the given resource.
+     * Process stored/updated tenant.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Rinvex\Tenants\Models\Tenant           $tenant
+     * @param \Cortex\Tenants\Models\Tenant           $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -145,9 +147,9 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
+     * Destroy given tenant.
      *
-     * @param \Rinvex\Tenants\Models\Tenant $tenant
+     * @param \Cortex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

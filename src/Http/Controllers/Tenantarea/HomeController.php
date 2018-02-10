@@ -9,7 +9,7 @@ use Cortex\Foundation\Http\Controllers\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * Show index page.
+     * Show tenantarea index.
      *
      * @return \Illuminate\View\View
      */

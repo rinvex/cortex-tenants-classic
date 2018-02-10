@@ -16,10 +16,12 @@ class HomeController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resourceAbilityMap = ['index' => 'access'];
+    protected $resourceAbilityMap = [
+        'index' => 'access',
+    ];
 
     /**
-     * Show the managerarea home.
+     * Show managerarea index.
      *
      * @return \Illuminate\View\View
      */
