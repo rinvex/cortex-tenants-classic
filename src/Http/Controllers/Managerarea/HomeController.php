@@ -27,6 +27,6 @@ class HomeController extends AuthorizedController
      */
     public function index()
     {
-        return view('cortex/tenants::managerarea.pages.home');
+        return view('cortex/tenants::managerarea.pages.index');
     }
 }

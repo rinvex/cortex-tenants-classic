@@ -15,6 +15,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return view('cortex/tenants::tenantarea.pages.home');
+        return view('cortex/tenants::tenantarea.pages.index');
     }
 }
