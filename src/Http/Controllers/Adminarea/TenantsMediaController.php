@@ -87,7 +87,7 @@ class TenantsMediaController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.media.index', ['tenant' => $tenant]),
-            'with' => ['warning' => trans('cortex/tenants::messages.tenant.media_deleted')],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'media', 'id' => $media->getKey()])],
         ]);
     }
 }
