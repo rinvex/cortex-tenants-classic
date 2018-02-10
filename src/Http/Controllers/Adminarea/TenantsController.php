@@ -127,7 +127,7 @@ class TenantsController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(Tenant $tenant)
+    public function destroy(Tenant $tenant)
     {
         $tenant->delete();
 

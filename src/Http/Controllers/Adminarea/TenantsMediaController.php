@@ -81,7 +81,7 @@ class TenantsMediaController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(Tenant $tenant, Media $media)
+    public function destroy(Tenant $tenant, Media $media)
     {
         $tenant->media()->where($media->getKeyName(), $media->getKey())->first()->delete();
 

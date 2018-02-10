@@ -17,12 +17,12 @@ Route::domain(domain())->group(function () {
             Route::get('{tenant}')->name('edit')->uses('TenantsController@form');
             Route::put('{tenant}')->name('update')->uses('TenantsController@update');
             Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs');
-            Route::delete('{tenant}')->name('delete')->uses('TenantsController@delete');
+            Route::delete('{tenant}')->name('destroy')->uses('TenantsController@destroy');
 
             Route::name('media.')->prefix('{tenant}/media')->group(function () {
                 Route::get('/')->name('index')->uses('TenantsMediaController@index');
                 Route::post('/')->name('store')->uses('TenantsMediaController@store');
-                Route::delete('{media}')->name('delete')->uses('TenantsMediaController@delete');
+                Route::delete('{media}')->name('destroy')->uses('TenantsMediaController@destroy');
             });
         });
     });
