@@ -57,7 +57,31 @@ class TenantsController extends AuthorizedController
      *
      * @return \Illuminate\View\View
      */
-    public function form(Tenant $tenant)
+    public function create(Tenant $tenant)
+    {
+        return $this->form($tenant);
+    }
+
+    /**
+     * Edit given tenant.
+     *
+     * @param \Cortex\Fort\Models\Role $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Tenant $tenant)
+    {
+        return $this->form($tenant);
+    }
+
+    /**
+     * Show tenant create/edit form.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Tenant $tenant)
     {
         $countries = collect(countries())->map(function ($country, $code) {
             return [
