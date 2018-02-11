@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Frontarea;
 
-use Rinvex\Fort\Models\User;
+use Cortex\Fort\Models\User;
 use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Auth\Events\Registered;
 use Cortex\Foundation\Http\Controllers\AbstractController;
@@ -69,7 +69,7 @@ class RegistrationController extends AbstractController
         event(new Registered($user));
 
         // Send verification if required
-        ! config('rinvex.fort.emails.verification')
+        ! config('cortex.fort.emails.verification')
         || app('rinvex.fort.emailverification')->broker()->sendVerificationLink(['email' => $user->email]);
 
         // Registration completed successfully

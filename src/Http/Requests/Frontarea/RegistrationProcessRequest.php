@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Requests\Frontarea;
 
-use Silber\Bouncer\Database\Models;
-
 class RegistrationProcessRequest extends RegistrationRequest
 {
     /**
@@ -17,8 +15,8 @@ class RegistrationProcessRequest extends RegistrationRequest
     {
         $data = $this->all();
 
-        $role = Models::role()->where('slug', 'manager')->first();
-        $data['user']['is_active'] = ! config('rinvex.fort.registration.moderated');
+        $role = app('cortex.fort.role')->where('slug', 'manager')->first();
+        $data['user']['is_active'] = ! config('cortex.fort.registration.moderated');
         ! $role || $data['user']['roles'] = [$role->getKey()];
 
         $this->replace($data);
@@ -31,8 +29,8 @@ class RegistrationProcessRequest extends RegistrationRequest
      */
     public function rules(): array
     {
-        $userRules = app('rinvex.fort.user')->getRules();
-        $userRules['password'] = 'required|confirmed|min:'.config('rinvex.fort.password_min_chars');
+        $userRules = app('cortex.fort.user')->getRules();
+        $userRules['password'] = 'required|confirmed|min:'.config('cortex.fort.password_min_chars');
         $userRules = array_combine(
             array_map(function ($key) {
                 return 'user.'.$key;
