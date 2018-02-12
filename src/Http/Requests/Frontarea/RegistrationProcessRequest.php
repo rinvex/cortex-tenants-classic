@@ -44,8 +44,8 @@ class RegistrationProcessRequest extends RegistrationRequest
             }, array_keys($tenantRules)), $tenantRules
         );
 
-        // We set owner_id in the controller
-        unset($tenantRules['tenant.owner_id']);
+        // We set user_id and user_type fields in the controller
+        unset($tenantRules['tenant.user_id'], $tenantRules['tenant.user_type']);
 
         return array_merge($userRules, $tenantRules);
     }

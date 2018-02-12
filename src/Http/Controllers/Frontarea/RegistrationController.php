@@ -61,7 +61,10 @@ class RegistrationController extends AbstractController
         $user->fill($userInput)->save();
 
         // Save tenant
-        $tenantInput = $request->get('tenant') + ['owner_id' => $user->getKey()];
+        $tenantInput = $request->get('tenant') + [
+            'user_id' => $user->getKey(),
+            'user_type' => $user->getMorphClass(),
+        ];
         $tenant->fill($tenantInput)->save();
         $user->attachTenants($tenant);
 

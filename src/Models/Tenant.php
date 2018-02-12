@@ -17,7 +17,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property string                                                                        $slug
  * @property array                                                                         $name
  * @property array                                                                         $description
- * @property int                                                                           $owner_id
+ * @property int                                                                           $user_id
+ * @property string                                                                        $user_type
  * @property string                                                                        $email
  * @property string                                                                        $website
  * @property string                                                                        $phone
@@ -35,8 +36,9 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property \Carbon\Carbon|null                                                           $updated_at
  * @property \Carbon\Carbon|null                                                           $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
- * @property-read \Cortex\Fort\Models\User                                                 $owner
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                            $user
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant ofUser(\Illuminate\Database\Eloquent\Model $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)
@@ -50,7 +52,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLanguageCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLaunchDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
@@ -72,7 +75,8 @@ class Tenant extends BaseTenant implements HasMedia
         'slug',
         'name',
         'description',
-        'owner_id',
+        'user_id',
+        'user_type',
         'email',
         'website',
         'phone',
@@ -93,7 +97,8 @@ class Tenant extends BaseTenant implements HasMedia
      */
     protected $casts = [
         'slug' => 'string',
-        'owner_id' => 'integer',
+        'user_id' => 'integer',
+        'user_type' => 'string',
         'email' => 'string',
         'website' => 'string',
         'phone' => 'string',
@@ -148,7 +153,8 @@ class Tenant extends BaseTenant implements HasMedia
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
-            'owner_id' => 'required|integer|exists:'.config('cortex.fort.tables.users').',id',
+            'user_id' => 'required|integer',
+            'user_type' => 'required|string',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
             'website' => 'nullable|string|max:150',
             'phone' => 'nullable|numeric|min:4',
