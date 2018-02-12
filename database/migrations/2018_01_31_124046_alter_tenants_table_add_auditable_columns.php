@@ -16,7 +16,7 @@ class AlterTenantsTableAddAuditableColumns extends Migration
     public function up()
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
-            $table->auditable(true);
+            $table->auditable();
         });
     }
 
