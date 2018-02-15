@@ -54,7 +54,7 @@ class TenantsController extends AuthorizedController
     /**
      * Create new tenant.
      *
-     * @param \Cortex\Fort\Models\Role $tenant
+     * @param \Cortex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\View\View
      */
@@ -66,7 +66,7 @@ class TenantsController extends AuthorizedController
     /**
      * Edit given tenant.
      *
-     * @param \Cortex\Fort\Models\Role $tenant
+     * @param \Cortex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\View\View
      */
