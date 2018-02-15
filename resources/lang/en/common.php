@@ -33,11 +33,6 @@ return [
     'style' => 'Style',
     'user_account' => 'User Account',
     'tenant_details' => 'Tenant Details',
-    'managerarea' => 'Managerarea',
-    'welcome' => 'Welcome to managerarea',
-    'welcome_body' => 'This is your dashboard, a place with your taste to get a glimpse about your account, and feature highlights.',
-    'dashboard' => 'Dashboard',
-    'homepage' => 'Homepage',
     'media' => 'Media',
 
     // Tenants

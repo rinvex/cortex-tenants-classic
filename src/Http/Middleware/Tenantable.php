@@ -24,7 +24,7 @@ class Tenantable
         if ($subdomain && ! $tenant) {
             return intend([
                 'url' => route('frontarea.home'),
-                'with' => ['warning' => trans('cortex/tenants::messages.tenant.not_found', ['tenantSlug' => $subdomain])],
+                'with' => ['warning' => trans('cortex/foundation::messages.resource_not_found', ['resource' => 'tenant', 'id' => $subdomain])],
             ]);
         }
 

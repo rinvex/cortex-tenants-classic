@@ -13,19 +13,6 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Tenant $tenan
     });
 });
 
-if (config('cortex.foundation.route.locale_prefix')) {
-    $languageMenu = function (MenuGenerator $menu) {
-        $menu->dropdown(function (MenuItem $dropdown) {
-            foreach (app('laravellocalization')->getSupportedLocales() as $key => $locale) {
-                $dropdown->url(app('laravellocalization')->localizeURL(request()->fullUrl(), $key), $locale['name']);
-            }
-        }, app('laravellocalization')->getCurrentLocaleNative(), 10, 'fa fa-globe');
-    };
-
-    Menu::register('tenantarea.header', $languageMenu);
-    Menu::register('managerarea.header', $languageMenu);
-}
-
 Menu::register('adminarea.tenants.tabs', function (MenuGenerator $menu, Tenant $tenant, Media $media) {
     $menu->route(['adminarea.tenants.create'], trans('cortex/tenants::common.details'))->ifCan('create', $tenant)->if(! $tenant->exists);
     $menu->route(['adminarea.tenants.edit', ['tenant' => $tenant]], trans('cortex/tenants::common.details'))->ifCan('update', $tenant)->if($tenant->exists);
