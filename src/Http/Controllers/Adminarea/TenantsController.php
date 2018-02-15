@@ -92,7 +92,7 @@ class TenantsController extends AuthorizedController
             ];
         })->values();
         $languages = collect(languages())->pluck('name', 'iso_639_1');
-        $users = app('cortex.fort.manager')->all()->pluck('username', 'id');
+        $users = app('cortex.auth.manager')->all()->pluck('username', 'id');
         $groups = app('rinvex.tenants.tenant')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
         return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'users', 'countries', 'languages', 'groups'));
