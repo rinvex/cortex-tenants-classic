@@ -85,9 +85,6 @@ class TenantsServiceProvider extends ServiceProvider
 
         $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
         $router->pushMiddlewareToGroup('web', Tenantable::class);
-
-        // Override fort controllers
-        $this->app->singleton(\Cortex\Fort\Http\Controllers\Frontarea\RegistrationController::class, \Cortex\Tenants\Http\Controllers\Frontarea\RegistrationController::class);
     }
 
     /**

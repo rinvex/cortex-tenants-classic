@@ -38,9 +38,6 @@ return [
     'welcome_body' => 'This is your dashboard, a place with your taste to get a glimpse about your account, and feature highlights.',
     'dashboard' => 'Dashboard',
     'homepage' => 'Homepage',
-    'access_links' => 'You can access your newly created space via the following links',
-    'congratulations' => 'Congratulations <strong>:username</strong>!',
-    'created' => 'Your <strong>:tenant</strong> registration completed successfully 🎉',
     'media' => 'Media',
 
     // Tenants
