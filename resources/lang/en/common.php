@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
 
     'title' => 'Title',
-    'slug' => 'Slug',
+    'name' => 'Name',
     'email' => 'Email',
     'website' => 'Website',
     'description' => 'Description',

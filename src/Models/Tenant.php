@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * Cortex\Tenants\Models\Tenant.
  *
  * @property int                                                                           $id
- * @property string                                                                        $slug
+ * @property string                                                                        $name
  * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $user_id
@@ -56,7 +56,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereStyle($value)
@@ -72,7 +72,7 @@ class Tenant extends BaseTenant implements HasMedia
      * {@inheritdoc}
      */
     protected $fillable = [
-        'slug',
+        'name',
         'title',
         'description',
         'user_id',
@@ -96,7 +96,7 @@ class Tenant extends BaseTenant implements HasMedia
      * {@inheritdoc}
      */
     protected $casts = [
-        'slug' => 'string',
+        'name' => 'string',
         'user_id' => 'integer',
         'user_type' => 'string',
         'email' => 'string',
@@ -150,7 +150,7 @@ class Tenant extends BaseTenant implements HasMedia
 
         $this->setTable(config('rinvex.tenants.tables.tenants'));
         $this->setRules([
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
+            'name' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',name',
             'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'user_id' => 'required|integer',
@@ -178,6 +178,6 @@ class Tenant extends BaseTenant implements HasMedia
      */
     public function getRouteKeyName(): string
     {
-        return 'slug';
+        return 'name';
     }
 }

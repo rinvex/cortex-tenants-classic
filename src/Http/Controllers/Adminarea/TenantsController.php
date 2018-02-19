@@ -142,7 +142,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => 'tenant', 'id' => $tenant->slug])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => 'tenant', 'id' => $tenant->name])],
         ]);
     }
 
@@ -159,7 +159,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'tenant', 'id' => $tenant->slug])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'tenant', 'id' => $tenant->name])],
         ]);
     }
 }
