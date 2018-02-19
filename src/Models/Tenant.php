@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  *
  * @property int                                                                           $id
  * @property string                                                                        $slug
- * @property array                                                                         $name
+ * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $user_id
  * @property string                                                                        $user_type
@@ -51,7 +51,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLanguageCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLaunchDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
@@ -73,7 +73,7 @@ class Tenant extends BaseTenant implements HasMedia
      */
     protected $fillable = [
         'slug',
-        'name',
+        'title',
         'description',
         'user_id',
         'user_type',
@@ -151,7 +151,7 @@ class Tenant extends BaseTenant implements HasMedia
         $this->setTable(config('rinvex.tenants.tables.tenants'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
-            'name' => 'required|string|max:150',
+            'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'user_id' => 'required|integer',
             'user_type' => 'required|string',

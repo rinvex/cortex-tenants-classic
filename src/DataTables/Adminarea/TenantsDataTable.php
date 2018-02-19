@@ -38,7 +38,7 @@ class TenantsDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.slug})+"\">"+data+"</a>"';
 
         return [
-            'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
+            'title' => ['title' => trans('cortex/tenants::common.title'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
             'user.username' => ['title' => trans('cortex/tenants::common.user'), 'data' => 'user.username'],
