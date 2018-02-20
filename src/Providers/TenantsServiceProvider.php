@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
-use Rinvex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
@@ -58,7 +57,7 @@ class TenantsServiceProvider extends ServiceProvider
     {
         // Bind route models and constrains
         $router->pattern('tenant', '[a-z0-9-]+');
-        $router->model('tenant', Tenant::class);
+        $router->model('tenant', config('rinvex.tenants.models.tenant'));
 
         // Map relations
         Relation::morphMap([
