@@ -27,7 +27,7 @@ class TenantFormRequest extends FormRequest
     {
         $data = $this->all();
 
-        $data['user_type'] = 'manager';
+        $data['owner_type'] = 'manager';
 
         $this->replace($data);
     }

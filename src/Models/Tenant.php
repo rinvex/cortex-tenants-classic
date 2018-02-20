@@ -17,8 +17,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property string                                                                        $name
  * @property array                                                                         $title
  * @property array                                                                         $description
- * @property int                                                                           $user_id
- * @property string                                                                        $user_type
+ * @property int                                                                           $owner_id
+ * @property string                                                                        $owner_type
  * @property string                                                                        $email
  * @property string                                                                        $website
  * @property string                                                                        $phone
@@ -36,9 +36,9 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property \Carbon\Carbon|null                                                           $updated_at
  * @property \Carbon\Carbon|null                                                           $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                            $user
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                            $owner
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant ofUser(\Illuminate\Database\Eloquent\Model $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant ofOwner(\Illuminate\Database\Eloquent\Model $owner)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)
@@ -52,8 +52,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLanguageCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLaunchDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUserType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereOwnerType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereName($value)
@@ -75,8 +75,8 @@ class Tenant extends BaseTenant implements HasMedia
         'name',
         'title',
         'description',
-        'user_id',
-        'user_type',
+        'owner_id',
+        'owner_type',
         'email',
         'website',
         'phone',
@@ -97,8 +97,8 @@ class Tenant extends BaseTenant implements HasMedia
      */
     protected $casts = [
         'name' => 'string',
-        'user_id' => 'integer',
-        'user_type' => 'string',
+        'owner_id' => 'integer',
+        'owner_type' => 'string',
         'email' => 'string',
         'website' => 'string',
         'phone' => 'string',
@@ -153,8 +153,8 @@ class Tenant extends BaseTenant implements HasMedia
             'name' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',name',
             'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
-            'user_id' => 'required|integer',
-            'user_type' => 'required|string',
+            'owner_id' => 'required|integer',
+            'owner_type' => 'required|string',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
             'website' => 'nullable|string|max:150',
             'phone' => 'nullable|numeric|min:4',

@@ -76,13 +76,13 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- User --}}
-                                    <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-                                        {{ Form::label('user_id', trans('cortex/tenants::common.user'), ['class' => 'control-label']) }}
-                                        {{ Form::select('user_id', $users, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_user'), 'required' => 'required', 'data-width' => '100%']) }}
+                                    {{-- Owner --}}
+                                    <div class="form-group{{ $errors->has('owner_id') ? ' has-error' : '' }}">
+                                        {{ Form::label('owner_id', trans('cortex/tenants::common.owner'), ['class' => 'control-label']) }}
+                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_owner'), 'required' => 'required', 'data-width' => '100%']) }}
 
-                                        @if ($errors->has('user_id'))
-                                            <span class="help-block">{{ $errors->first('user_id') }}</span>
+                                        @if ($errors->has('owner_id'))
+                                            <span class="help-block">{{ $errors->first('owner_id') }}</span>
                                         @endif
                                     </div>
 

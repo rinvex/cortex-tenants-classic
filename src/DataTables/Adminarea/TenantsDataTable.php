@@ -21,7 +21,7 @@ class TenantsDataTable extends AbstractDataTable
      */
     public function query()
     {
-        $query = app($this->model)->query()->with(['user']);
+        $query = app($this->model)->query()->with(['owner']);
 
         return $this->applyScopes($query);
     }
@@ -41,7 +41,7 @@ class TenantsDataTable extends AbstractDataTable
             'title' => ['title' => trans('cortex/tenants::common.title'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
-            'user.username' => ['title' => trans('cortex/tenants::common.user'), 'data' => 'user.username'],
+            'owner.username' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username'],
             'country_code' => ['title' => trans('cortex/tenants::common.country')],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
