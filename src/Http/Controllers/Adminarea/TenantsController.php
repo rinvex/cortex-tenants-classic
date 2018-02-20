@@ -16,7 +16,7 @@ class TenantsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tenant';
+    protected $resource = Tenant::class;
 
     /**
      * List all tenants.

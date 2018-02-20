@@ -16,7 +16,7 @@ class TenantsMediaController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tenant';
+    protected $resource = Tenant::class;
 
     /**
      * {@inheritdoc}
