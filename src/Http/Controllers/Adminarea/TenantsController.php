@@ -139,6 +139,7 @@ class TenantsController extends AuthorizedController
 
         // Save tenant
         $tenant->fill($data)->save();
+        $tenant->owner->attachTenants($tenant);
 
         return intend([
             'url' => route('adminarea.tenants.index'),
