@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rinvex\Tenants\Models\Tenant;
+use Cortex\Tenants\Models\Tenant;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 // Adminarea breadcrumbs

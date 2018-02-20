@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
-use Rinvex\Tenants\Models\Tenant;
+use Cortex\Tenants\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;

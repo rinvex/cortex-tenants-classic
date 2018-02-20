@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
 use Illuminate\Support\Str;
-use Rinvex\Tenants\Models\Tenant;
+use Cortex\Tenants\Models\Tenant;
 use Spatie\MediaLibrary\Models\Media;
 use Cortex\Foundation\DataTables\MediaDataTable;
 use Cortex\Foundation\Http\Requests\ImageFormRequest;

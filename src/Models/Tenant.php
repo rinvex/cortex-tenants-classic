@@ -38,7 +38,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                            $owner
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Tenants\Models\Tenant ofOwner(\Illuminate\Database\Eloquent\Model $owner)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant ofOwner(\Illuminate\Database\Eloquent\Model $owner)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)

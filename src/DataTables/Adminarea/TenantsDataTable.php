@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\DataTables\Adminarea;
 
-use Rinvex\Tenants\Models\Tenant;
+use Cortex\Tenants\Models\Tenant;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 
 class TenantsDataTable extends AbstractDataTable
