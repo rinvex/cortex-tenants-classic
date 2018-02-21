@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * Cortex\Tenants\Models\Tenant.
@@ -179,5 +180,15 @@ class Tenant extends BaseTenant implements HasMedia
     public function getRouteKeyName(): string
     {
         return 'name';
+    }
+
+    /**
+     * Get all attached managers to tenant.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function managers(): MorphToMany
+    {
+        return $this->entries(config('cortex.auth.models.manager'));
     }
 }
