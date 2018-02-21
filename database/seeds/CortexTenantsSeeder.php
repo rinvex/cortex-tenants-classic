@@ -14,6 +14,7 @@ class CortexTenantsSeeder extends Seeder
     public function run()
     {
         Bouncer::allow('admin')->to('access-managerarea');
+        Bouncer::allow('owner')->to('access-managerarea');
         Bouncer::allow('manager')->to('access-managerarea');
 
         Bouncer::allow('admin')->to('list', config('rinvex.tenants.models.tenant'));

@@ -139,6 +139,7 @@ class TenantsController extends AuthorizedController
 
         // Save tenant
         $tenant->fill($data)->save();
+        $tenant->owner->assign('owner');
         $tenant->owner->attachTenants($tenant);
 
         return intend([
