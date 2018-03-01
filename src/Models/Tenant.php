@@ -113,6 +113,7 @@ class Tenant extends BaseTenant implements HasMedia
         'group' => 'string',
         'style' => 'string',
         'is_active' => 'boolean',
+        'deleted_at' => 'datetime',
     ];
 
     /**
