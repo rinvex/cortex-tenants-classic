@@ -70,7 +70,7 @@ class TenantsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        $this->app->afterResolving('blade.compiler', function () {
+        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
 
