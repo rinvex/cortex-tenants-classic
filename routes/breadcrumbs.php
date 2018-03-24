@@ -11,6 +11,17 @@ Breadcrumbs::register('adminarea.tenants.index', function (BreadcrumbsGenerator 
     $breadcrumbs->push(trans('cortex/tenants::common.tenants'), route('adminarea.tenants.index'));
 });
 
+Breadcrumbs::register('adminarea.tenants.import', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.tenants.index');
+    $breadcrumbs->push(trans('cortex/tenants::common.import'), route('adminarea.tenants.import'));
+});
+
+Breadcrumbs::register('adminarea.tenants.import.logs', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.tenants.index');
+    $breadcrumbs->push(trans('cortex/tenants::common.import'), route('adminarea.tenants.import'));
+    $breadcrumbs->push(trans('cortex/tenants::common.logs'), route('adminarea.tenants.import.logs'));
+});
+
 Breadcrumbs::register('adminarea.tenants.create', function (BreadcrumbsGenerator $breadcrumbs) {
     $breadcrumbs->parent('adminarea.tenants.index');
     $breadcrumbs->push(trans('cortex/tenants::common.create_tenant'), route('adminarea.tenants.create'));

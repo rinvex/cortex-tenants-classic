@@ -34,6 +34,8 @@ return [
     'owner_account' => 'Owner Account',
     'tenant_details' => 'Tenant Details',
     'media' => 'Media',
+    'file' => 'File',
+    'import' => 'Import',
 
     // Tenants
     'tenants' => 'Tenants',
