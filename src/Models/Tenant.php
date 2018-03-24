@@ -184,6 +184,17 @@ class Tenant extends BaseTenant implements HasMedia
     }
 
     /**
+     * Register media collections.
+     *
+     * @return void
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('profile_picture')->singleFile();
+        $this->addMediaCollection('cover_photo')->singleFile();
+    }
+
+    /**
      * Get all attached managers to tenant.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany

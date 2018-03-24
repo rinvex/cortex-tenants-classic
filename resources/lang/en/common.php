@@ -36,6 +36,8 @@ return [
     'media' => 'Media',
     'file' => 'File',
     'import' => 'Import',
+    'cover_photo' => 'Cover Photo',
+    'profile_picture' => 'Profile Picture',
 
     // Tenants
     'tenants' => 'Tenants',
