@@ -14,7 +14,7 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Tenant $tenan
 });
 
 Menu::register('adminarea.tenants.tabs', function (MenuGenerator $menu, Tenant $tenant, Media $media) {
-    $menu->route(['adminarea.tenants.create'], trans('cortex/tenants::common.details'))->ifCan('create', $tenant)->if(! $tenant->exists);
+    $menu->route(['adminarea.tenants.create'], trans('cortex/tenants::common.details'))->ifCan('create', $tenant)->if(Route::is('adminarea.tenants.create'));
     $menu->route(['adminarea.tenants.edit', ['tenant' => $tenant]], trans('cortex/tenants::common.details'))->ifCan('update', $tenant)->if($tenant->exists);
     $menu->route(['adminarea.tenants.logs', ['tenant' => $tenant]], trans('cortex/tenants::common.logs'))->ifCan('audit', $tenant)->if($tenant->exists);
     $menu->route(['adminarea.tenants.media.index', ['tenant' => $tenant]], trans('cortex/tenants::common.media'))->ifCan('update', $tenant)->ifCan('list', $media)->if($tenant->exists);
