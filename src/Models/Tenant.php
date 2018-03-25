@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Models;
 
+use Rinvex\Tags\Traits\Taggable;
 use Cortex\Foundation\Traits\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -65,6 +66,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  */
 class Tenant extends BaseTenant implements HasMedia
 {
+    use Taggable;
     use Auditable;
     use LogsActivity;
     use HasMediaTrait;
@@ -170,6 +172,7 @@ class Tenant extends BaseTenant implements HasMedia
             'group' => 'nullable|string|max:150',
             'style' => 'nullable|string|max:150',
             'is_active' => 'sometimes|boolean',
+            'tags' => 'nullable|array',
         ]);
     }
 
