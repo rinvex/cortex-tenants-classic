@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Providers;
 
 use Illuminate\Routing\Router;
+use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
@@ -43,6 +44,10 @@ class TenantsServiceProvider extends ServiceProvider
     {
         // Merge config
         $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.tenants');
+
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
+        || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
