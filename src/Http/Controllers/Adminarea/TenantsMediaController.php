@@ -51,7 +51,7 @@ class TenantsMediaController extends AuthorizedController
             'resource' => $tenant,
             'tabs' => 'adminarea.tenants.tabs',
             'phrase' => trans('cortex/tenants::common.tenants'),
-            'id' => "adminarea-tenants-{$tenant->getKey()}-media-table",
+            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-media-table",
             'url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]),
         ])->render('cortex/foundation::adminarea.pages.datatable-media');
     }
@@ -87,7 +87,7 @@ class TenantsMediaController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.media.index', ['tenant' => $tenant]),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'media', 'id' => $media->getKey()])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'media', 'id' => $media->getRouteKey()])],
         ]);
     }
 }

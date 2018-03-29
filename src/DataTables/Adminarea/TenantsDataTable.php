@@ -34,8 +34,8 @@ class TenantsDataTable extends AbstractDataTable
     protected function getColumns(): array
     {
         $link = config('cortex.foundation.route.locale_prefix')
-            ? '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.name, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
-            : '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.name})+"\">"+data+"</a>"';
+            ? '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: hashids.encode(full.id), locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
+            : '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: hashids.encode(full.id)})+"\">"+data+"</a>"';
 
         return [
             'title' => ['title' => trans('cortex/tenants::common.title'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],

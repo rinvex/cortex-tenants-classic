@@ -50,7 +50,7 @@ class TenantsController extends AuthorizedController
             'resource' => $tenant,
             'tabs' => 'adminarea.tenants.tabs',
             'phrase' => trans('cortex/tenants::common.tenants'),
-            'id' => "adminarea-tenants-{$tenant->getKey()}-logs-table",
+            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
