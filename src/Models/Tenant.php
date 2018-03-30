@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Models;
 
 use Rinvex\Tags\Traits\Taggable;
-use Vinkla\Hashids\Facades\Hashids;
+use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Traits\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -70,6 +70,7 @@ class Tenant extends BaseTenant implements HasMedia
     use Taggable;
     use Auditable;
     use LogsActivity;
+    use HashidsTrait;
     use HasMediaTrait;
 
     /**
@@ -175,30 +176,6 @@ class Tenant extends BaseTenant implements HasMedia
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
         ]);
-    }
-
-    /**
-     * Get the value of the model's route key.
-     *
-     * @return mixed
-     */
-    public function getRouteKey()
-    {
-        return Hashids::encode($this->getAttribute($this->getRouteKeyName()));
-    }
-
-    /**
-     * Retrieve the model for a bound value.
-     *
-     * @param mixed $value
-     *
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function resolveRouteBinding($value)
-    {
-        $value = Hashids::decode($value)[0];
-
-        return $this->where($this->getRouteKeyName(), $value)->first();
     }
 
     /**
