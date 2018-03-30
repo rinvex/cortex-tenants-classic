@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Models;
 
 use Rinvex\Tags\Traits\Taggable;
-use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Traits\Auditable;
+use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
