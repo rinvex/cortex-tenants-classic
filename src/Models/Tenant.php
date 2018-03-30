@@ -39,7 +39,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Carbon\Carbon|null                                                           $updated_at
  * @property \Carbon\Carbon|null                                                           $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                            $owner
+ * @property-read \Cortex\Auth\Models\User|\Illuminate\Database\Eloquent\Model|\Eloquent   $owner
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant ofOwner(\Illuminate\Database\Eloquent\Model $owner)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
