@@ -48,7 +48,7 @@ class TenantsDataTable extends AbstractDataTable
                 });
             })
             ->filterColumn('country_code', function (Builder $builder, $keyword) {
-                $countryCode = collect(countries())->search(function($country) use ($keyword) {
+                $countryCode = collect(countries())->search(function ($country) use ($keyword) {
                     return mb_strpos($country['name'], $keyword) !== false || mb_strpos($country['emoji'], $keyword) !== false;
                 });
 
