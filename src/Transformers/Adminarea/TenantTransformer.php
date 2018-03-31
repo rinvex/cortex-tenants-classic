@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Transformers\Adminarea;
 
 use Cortex\Tenants\Models\Tenant;
+use Rinvex\Support\Traits\Escaper;
 use League\Fractal\TransformerAbstract;
 
 class TenantTransformer extends TransformerAbstract
 {
+    use Escaper;
+
     /**
      * @return array
      */
     public function transform(Tenant $tenant): array
     {
-        return [
+        return $this->escapeRow([
             'id' => (string) $tenant->getRouteKey(),
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
@@ -24,6 +27,6 @@ class TenantTransformer extends TransformerAbstract
             'language_code' => (string) $tenant->language_code ? language($tenant->language_code)->getName() : null,
             'created_at' => (string) $tenant->created_at,
             'updated_at' => (string) $tenant->updated_at,
-        ];
+        ]);
     }
 }
