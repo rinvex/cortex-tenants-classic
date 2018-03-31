@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\DataTables\Adminarea;
 
 use Cortex\Tenants\Models\Tenant;
+use Illuminate\Database\Eloquent\Builder;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Tenants\Transformers\Adminarea\TenantTransformer;
 
@@ -41,6 +42,18 @@ class TenantsDataTable extends AbstractDataTable
     {
         return datatables($this->query())
             ->setTransformer($this->transformer)
+            ->filterColumn('owner.username', function (Builder $builder, $keyword) {
+                $builder->whereHas('owner', function (Builder $builder) use ($keyword) {
+                    $builder->where('username', 'like', "%{$keyword}%");
+                });
+            })
+            ->filterColumn('country_code', function (Builder $builder, $keyword) {
+                $countryCode = collect(countries())->search(function($country) use ($keyword) {
+                    return mb_strpos($country['name'], $keyword) !== false || mb_strpos($country['emoji'], $keyword) !== false;
+                });
+
+                ! $countryCode || $builder->where('country_code', $countryCode);
+            })
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
@@ -60,7 +73,7 @@ class TenantsDataTable extends AbstractDataTable
             'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
-            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'searchable' => false, 'orderable' => false],
+            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username'],
             'country_code' => ['title' => trans('cortex/tenants::common.country')],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
