@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Models;
 
+use Cortex\Auth\Models\Manager;
 use Rinvex\Tags\Traits\Taggable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Traits\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Relations\BelongsToMorph;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -197,5 +199,13 @@ class Tenant extends BaseTenant implements HasMedia
     public function managers(): MorphToMany
     {
         return $this->entries(config('cortex.auth.models.manager'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function owner()
+    {
+        return BelongsToMorph::build($this, Manager::class, 'owner');
     }
 }
