@@ -17,7 +17,7 @@ class TenantTransformer extends TransformerAbstract
      */
     public function transform(Tenant $tenant): array
     {
-        return $this->escapeRow([
+        return $this->escape([
             'id' => (string) $tenant->getRouteKey(),
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
