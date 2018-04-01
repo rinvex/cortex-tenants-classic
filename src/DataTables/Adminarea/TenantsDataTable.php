@@ -41,7 +41,7 @@ class TenantsDataTable extends AbstractDataTable
     public function ajax()
     {
         return datatables($this->query())
-            ->setTransformer($this->transformer)
+            ->setTransformer(app($this->transformer))
             ->filterColumn('owner.username', function (Builder $builder, $keyword) {
                 $builder->whereHas('owner', function (Builder $builder) use ($keyword) {
                     $builder->where('username', 'like', "%{$keyword}%");
