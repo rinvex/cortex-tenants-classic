@@ -74,7 +74,7 @@ class TenantsDataTable extends AbstractDataTable
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
             'owner' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username'],
-            'country_code' => ['title' => trans('cortex/tenants::common.country')],
+            'country_code' => ['title' => trans('cortex/tenants::common.country'), 'render' => 'full.country_emoji+" "+data'],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMMM Do YYYY, hh:mm:ss A')"],
             'updated_at' => ['title' => trans('cortex/tenants::common.updated_at'), 'render' => "moment(data).format('MMMM Do YYYY, hh:mm:ss A')"],

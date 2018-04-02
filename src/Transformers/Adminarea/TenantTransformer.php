@@ -17,14 +17,18 @@ class TenantTransformer extends TransformerAbstract
      */
     public function transform(Tenant $tenant): array
     {
+        $country = $tenant->country_code ? country($tenant->country_code) : null;
+        $language = $tenant->language_code ? language($tenant->language_code) : null;
+
         return $this->escape([
             'id' => (string) $tenant->getRouteKey(),
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
             'phone' => (string) $tenant->phone,
             'owner' => (object) $tenant->owner,
-            'country_code' => (string) $tenant->country_code ? country($tenant->country_code)->getName() : null,
-            'language_code' => (string) $tenant->language_code ? language($tenant->language_code)->getName() : null,
+            'country_code' => (string) optional($country)->getName(),
+            'country_emoji' => (string) optional($country)->getEmoji(),
+            'language_code' => (string) optional($language)->getName(),
             'created_at' => (string) $tenant->created_at,
             'updated_at' => (string) $tenant->updated_at,
         ]);
