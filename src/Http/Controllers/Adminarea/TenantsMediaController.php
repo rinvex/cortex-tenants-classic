@@ -50,7 +50,6 @@ class TenantsMediaController extends AuthorizedController
         return $mediaDataTable->with([
             'resource' => $tenant,
             'tabs' => 'adminarea.tenants.tabs',
-            'phrase' => trans('cortex/tenants::common.tenants'),
             'id' => "adminarea-tenants-{$tenant->getRouteKey()}-media-table",
             'url' => route('adminarea.tenants.media.store', ['tenant' => $tenant]),
         ])->render('cortex/foundation::adminarea.pages.datatable-media');
