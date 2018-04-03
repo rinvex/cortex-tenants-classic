@@ -165,7 +165,7 @@ class Tenant extends BaseTenant implements HasMedia
             'owner_type' => 'required|string',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
             'website' => 'nullable|string|max:150',
-            'phone' => 'nullable|numeric|phone',
+            'phone' => 'nullable|numeric|phone:country_code',
             'country_code' => 'required|alpha|size:2|country',
             'language_code' => 'required|alpha|size:2|language',
             'state' => 'nullable|string',
