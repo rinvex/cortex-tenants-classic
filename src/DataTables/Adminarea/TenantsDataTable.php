@@ -80,7 +80,7 @@ class TenantsDataTable extends AbstractDataTable
             'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
-            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username'],
+            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username', 'orderable' => false],
             'country_code' => ['title' => trans('cortex/tenants::common.country'), 'render' => 'full.country_emoji+" "+data'],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('MMMM Do YYYY, hh:mm:ss A')"],
