@@ -124,8 +124,9 @@
                                     {{-- Phone --}}
                                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                                         {{ Form::label('phone', trans('cortex/tenants::common.phone'), ['class' => 'control-label']) }}
-                                        {{ Form::number('phone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.phone'), 'required' => 'required']) }}
+                                        {{ Form::tel('phone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.phone'), 'required' => 'required']) }}
 
+                                        <span class="help-block hide">{{ trans('cortex/foundation::messages.invalid_phone') }}</span>
                                         @if ($errors->has('phone'))
                                             <span class="help-block">{{ $errors->first('phone') }}</span>
                                         @endif
