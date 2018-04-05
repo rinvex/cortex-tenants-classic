@@ -25,7 +25,7 @@ return [
     'social' => 'Social',
     'yes' => 'Yes',
     'no' => 'No',
-    'active' => 'Active',
+    'is_active' => 'Is Active',
     'submit' => 'Submit',
     'select_language' => 'Select Language',
     'select_country' => 'Select Country',
