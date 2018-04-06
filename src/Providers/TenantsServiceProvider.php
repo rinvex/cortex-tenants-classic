@@ -70,13 +70,13 @@ class TenantsServiceProvider extends ServiceProvider
         ]);
 
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources

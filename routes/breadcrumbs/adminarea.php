@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Cortex\Tenants\Models\Tenant;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
-// Adminarea breadcrumbs
 Breadcrumbs::register('adminarea.tenants.index', function (BreadcrumbsGenerator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('adminarea.home'));
     $breadcrumbs->push(trans('cortex/tenants::common.tenants'), route('adminarea.tenants.index'));
