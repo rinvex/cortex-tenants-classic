@@ -263,14 +263,14 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Group --}}
-                                    <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
-                                        {{ Form::label('group', trans('cortex/tenants::common.group'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('group', '') }}
-                                        {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                    {{-- Tags --}}
+                                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                                        {{ Form::label('tags[]', trans('cortex/tenants::common.tags'), ['class' => 'control-label']) }}
+                                        {{ Form::hidden('tags', '') }}
+                                        {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple', 'data-width' => '100%', 'data-tags' => 'true']) }}
 
-                                        @if ($errors->has('group'))
-                                            <span class="help-block">{{ $errors->first('group') }}</span>
+                                        @if ($errors->has('tags'))
+                                            <span class="help-block">{{ $errors->first('tags') }}</span>
                                         @endif
                                     </div>
 
@@ -342,13 +342,13 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Address --}}
-                                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                        {{ Form::label('address', trans('cortex/tenants::common.address'), ['class' => 'control-label']) }}
-                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.address')]) }}
+                                    {{-- Currency --}}
+                                    <div class="form-group{{ $errors->has('currency') ? ' has-error' : '' }}">
+                                        {{ Form::label('currency', trans('cortex/tenants::common.currency'), ['class' => 'control-label']) }}
+                                        {{ Form::text('currency', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.currency'), 'required' => 'required']) }}
 
-                                        @if ($errors->has('address'))
-                                            <span class="help-block">{{ $errors->first('address') }}</span>
+                                        @if ($errors->has('currency'))
+                                            <span class="help-block">{{ $errors->first('currency') }}</span>
                                         @endif
                                     </div>
 
@@ -358,16 +358,29 @@
 
                             <div class="row">
 
-                                <div class="col-md-12">
+                                <div class="col-md-4">
 
-                                    {{-- Tags --}}
-                                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
-                                        {{ Form::label('tags[]', trans('cortex/tenants::common.tags'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('tags', '') }}
-                                        {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple', 'data-width' => '100%', 'data-tags' => 'true']) }}
+                                    {{-- Timezone --}}
+                                    <div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
+                                        {{ Form::label('timezone', trans('cortex/tenants::common.timezone'), ['class' => 'control-label']) }}
+                                        {{ Form::text('timezone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.timezone'), 'required' => 'required']) }}
 
-                                        @if ($errors->has('tags'))
-                                            <span class="help-block">{{ $errors->first('tags') }}</span>
+                                        @if ($errors->has('timezone'))
+                                            <span class="help-block">{{ $errors->first('timezone') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-8">
+
+                                    {{-- Address --}}
+                                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                        {{ Form::label('address', trans('cortex/tenants::common.address'), ['class' => 'control-label']) }}
+                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.address')]) }}
+
+                                        @if ($errors->has('address'))
+                                            <span class="help-block">{{ $errors->first('address') }}</span>
                                         @endif
                                     </div>
 

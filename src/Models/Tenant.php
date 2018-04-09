@@ -34,7 +34,8 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string                                                                        $address
  * @property string                                                                        $postal_code
  * @property string                                                                        $launch_date
- * @property string                                                                        $group
+ * @property string                                                                        $timezone
+ * @property string                                                                        $currency
  * @property bool                                                                          $is_active
  * @property string                                                                        $style
  * @property \Carbon\Carbon|null                                                           $created_at
@@ -48,10 +49,10 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCountryCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereCurrency($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereLanguageCode($value)
@@ -63,6 +64,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereStyle($value)
  * @mixin \Eloquent
@@ -94,7 +96,8 @@ class Tenant extends BaseTenant implements HasMedia
         'address',
         'postal_code',
         'launch_date',
-        'group',
+        'timezone',
+        'currency',
         'style',
         'is_active',
     ];
@@ -116,7 +119,8 @@ class Tenant extends BaseTenant implements HasMedia
         'address' => 'string',
         'postal_code' => 'string',
         'launch_date' => 'string',
-        'group' => 'string',
+        'timezone' => 'string',
+        'currency' => 'string',
         'style' => 'string',
         'is_active' => 'boolean',
         'deleted_at' => 'datetime',
@@ -173,7 +177,8 @@ class Tenant extends BaseTenant implements HasMedia
             'address' => 'nullable|string',
             'postal_code' => 'nullable|string',
             'launch_date' => 'nullable|date_format:Y-m-d',
-            'group' => 'nullable|string|max:150',
+            'timezone' => 'required|string|timezone',
+            'currency' => 'required|string|size:3',
             'style' => 'nullable|string|max:150',
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
