@@ -31,7 +31,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @if($tenant->exists && $currentUser->can('delete', $tenant)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tenants.destroy', ['tenant' => $tenant]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => 'tenant', 'identifier' => $tenant->name]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
+                @if($tenant->exists && $currentUser->can('delete', $tenant)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tenants.destroy', ['tenant' => $tenant]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
                 {!! Menu::render('adminarea.tenants.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
@@ -218,7 +218,7 @@
 
                                     {{-- Active --}}
                                     <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
-                                        {{ Form::label('is_active', trans('cortex/tenants::common.active'), ['class' => 'control-label']) }}
+                                        {{ Form::label('is_active', trans('cortex/tenants::common.is_active'), ['class' => 'control-label']) }}
                                         {{ Form::select('is_active', [1 => trans('cortex/tenants::common.yes'), 0 => trans('cortex/tenants::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%', 'required' => 'required']) }}
 
                                         @if ($errors->has('is_active'))
@@ -265,9 +265,9 @@
 
                                     {{-- Group --}}
                                     <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
-                                        {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
+                                        {{ Form::label('group', trans('cortex/tenants::common.group'), ['class' => 'control-label']) }}
                                         {{ Form::hidden('group', '') }}
-                                        {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                        {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('group'))
                                             <span class="help-block">{{ $errors->first('group') }}</span>
@@ -300,7 +300,7 @@
                                         @if ($tenant->exists && $tenant->getMedia('profile_picture')->count())
                                             <i class="fa fa-paperclip"></i>
                                             <a href="{{ $tenant->getFirstMediaUrl('profile_picture') }}" target="_blank">{{ $tenant->getFirstMedia('profile_picture')->file_name }}</a> ({{ $tenant->getFirstMedia('profile_picture')->human_readable_size }})
-                                            <a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('profile_picture')]) }}" data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}" data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => 'media', 'identifier' => $tenant->getFirstMedia('profile_picture')->file_name]) }}" title="{{ trans('cortex/foundation::common.delete') }}"><i class="fa fa-trash text-danger"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('profile_picture')]) }}" data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}" data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => $tenant->getFirstMedia('profile_picture')->file_name]) }}" title="{{ trans('cortex/foundation::common.delete') }}"><i class="fa fa-trash text-danger"></i></a>
                                         @endif
 
                                         @if ($errors->has('profile_picture'))
@@ -330,7 +330,7 @@
                                         @if ($tenant->exists && $tenant->getMedia('cover_photo')->count())
                                             <i class="fa fa-paperclip"></i>
                                             <a href="{{ $tenant->getFirstMediaUrl('cover_photo') }}" target="_blank">{{ $tenant->getFirstMedia('cover_photo')->file_name }}</a> ({{ $tenant->getFirstMedia('cover_photo')->human_readable_size }})
-                                            <a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('cover_photo')]) }}" data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}" data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => 'media', 'identifier' => $tenant->getFirstMedia('cover_photo')->file_name]) }}" title="{{ trans('cortex/foundation::common.delete') }}"><i class="fa fa-trash text-danger"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('cover_photo')]) }}" data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}" data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => $tenant->getFirstMedia('cover_photo')->file_name]) }}" title="{{ trans('cortex/foundation::common.delete') }}"><i class="fa fa-trash text-danger"></i></a>
                                         @endif
 
                                         @if ($errors->has('cover_photo'))

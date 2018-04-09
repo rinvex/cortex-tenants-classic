@@ -91,7 +91,7 @@ class TenantsController extends AuthorizedController
     public function importLogs(ImportLogsDataTable $importLogsDatatable)
     {
         return $importLogsDatatable->with([
-            'resource' => 'tenant',
+            'resource' => trans('cortex/tenants::common.tenant'),
             'tabs' => 'adminarea.tenants.tabs',
             'id' => 'adminarea-tenants-import-logs-table',
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
@@ -206,7 +206,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => 'tenant', 'identifier' => $tenant->name])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
 
@@ -223,7 +223,7 @@ class TenantsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tenants.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'tenant', 'identifier' => $tenant->name])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
 }
