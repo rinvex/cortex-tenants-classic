@@ -36,7 +36,7 @@ return [
     'owner_account' => 'Owner Account',
     'tenant_details' => 'Tenant Details',
     'media' => 'Media',
-    'file' => 'File',
+    'records' => 'Records',
     'import' => 'Import',
     'cover_photo' => 'Cover Photo',
     'profile_picture' => 'Profile Picture',
