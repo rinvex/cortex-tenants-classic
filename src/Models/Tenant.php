@@ -213,4 +213,14 @@ class Tenant extends BaseTenant implements HasMedia
     {
         return BelongsToMorph::build($this, Manager::class, 'owner');
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
