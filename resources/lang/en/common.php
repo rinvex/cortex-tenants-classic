@@ -43,6 +43,7 @@ return [
     'tags' => 'Tags',
 
     // Tenants
+    'tenant' => 'Tenant',
     'tenants' => 'Tenants',
     'create_tenant' => 'Create New Tenant',
 
