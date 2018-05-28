@@ -390,6 +390,52 @@
 
                             <div class="row">
 
+                                <div class="col-md-4">
+
+                                    {{-- Twitter --}}
+                                    <div class="form-group{{ $errors->has('social.twitter') ? ' has-error' : '' }}">
+                                        {{ Form::label('social[twitter]', trans('cortex/tenants::common.twitter'), ['class' => 'control-label']) }}
+                                        {{ Form::text('social[twitter]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.twitter')]) }}
+
+                                        @if ($errors->has('social.twitter'))
+                                            <span class="help-block">{{ $errors->first('social.twitter') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    {{-- Facebook --}}
+                                    <div class="form-group{{ $errors->has('social.facebook') ? ' has-error' : '' }}">
+                                        {{ Form::label('facebook', trans('cortex/tenants::common.facebook'), ['class' => 'control-label']) }}
+                                        {{ Form::text('facebook', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.facebook')]) }}
+
+                                        @if ($errors->has('social.facebook'))
+                                            <span class="help-block">{{ $errors->first('social.facebook') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    {{-- Linkedin --}}
+                                    <div class="form-group{{ $errors->has('social.linkedin') ? ' has-error' : '' }}">
+                                        {{ Form::label('social[linkedin]', trans('cortex/tenants::common.linkedin'), ['class' => 'control-label']) }}
+                                        {{ Form::text('social[linkedin]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.linkedin')]) }}
+
+                                        @if ($errors->has('social.linkedin'))
+                                            <span class="help-block">{{ $errors->first('social.linkedin') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-md-12">
 
                                     {{-- Description --}}

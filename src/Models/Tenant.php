@@ -10,6 +10,7 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Rinvex\Support\Traits\HasSocialAttributes;
 use Cortex\Foundation\Relations\BelongsToMorph;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -36,6 +37,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string                                                                        $launch_date
  * @property string                                                                        $timezone
  * @property string                                                                        $currency
+ * @property string                                                                        $social
  * @property bool                                                                          $is_active
  * @property string                                                                        $style
  * @property \Carbon\Carbon|null                                                           $created_at
@@ -63,6 +65,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereSocial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereUpdatedAt($value)
@@ -76,6 +79,7 @@ class Tenant extends BaseTenant implements HasMedia
     use LogsActivity;
     use HashidsTrait;
     use HasMediaTrait;
+    use HasSocialAttributes;
 
     /**
      * {@inheritdoc}
@@ -98,6 +102,7 @@ class Tenant extends BaseTenant implements HasMedia
         'launch_date',
         'timezone',
         'currency',
+        'social',
         'style',
         'is_active',
     ];
@@ -121,6 +126,7 @@ class Tenant extends BaseTenant implements HasMedia
         'launch_date' => 'string',
         'timezone' => 'string',
         'currency' => 'string',
+        'social' => 'array',
         'style' => 'string',
         'is_active' => 'boolean',
         'deleted_at' => 'datetime',
@@ -179,6 +185,7 @@ class Tenant extends BaseTenant implements HasMedia
             'launch_date' => 'nullable|date_format:Y-m-d',
             'timezone' => 'required|string|timezone',
             'currency' => 'required|string|size:3',
+            'social' => 'nullable|array',
             'style' => 'nullable|string|max:150',
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
