@@ -110,7 +110,7 @@
                                     {{-- Website --}}
                                     <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
                                         {{ Form::label('website', trans('cortex/tenants::common.website'), ['class' => 'control-label']) }}
-                                        {{ Form::text('website', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.website'), 'required' => 'required']) }}
+                                        {{ Form::text('website', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.website')]) }}
 
                                         @if ($errors->has('website'))
                                             <span class="help-block">{{ $errors->first('website') }}</span>
