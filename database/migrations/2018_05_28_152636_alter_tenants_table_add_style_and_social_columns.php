@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTenantsTableAddStyleColumn extends Migration
+class AlterTenantsTableAddStyleAndSocialColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,7 @@ class AlterTenantsTableAddStyleColumn extends Migration
     public function up(): void
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
+            $table->schemalessAttributes('social')->after('currency');
             $table->string('style')->before('is_active')->nullable();
         });
     }
@@ -29,6 +30,7 @@ class AlterTenantsTableAddStyleColumn extends Migration
     {
         Schema::table(config('rinvex.tenants.tables.tenants'), function (Blueprint $table) {
             $table->dropColumn('style');
+            $table->dropColumn('social');
         });
     }
 }

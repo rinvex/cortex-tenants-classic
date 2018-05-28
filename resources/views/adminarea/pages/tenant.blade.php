@@ -408,8 +408,8 @@
 
                                     {{-- Facebook --}}
                                     <div class="form-group{{ $errors->has('social.facebook') ? ' has-error' : '' }}">
-                                        {{ Form::label('facebook', trans('cortex/tenants::common.facebook'), ['class' => 'control-label']) }}
-                                        {{ Form::text('facebook', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.facebook')]) }}
+                                        {{ Form::label('social[facebook]', trans('cortex/tenants::common.facebook'), ['class' => 'control-label']) }}
+                                        {{ Form::text('social[facebook]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.facebook')]) }}
 
                                         @if ($errors->has('social.facebook'))
                                             <span class="help-block">{{ $errors->first('social.facebook') }}</span>
