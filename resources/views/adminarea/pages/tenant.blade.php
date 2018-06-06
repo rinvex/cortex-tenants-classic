@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector("#adminarea-tenants-create-form, #adminarea-tenants-{$tenant->getRouteKey()}-update-form") !!}
+    {!! JsValidator::formRequest(Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest::class)->selector("#adminarea-tenants-create-form, #adminarea-tenants-{$tenant->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
 
     <script>
         window.countries = {!! $countries !!};
@@ -153,7 +153,7 @@
                                     {{-- Language Code --}}
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
                                         {{ Form::label('language_code', trans('cortex/tenants::common.language'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('language_code', '') }}
+                                        {{ Form::hidden('language_code', '', ['class' => 'skip-validation']) }}
                                         {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('language_code'))
@@ -168,7 +168,7 @@
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
                                         {{ Form::label('country_code', trans('cortex/tenants::common.country'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('country_code', '') }}
+                                        {{ Form::hidden('country_code', '', ['class' => 'skip-validation']) }}
                                         {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('country_code'))
@@ -276,7 +276,7 @@
                                     {{-- Tags --}}
                                     <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
                                         {{ Form::label('tags[]', trans('cortex/tenants::common.tags'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('tags', '') }}
+                                        {{ Form::hidden('tags', '', ['class' => 'skip-validation']) }}
                                         {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple', 'data-width' => '100%', 'data-tags' => 'true']) }}
 
                                         @if ($errors->has('tags'))
