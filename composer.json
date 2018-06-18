@@ -54,7 +54,6 @@
         "league/fractal": "^0.17.0",
         "proengsoft/laravel-jsvalidation": "^2.2.0",
         "propaganistas/laravel-phone": "^4.0.0",
-        "rinvex/attributes": "dev-develop",
         "rinvex/composer": "dev-develop",
         "rinvex/country": "dev-develop",
         "rinvex/language": "dev-develop",
