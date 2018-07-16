@@ -153,7 +153,7 @@
                                     {{-- Language Code --}}
                                     <div class="form-group{{ $errors->has('language_code') ? ' has-error' : '' }}">
                                         {{ Form::label('language_code', trans('cortex/tenants::common.language'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('language_code', '', ['class' => 'skip-validation']) }}
+                                        {{ Form::hidden('language_code', '', ['class' => 'skip-validation', 'id' => 'language_code_hidden']) }}
                                         {{ Form::select('language_code', $languages, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_language'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('language_code'))
@@ -168,7 +168,7 @@
                                     {{-- Country Code --}}
                                     <div class="form-group{{ $errors->has('country_code') ? ' has-error' : '' }}">
                                         {{ Form::label('country_code', trans('cortex/tenants::common.country'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('country_code', '', ['class' => 'skip-validation']) }}
+                                        {{ Form::hidden('country_code', '', ['class' => 'skip-validation', 'id' => 'country_code_hidden']) }}
                                         {{ Form::select('country_code', [], null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_country'), 'required' => 'required', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('country_code'))
@@ -302,7 +302,7 @@
                                             <span class="input-group-btn">
                                                 <span class="btn btn-default btn-file">
                                                     {{ trans('cortex/tenants::common.browse') }}
-                                                    {{ Form::file('profile_picture', ['class' => 'form-control']) }}
+                                                    {{ Form::file('profile_picture', ['class' => 'form-control', 'id' => 'profile_picture_browse']) }}
                                                 </span>
                                             </span>
                                         </div>
@@ -337,7 +337,7 @@
                                             <span class="input-group-btn">
                                                 <span class="btn btn-default btn-file">
                                                     {{ trans('cortex/tenants::common.browse') }}
-                                                    {{ Form::file('cover_photo', ['class' => 'form-control']) }}
+                                                    {{ Form::file('cover_photo', ['class' => 'form-control', 'id' => 'cover_photo_browse']) }}
                                                 </span>
                                             </span>
                                         </div>
