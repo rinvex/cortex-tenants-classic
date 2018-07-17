@@ -185,7 +185,7 @@ class Tenant extends BaseTenant implements HasMedia
             'launch_date' => 'nullable|date_format:Y-m-d',
             'timezone' => 'required|string|timezone',
             'currency' => 'required|string|size:3',
-            'social' => 'nullable|array',
+            'social' => 'nullable',
             'style' => 'nullable|string|max:150',
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
