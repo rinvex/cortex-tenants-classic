@@ -251,6 +251,8 @@ class TenantsController extends AuthorizedController
      *
      * @param \Cortex\Tenants\Models\Tenant $tenant
      *
+     * @throws \Exception
+     *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function destroy(Tenant $tenant)
