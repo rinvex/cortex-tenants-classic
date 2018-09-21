@@ -3,13 +3,11 @@
 **Cortex Tenants** is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/tenants.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tenants)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/rinvex:tenants.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/rinvex:tenants/)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tenants.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tenants/)
-[![Code Climate](https://img.shields.io/codeclimate/github/cortex/tenants.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tenants)
-[![Travis](https://img.shields.io/travis/cortex/tenants.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tenants)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/0d75eee8-56d9-44c6-9b73-f47e06a801c7.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/0d75eee8-56d9-44c6-9b73-f47e06a801c7)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/cortex-tenants.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/cortex-tenants/)
+[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/cortex-tenants.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/cortex-tenants)
+[![Travis](https://img.shields.io/travis/rinvex/cortex-tenants.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/cortex-tenants)
 [![StyleCI](https://styleci.io/repos/89985515/shield)](https://styleci.io/repos/89985515)
-[![License](https://img.shields.io/packagist/l/cortex/tenants.svg?label=License&style=flat-square)](https://github.com/cortex/tenants/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/cortex/tenants.svg?label=License&style=flat-square)](https://github.com/rinvex/cortex-tenants/blob/develop/LICENSE)
 
 
 ## Installation and Usage
@@ -60,4 +58,4 @@ Rinvex is a software solutions startup, specialized in integrated enterprise sol
 
 This software is released under [The MIT License (MIT)](LICENSE).
 
-(c) 2016-2017 Rinvex LLC, Some rights reserved.
+(c) 2016-2018 Rinvex LLC, Some rights reserved.

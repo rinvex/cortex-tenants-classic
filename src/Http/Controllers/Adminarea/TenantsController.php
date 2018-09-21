@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
-use Illuminate\Http\Request;
+use Exception;
+use Cortex\Tenants\Models\Tenant;
+use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Rinvex\Tenants\Contracts\TenantContract;
+use Cortex\Foundation\Importers\DefaultImporter;
+use Cortex\Foundation\DataTables\ImportLogsDataTable;
+use Cortex\Foundation\Http\Requests\ImportFormRequest;
+use Cortex\Foundation\DataTables\ImportRecordsDataTable;
 use Cortex\Tenants\DataTables\Adminarea\TenantsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest;
@@ -16,113 +21,247 @@ class TenantsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tenants';
+    protected $resource = Tenant::class;
 
     /**
-     * Display a listing of the resource.
+     * List all tenants.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Tenants\DataTables\Adminarea\TenantsDataTable $tenantsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(TenantsDataTable $tenantsDataTable)
     {
-        return app(TenantsDataTable::class)->with([
-            'id' => 'cortex-tenants-tenants',
-            'phrase' => trans('cortex/tenants::common.tenants'),
-        ])->render('cortex/foundation::adminarea.pages.datatable');
+        return $tenantsDataTable->with([
+            'id' => 'adminarea-tenants-index-table',
+        ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
     /**
-     * Display a listing of the resource logs.
+     * List tenant logs.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Tenants\Models\Tenant               $tenant
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(TenantContract $tenant)
+    public function logs(Tenant $tenant, LogsDataTable $logsDataTable)
     {
-        return app(LogsDataTable::class)->with([
-            'type' => 'tenants',
+        return $logsDataTable->with([
             'resource' => $tenant,
-            'id' => 'cortex-tenants-tenants-logs',
-            'phrase' => trans('cortex/tenants::common.tenants'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
+            'tabs' => 'adminarea.tenants.tabs',
+            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-logs-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Import tenants.
      *
-     * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
+     * @param \Cortex\Tenants\Models\Tenant                        $tenant
+     * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function store(TenantFormRequest $request)
+    public function import(Tenant $tenant, ImportRecordsDataTable $importRecordsDataTable)
     {
-        return $this->process($request, app('rinvex.tenants.tenant'));
+        return $importRecordsDataTable->with([
+            'resource' => $tenant,
+            'tabs' => 'adminarea.tenants.tabs',
+            'url' => route('adminarea.tenants.stash'),
+            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-import-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
     /**
-     * Update the given resource in storage.
+     * Stash tenants.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     *
+     * @return void
+     */
+    public function stash(ImportFormRequest $request, DefaultImporter $importer)
+    {
+        // Handle the import
+        $importer->config['resource'] = $this->resource;
+        $importer->handleImport();
+    }
+
+    /**
+     * Hoard tenants.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function hoard(ImportFormRequest $request)
+    {
+        foreach ((array) $request->get('selected_ids') as $recordId) {
+            $record = app('cortex.foundation.import_record')->find($recordId);
+
+            try {
+                $fillable = collect($record['data'])->intersectByKeys(array_flip(app('rinvex.tenants.tenant')->getFillable()))->toArray();
+
+                tap(app('rinvex.tenants.tenant')->firstOrNew($fillable), function ($instance) use ($record) {
+                    $instance->save() && $record->delete();
+                });
+            } catch (Exception $exception) {
+                $record->notes = $exception->getMessage().(method_exists($exception, 'getMessageBag') ? "\n".json_encode($exception->getMessageBag())."\n\n" : '');
+                $record->status = 'fail';
+                $record->save();
+            }
+        }
+
+        return intend([
+            'back' => true,
+            'with' => ['success' => trans('cortex/foundation::messages.import_complete')],
+        ]);
+    }
+
+    /**
+     * List tenant import logs.
+     *
+     * @param \Cortex\Foundation\DataTables\ImportLogsDataTable $importLogsDatatable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function importLogs(ImportLogsDataTable $importLogsDatatable)
+    {
+        return $importLogsDatatable->with([
+            'resource' => trans('cortex/tenants::common.tenant'),
+            'tabs' => 'adminarea.tenants.tabs',
+            'id' => 'adminarea-tenants-import-logs-table',
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+    }
+
+    /**
+     * Create new tenant.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create(Tenant $tenant)
+    {
+        return $this->form($tenant);
+    }
+
+    /**
+     * Edit given tenant.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Tenant $tenant)
+    {
+        return $this->form($tenant);
+    }
+
+    /**
+     * Show tenant create/edit form.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Tenant $tenant)
+    {
+        $countries = collect(countries())->map(function ($country, $code) {
+            return [
+                'id' => $code,
+                'text' => $country['name'],
+                'emoji' => $country['emoji'],
+            ];
+        })->values();
+
+        $tags = app('rinvex.tags.tag')->pluck('name', 'id');
+        $languages = collect(languages())->pluck('name', 'iso_639_1');
+        $owners = app('cortex.auth.manager')->all()->pluck('username', 'id');
+
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'tags'));
+    }
+
+    /**
+     * Store new tenant.
      *
      * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract                $tenant
+     * @param \Cortex\Tenants\Models\Tenant                             $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update(TenantFormRequest $request, TenantContract $tenant)
+    public function store(TenantFormRequest $request, Tenant $tenant)
     {
         return $this->process($request, $tenant);
     }
 
     /**
-     * Delete the given resource from storage.
+     * Update given tenant.
      *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
+     * @param \Cortex\Tenants\Http\Requests\Adminarea\TenantFormRequest $request
+     * @param \Cortex\Tenants\Models\Tenant                             $tenant
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(TenantContract $tenant)
+    public function update(TenantFormRequest $request, Tenant $tenant)
+    {
+        return $this->process($request, $tenant);
+    }
+
+    /**
+     * Process stored/updated tenant.
+     *
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Tenants\Models\Tenant           $tenant
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    protected function process(FormRequest $request, Tenant $tenant)
+    {
+        // Prepare required input fields
+        $data = $request->validated();
+
+        ! $request->hasFile('profile_picture')
+        || $tenant->addMediaFromRequest('profile_picture')
+                       ->sanitizingFileName(function ($fileName) {
+                           return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
+                       })
+                       ->toMediaCollection('profile_picture', config('cortex.auth.media.disk'));
+
+        ! $request->hasFile('cover_photo')
+        || $tenant->addMediaFromRequest('cover_photo')
+                       ->sanitizingFileName(function ($fileName) {
+                           return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
+                       })
+                       ->toMediaCollection('cover_photo', config('cortex.auth.media.disk'));
+
+        // Save tenant
+        $tenant->fill($data)->save();
+        $tenant->owner->assign('owner');
+        $tenant->owner->attachTenants($tenant);
+
+        return intend([
+            'url' => route('adminarea.tenants.index'),
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
+        ]);
+    }
+
+    /**
+     * Destroy given tenant.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Tenant $tenant)
     {
         $tenant->delete();
 
         return intend([
             'url' => route('adminarea.tenants.index'),
-            'with' => ['warning' => trans('cortex/tenants::messages.tenant.deleted', ['slug' => $tenant->slug])],
-        ]);
-    }
-
-    /**
-     * Show the form for create/update of the given resource.
-     *
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function form(TenantContract $tenant)
-    {
-        $countries = countries();
-        $owners = app('rinvex.fort.user')->all()->pluck('username', 'id');
-        $languages = collect(languages())->pluck('name', 'iso_639_1');
-
-        return view('cortex/tenants::adminarea.forms.tenant', compact('tenant', 'owners', 'countries', 'languages'));
-    }
-
-    /**
-     * Process the form for store/update of the given resource.
-     *
-     * @param \Illuminate\Http\Request                    $request
-     * @param \Rinvex\Tenants\Contracts\TenantContract $tenant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function process(Request $request, TenantContract $tenant)
-    {
-        // Prepare required input fields
-        $data = $request->all();
-
-        // Save tenant
-        $tenant->fill($data)->save();
-
-        return intend([
-            'url' => route('adminarea.tenants.index'),
-            'with' => ['success' => trans('cortex/tenants::messages.tenant.saved', ['slug' => $tenant->slug])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
 }

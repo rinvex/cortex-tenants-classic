@@ -4,18 +4,48 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Requests\Adminarea;
 
-use Rinvex\Support\Http\Requests\FormRequest;
+use Rinvex\Support\Traits\Escaper;
+use Illuminate\Foundation\Http\FormRequest;
 
 class TenantFormRequest extends FormRequest
 {
+    use Escaper;
+
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param \Illuminate\Validation\Validator $validator
+     *
+     * @return void
+     */
+    public function withValidator($validator): void
+    {
+        // Sanitize input data before submission
+        $this->replace($this->escape($this->all()));
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $data = $this->all();
+
+        $data['owner_type'] = 'manager';
+
+        $this->replace($data);
     }
 
     /**
@@ -23,7 +53,7 @@ class TenantFormRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $tenant = $this->route('tenant') ?? app('rinvex.tenants.tenant');
         $tenant->updateRulesUniques();

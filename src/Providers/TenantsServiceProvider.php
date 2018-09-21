@@ -7,12 +7,14 @@ namespace Cortex\Tenants\Providers;
 use Illuminate\Routing\Router;
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Tenants\Contracts\TenantContract;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
+use Cortex\Tenants\Console\Commands\RollbackCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -22,10 +24,11 @@ class TenantsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.tenants.seed',
+        InstallCommand::class => 'command.cortex.tenants.install',
         MigrateCommand::class => 'command.cortex.tenants.migrate',
         PublishCommand::class => 'command.cortex.tenants.publish',
-        InstallCommand::class => 'command.cortex.tenants.install',
-        SeedCommand::class => 'command.cortex.tenants.seed',
+        RollbackCommand::class => 'command.cortex.tenants.rollback',
     ];
 
     /**
@@ -37,8 +40,15 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
+        // Merge config
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.tenants');
+
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
+        || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
+
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
@@ -48,29 +58,37 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $router): void
     {
         // Bind route models and constrains
-        $router->pattern('tenant', '[a-z0-9-]+');
-        $router->model('tenant', TenantContract::class);
+        $router->pattern('tenant', '[a-zA-Z0-9-]+');
+        $router->model('tenant', config('rinvex.tenants.models.tenant'));
+
+        // Map relations
+        Relation::morphMap([
+            'tenant' => config('rinvex.tenants.models.tenant'),
+        ]);
 
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
         ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
 
-        $router->pushMiddlewareToGroup('web', Tenantable::class);
+        // Inject tenantable middleware before route bindings substitution
+        $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
+        $before = array_slice($router->middlewarePriority, 0, $pointer);
+        $after = array_slice($router->middlewarePriority, $pointer);
 
-        // Register attributes entities
-        app('rinvex.attributes.entities')->push(Tenant::class);
+        $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
+        $router->pushMiddlewareToGroup('web', Tenantable::class);
     }
 
     /**
@@ -78,8 +96,10 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
+        $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('cortex.tenants.php')], 'cortex-tenants-config');
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tenants-migrations');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenants')], 'cortex-tenants-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenants')], 'cortex-tenants-views');
     }
@@ -89,13 +109,11 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));
