@@ -79,9 +79,6 @@ class TenantsServiceProvider extends ServiceProvider
             require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
-        // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-
         // Inject tenantable middleware before route bindings substitution
         $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
         $before = array_slice($router->middlewarePriority, 0, $pointer);
@@ -89,6 +86,9 @@ class TenantsServiceProvider extends ServiceProvider
 
         $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
         $router->pushMiddlewareToGroup('web', Tenantable::class);
+
+        // Publish Resources
+        ! $this->app->runningInConsole() || $this->publishResources();
     }
 
     /**

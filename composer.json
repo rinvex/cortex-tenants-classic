@@ -1,7 +1,7 @@
 {
     "name": "cortex/tenants",
-    "type": "cortex-module",
     "description": "Cortex Tenants is a frontend layer for the contextually intelligent polymorphic Laravel package, for single db multi-tenancy. You can completely isolate tenants data with ease using the same database, with full power and control over what data to be centrally shared, and what to be tenant related and therefore isolated from others.",
+    "type": "cortex-module",
     "keywords": [
         "model",
         "tenant",
@@ -47,19 +47,19 @@
         "Illuminate/http": "~5.7.0",
         "Illuminate/routing": "~5.7.0",
         "Illuminate/support": "~5.7.0",
-        "cortex/auth": "dev-develop",
-        "cortex/foundation": "dev-develop",
+        "cortex/auth": "^1.0.0",
+        "cortex/foundation": "^1.0.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.1.0",
         "laravelcollective/html": "~5.7.0",
         "league/fractal": "^0.17.0",
         "proengsoft/laravel-jsvalidation": "^2.3.0",
         "propaganistas/laravel-phone": "^4.0.0",
-        "rinvex/composer": "dev-develop",
-        "rinvex/country": "dev-develop",
-        "rinvex/language": "dev-develop",
-        "rinvex/menus": "dev-develop",
-        "rinvex/support": "dev-develop",
-        "rinvex/tenants": "dev-develop",
+        "rinvex/laravel-composer": "^1.0.0",
+        "rinvex/countries": "^5.0.0",
+        "rinvex/languages": "^3.0.0",
+        "rinvex/laravel-menus": "^1.0.0",
+        "rinvex/laravel-support": "^1.0.0",
+        "rinvex/laravel-tenants": "^1.0.0",
         "silber/bouncer": "v1.0.0-rc.3",
         "spatie/laravel-activitylog": "^2.8.0",
         "spatie/laravel-medialibrary": "^7.5.0",
@@ -70,7 +70,7 @@
         "yajra/laravel-datatables-oracle": "^8.8.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.20.0",
+        "codedungeon/phpunit-result-printer": "^0.22.0",
         "phpunit/phpunit": "^7.0.0"
     },
     "autoload": {
@@ -86,15 +86,15 @@
             "Cortex\\Tenants\\Tests\\": "tests"
         }
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "config": {
-        "preferred-install": "dist",
         "sort-packages": true,
+        "preferred-install": "dist",
         "optimize-autoloader": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
             "providers": [
                 "Cortex\\Tenants\\Providers\\TenantsServiceProvider"
