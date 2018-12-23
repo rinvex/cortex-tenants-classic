@@ -311,7 +311,7 @@
                                             <i class="fa fa-paperclip"></i>
                                             <a href="{{ $tenant->getFirstMediaUrl('profile_picture') }}" target="_blank">{{ $tenant->getFirstMedia('profile_picture')->file_name }}</a> ({{ $tenant->getFirstMedia('profile_picture')->human_readable_size }})
                                             <a href="#" data-toggle="modal" data-target="#delete-confirmation"
-                                               data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('profile_picture')]) }}"
+                                               data-modal-action="{{ route('adminarea.tenants.media.destroy', ['tenant' => $tenant, 'media' => $tenant->getFirstMedia('profile_picture')]) }}"
                                                data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                                                data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
                                                data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => $tenant->getFirstMedia('profile_picture')->file_name]) }}"
@@ -346,7 +346,7 @@
                                             <i class="fa fa-paperclip"></i>
                                             <a href="{{ $tenant->getFirstMediaUrl('cover_photo') }}" target="_blank">{{ $tenant->getFirstMedia('cover_photo')->file_name }}</a> ({{ $tenant->getFirstMedia('cover_photo')->human_readable_size }})
                                             <a href="#" data-toggle="modal" data-target="#delete-confirmation"
-                                               data-modal-action="{{ route('adminarea.admins.media.destroy', ['admin' => $tenant, 'media' => $tenant->getFirstMedia('cover_photo')]) }}"
+                                               data-modal-action="{{ route('adminarea.tenants.media.destroy', ['tenant' => $tenant, 'media' => $tenant->getFirstMedia('cover_photo')]) }}"
                                                data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                                                data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
                                                data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => $tenant->getFirstMedia('cover_photo')->file_name]) }}"
