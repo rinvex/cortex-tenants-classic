@@ -44,6 +44,7 @@ return [
     'twitter' => 'Twitter',
     'facebook' => 'Facebook',
     'linkedin' => 'LinkedIn',
+    'browse' => 'Browse',
 
     // Tenants
     'tenant' => 'Tenant',
