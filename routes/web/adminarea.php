@@ -15,10 +15,10 @@ Route::domain(domain())->group(function () {
                  Route::post('import')->name('stash')->uses('TenantsController@stash');
                  Route::post('hoard')->name('hoard')->uses('TenantsController@hoard');
                  Route::get('import/logs')->name('import.logs')->uses('TenantsController@importLogs');
-                 Route::get('create')->name('create')->uses('TenantsController@create');
+                 Route::get('create')->name('create')->uses('TenantsController@form');
                  Route::post('create')->name('store')->uses('TenantsController@store');
                  Route::get('{tenant}')->name('show')->uses('TenantsController@show');
-                 Route::get('{tenant}/edit')->name('edit')->uses('TenantsController@edit');
+                 Route::get('{tenant}/edit')->name('edit')->uses('TenantsController@form');
                  Route::put('{tenant}/edit')->name('update')->uses('TenantsController@update');
                  Route::get('{tenant}/logs')->name('logs')->uses('TenantsController@logs');
                  Route::delete('{tenant}')->name('destroy')->uses('TenantsController@destroy');
