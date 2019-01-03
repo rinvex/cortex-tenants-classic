@@ -135,30 +135,6 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Create new tenant.
-     *
-     * @param \Cortex\Tenants\Models\Tenant $tenant
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create(Tenant $tenant)
-    {
-        return $this->form($tenant);
-    }
-
-    /**
-     * Edit given tenant.
-     *
-     * @param \Cortex\Tenants\Models\Tenant $tenant
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Tenant $tenant)
-    {
-        return $this->form($tenant);
-    }
-
-    /**
      * Show tenant create/edit form.
      *
      * @param \Cortex\Tenants\Models\Tenant $tenant
