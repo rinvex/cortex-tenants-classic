@@ -22,19 +22,6 @@ class TenantFormRequest extends FormRequest
     }
 
     /**
-     * Configure the validator instance.
-     *
-     * @param \Illuminate\Validation\Validator $validator
-     *
-     * @return void
-     */
-    public function withValidator($validator): void
-    {
-        // Sanitize input data before submission
-        $this->replace($this->escape($this->all()));
-    }
-
-    /**
      * Prepare the data for validation.
      *
      * @return void
