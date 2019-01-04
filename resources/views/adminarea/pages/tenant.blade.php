@@ -18,9 +18,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @if($tenant->exists)
-        @include('cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
-    @endif
+    @includeWhen($tenant->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
 
     <div class="content-wrapper">
         <section class="content-header">
