@@ -47,9 +47,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tenant->exists)
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => "adminarea-tenants-{$tenant->getRouteKey()}-update-form"]) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => "adminarea-tenants-{$tenant->getRouteKey()}-update-form", 'files' => true]) }}
                         @else
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-create-form']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-create-form', 'files' => true]) }}
                         @endif
 
                             <div class="row">
