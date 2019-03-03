@@ -22,20 +22,6 @@ class TenantFormRequest extends FormRequest
     }
 
     /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation(): void
-    {
-        $data = $this->all();
-
-        $data['owner_type'] = 'manager';
-
-        $this->replace($data);
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array

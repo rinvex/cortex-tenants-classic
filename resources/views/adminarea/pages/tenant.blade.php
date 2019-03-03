@@ -18,9 +18,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @if($tenant->exists)
-        @include('cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
-    @endif
+    @includeWhen($tenant->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
 
     <div class="content-wrapper">
         <section class="content-header">
@@ -49,9 +47,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tenant->exists)
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => "adminarea-tenants-{$tenant->getRouteKey()}-update-form"]) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.update', ['tenant' => $tenant]), 'method' => 'put', 'id' => "adminarea-tenants-{$tenant->getRouteKey()}-update-form", 'files' => true]) }}
                         @else
-                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-create-form']) }}
+                            {{ Form::model($tenant, ['url' => route('adminarea.tenants.store'), 'id' => 'adminarea-tenants-create-form', 'files' => true]) }}
                         @endif
 
                             <div class="row">
@@ -86,17 +84,18 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Owner --}}
-                                    <div class="form-group{{ $errors->has('owner_id') ? ' has-error' : '' }}">
-                                        {{ Form::label('owner_id', trans('cortex/tenants::common.owner'), ['class' => 'control-label']) }}
-                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_owner'), 'required' => 'required', 'data-width' => '100%']) }}
+                                    {{-- Is Active --}}
+                                    <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
+                                        {{ Form::label('is_active', trans('cortex/tenants::common.is_active'), ['class' => 'control-label']) }}
+                                        {{ Form::select('is_active', [1 => trans('cortex/tenants::common.yes'), 0 => trans('cortex/tenants::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%', 'required' => 'required']) }}
 
-                                        @if ($errors->has('owner_id'))
-                                            <span class="help-block">{{ $errors->first('owner_id') }}</span>
+                                        @if ($errors->has('is_active'))
+                                            <span class="help-block">{{ $errors->first('is_active') }}</span>
                                         @endif
                                     </div>
 
                                 </div>
+
                             </div>
 
                             <div class="row">
@@ -226,13 +225,13 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Is Active --}}
-                                    <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
-                                        {{ Form::label('is_active', trans('cortex/tenants::common.is_active'), ['class' => 'control-label']) }}
-                                        {{ Form::select('is_active', [1 => trans('cortex/tenants::common.yes'), 0 => trans('cortex/tenants::common.no')], null, ['class' => 'form-control select2', 'data-minimum-results-for-search' => 'Infinity', 'data-width' => '100%', 'required' => 'required']) }}
+                                    {{-- Timezone --}}
+                                    <div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
+                                        {{ Form::label('timezone', trans('cortex/tenants::common.timezone'), ['class' => 'control-label']) }}
+                                        {{ Form::text('timezone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.timezone'), 'required' => 'required']) }}
 
-                                        @if ($errors->has('is_active'))
-                                            <span class="help-block">{{ $errors->first('is_active') }}</span>
+                                        @if ($errors->has('timezone'))
+                                            <span class="help-block">{{ $errors->first('timezone') }}</span>
                                         @endif
                                     </div>
 
@@ -380,38 +379,6 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Timezone --}}
-                                    <div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
-                                        {{ Form::label('timezone', trans('cortex/tenants::common.timezone'), ['class' => 'control-label']) }}
-                                        {{ Form::text('timezone', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.timezone'), 'required' => 'required']) }}
-
-                                        @if ($errors->has('timezone'))
-                                            <span class="help-block">{{ $errors->first('timezone') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-8">
-
-                                    {{-- Address --}}
-                                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                        {{ Form::label('address', trans('cortex/tenants::common.address'), ['class' => 'control-label']) }}
-                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.address')]) }}
-
-                                        @if ($errors->has('address'))
-                                            <span class="help-block">{{ $errors->first('address') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-4">
-
                                     {{-- Twitter --}}
                                     <div class="form-group{{ $errors->has('social.twitter') ? ' has-error' : '' }}">
                                         {{ Form::label('social[twitter]', trans('cortex/tenants::common.twitter'), ['class' => 'control-label']) }}
@@ -447,6 +414,24 @@
 
                                         @if ($errors->has('social.linkedin'))
                                             <span class="help-block">{{ $errors->first('social.linkedin') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    {{-- Address --}}
+                                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                        {{ Form::label('address', trans('cortex/tenants::common.address'), ['class' => 'control-label']) }}
+                                        {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.address')]) }}
+
+                                        @if ($errors->has('address'))
+                                            <span class="help-block">{{ $errors->first('address') }}</span>
                                         @endif
                                     </div>
 
