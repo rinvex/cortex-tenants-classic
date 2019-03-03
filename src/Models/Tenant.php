@@ -11,7 +11,6 @@ use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Support\Traits\HasSocialAttributes;
-use Cortex\Foundation\Relations\BelongsToMorph;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
