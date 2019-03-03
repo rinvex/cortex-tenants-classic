@@ -13,11 +13,17 @@ class CortexTenantsSeeder extends Seeder
      */
     public function run()
     {
-        Bouncer::allow('admin')->to('list', config('rinvex.tenants.models.tenant'));
-        Bouncer::allow('admin')->to('import', config('rinvex.tenants.models.tenant'));
-        Bouncer::allow('admin')->to('create', config('rinvex.tenants.models.tenant'));
-        Bouncer::allow('admin')->to('update', config('rinvex.tenants.models.tenant'));
-        Bouncer::allow('admin')->to('delete', config('rinvex.tenants.models.tenant'));
-        Bouncer::allow('admin')->to('audit', config('rinvex.tenants.models.tenant'));
+        $abilities = [
+            ['name' => 'list', 'title' => 'List tenants', 'entity_type' => 'tenant'],
+            ['name' => 'import', 'title' => 'Import tenants', 'entity_type' => 'tenant'],
+            ['name' => 'create', 'title' => 'Create tenants', 'entity_type' => 'tenant'],
+            ['name' => 'update', 'title' => 'Update tenants', 'entity_type' => 'tenant'],
+            ['name' => 'delete', 'title' => 'Delete tenants', 'entity_type' => 'tenant'],
+            ['name' => 'audit', 'title' => 'Audit tenants', 'entity_type' => 'tenant'],
+        ];
+
+        collect($abilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->create($ability);
+        });
     }
 }
