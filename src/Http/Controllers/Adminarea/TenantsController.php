@@ -153,9 +153,8 @@ class TenantsController extends AuthorizedController
 
         $tags = app('rinvex.tags.tag')->pluck('name', 'id');
         $languages = collect(languages())->pluck('name', 'iso_639_1');
-        $owners = app('cortex.auth.manager')->all()->pluck('username', 'id');
 
-        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'owners', 'countries', 'languages', 'tags'));
+        return view('cortex/tenants::adminarea.pages.tenant', compact('tenant', 'countries', 'languages', 'tags'));
     }
 
     /**
@@ -213,8 +212,6 @@ class TenantsController extends AuthorizedController
 
         // Save tenant
         $tenant->fill($data)->save();
-        $tenant->owner->assign('owner');
-        $tenant->owner->attachTenants($tenant);
 
         return intend([
             'url' => route('adminarea.tenants.index'),

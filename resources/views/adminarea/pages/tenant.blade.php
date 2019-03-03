@@ -82,19 +82,6 @@
 
                                 </div>
 
-                                <div class="col-md-4">
-
-                                    {{-- Owner --}}
-                                    <div class="form-group{{ $errors->has('owner_id') ? ' has-error' : '' }}">
-                                        {{ Form::label('owner_id', trans('cortex/tenants::common.owner'), ['class' => 'control-label']) }}
-                                        {{ Form::select('owner_id', $owners, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_owner'), 'required' => 'required', 'data-width' => '100%']) }}
-
-                                        @if ($errors->has('owner_id'))
-                                            <span class="help-block">{{ $errors->first('owner_id') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
                             </div>
 
                             <div class="row">

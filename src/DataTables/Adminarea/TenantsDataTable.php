@@ -42,11 +42,6 @@ class TenantsDataTable extends AbstractDataTable
     {
         return datatables($this->query())
             ->setTransformer(app($this->transformer))
-            ->filterColumn('owner.username', function (Builder $builder, $keyword) {
-                $builder->whereHas('owner', function (Builder $builder) use ($keyword) {
-                    $builder->where('username', 'like', "%{$keyword}%");
-                });
-            })
             ->filterColumn('country_code', function (Builder $builder, $keyword) {
                 $countryCode = collect(countries())->search(function ($country) use ($keyword) {
                     return mb_strpos($country['name'], $keyword) !== false || mb_strpos($country['emoji'], $keyword) !== false;
@@ -80,7 +75,6 @@ class TenantsDataTable extends AbstractDataTable
             'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],
-            'owner' => ['title' => trans('cortex/tenants::common.owner'), 'data' => 'owner.username', 'orderable' => false],
             'country_code' => ['title' => trans('cortex/tenants::common.country'), 'render' => 'full.country_emoji+" "+data'],
             'language_code' => ['title' => trans('cortex/tenants::common.language')],
             'created_at' => ['title' => trans('cortex/tenants::common.created_at'), 'render' => "moment(data).format('YYYY-MM-DD, hh:mm:ss A')"],
