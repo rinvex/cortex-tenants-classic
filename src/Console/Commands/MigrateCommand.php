@@ -31,6 +31,16 @@ class MigrateCommand extends BaseMigrateCommand
     {
         parent::handle();
 
-        $this->call('migrate', ['--step' => true, '--path' => 'app/cortex/tenants/database/migrations', '--force' => $this->option('force')]);
+        if (file_exists($path = 'database/migrations/cortex/tenants')) {
+            $this->call('migrate', [
+                '--step' => true,
+                '--path' => $path,
+                '--force' => $this->option('force'),
+            ]);
+        } else {
+            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan cortex:publish:tenants</>');
+        }
+
+        $this->line('');
     }
 }
