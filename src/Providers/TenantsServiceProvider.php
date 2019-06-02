@@ -7,6 +7,7 @@ namespace Cortex\Tenants\Providers;
 use Illuminate\Routing\Router;
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
@@ -18,6 +19,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
 {
+    use ConsoleTools;
+
     /**
      * The commands to be registered.
      *
@@ -74,7 +77,6 @@ class TenantsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
-        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus/adminarea.php';
         });
@@ -88,34 +90,9 @@ class TenantsServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-    }
-
-    /**
-     * Publish resources.
-     *
-     * @return void
-     */
-    protected function publishResources(): void
-    {
-        $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('cortex.tenants.php')], 'cortex-tenants-config');
-        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tenants-migrations');
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tenants')], 'cortex-tenants-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tenants')], 'cortex-tenants-views');
-    }
-
-    /**
-     * Register console commands.
-     *
-     * @return void
-     */
-    protected function registerCommands(): void
-    {
-        // Register artisan commands
-        foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, $key);
-        }
-
-        $this->commands(array_values($this->commands));
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tenants');
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tenants');
+        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/tenants');
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tenants');
     }
 }
