@@ -90,9 +90,9 @@ class TenantsServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('web', Tenantable::class);
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tenants');
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tenants');
-        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/tenants');
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tenants');
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tenants', true);
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tenants', true);
+        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/tenants', true);
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tenants', true);
     }
 }
