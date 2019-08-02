@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Models;
 
-use Cortex\Auth\Models\Manager;
 use Rinvex\Tags\Traits\Taggable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
