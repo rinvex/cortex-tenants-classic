@@ -82,13 +82,18 @@ class TenantsServiceProvider extends ServiceProvider
             ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
         });
 
-        // Inject tenantable middleware before route bindings substitution
-        $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
-        $before = array_slice($router->middlewarePriority, 0, $pointer);
-        $after = array_slice($router->middlewarePriority, $pointer);
+        // Inject tenantable middleware
+        // before route bindings substitution
+        $this->app->booted(function () {
+            $router = $this->app['router'];
 
-        $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
-        $router->pushMiddlewareToGroup('web', Tenantable::class);
+            $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
+            $before = array_slice($router->middlewarePriority, 0, $pointer);
+            $after = array_slice($router->middlewarePriority, $pointer);
+
+            $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
+            $router->pushMiddlewareToGroup('web', Tenantable::class);
+        });
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishesLang('cortex/tenants', true);

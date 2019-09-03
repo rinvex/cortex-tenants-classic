@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v2.2.4] - 2019-09-03
+- Fix middleware injection issue with console
+
 ## [v2.2.3] - 2019-09-03
 - Update media config options
 - Use $_SERVER instead of $_ENV for PHPUnit
@@ -61,6 +64,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v2.2.4]: https://github.com/rinvex/cortex-tenants/compare/v2.2.3...v2.2.4
 [v2.2.3]: https://github.com/rinvex/cortex-tenants/compare/v2.2.2...v2.2.3
 [v2.2.2]: https://github.com/rinvex/cortex-tenants/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/rinvex/cortex-tenants/compare/v2.2.0...v2.2.1
