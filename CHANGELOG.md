@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v3.0.3] - 2019-10-06
+- Refactor menus and breadcrumb bindings to utilize event dispatcher
+
 ## [v3.0.2] - 2019-09-24
 - Add missing laravel/helpers composer package
 
@@ -76,6 +79,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v3.0.3]: https://github.com/rinvex/cortex-tenants/compare/v3.0.2...v3.0.3
 [v3.0.2]: https://github.com/rinvex/cortex-tenants/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/rinvex/cortex-tenants/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/rinvex/cortex-tenants/compare/v2.2.5...v3.0.0
