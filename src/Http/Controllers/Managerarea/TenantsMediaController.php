@@ -34,6 +34,7 @@ class TenantsMediaController extends AuthenticatedController
             $this->middleware($middlewareName, $options)->only($methods);
         }
     }
+
     /**
      * Destroy given tenant media.
      *
