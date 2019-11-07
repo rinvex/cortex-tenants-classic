@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
-use Exception;
 use Cortex\Tenants\Models\Tenant;
-use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\Http\Controllers\AuthenticatedController;
 
 class TenantsController extends AuthenticatedController
@@ -15,6 +13,7 @@ class TenantsController extends AuthenticatedController
      * {@inheritdoc}
      */
     protected $resource = Tenant::class;
+
     /**
      * Show tenant create/edit form.
      *
@@ -35,6 +34,7 @@ class TenantsController extends AuthenticatedController
 
         $tags = app('rinvex.tags.tag')->pluck('name', 'id');
         $languages = collect(languages())->pluck('name', 'iso_639_1');
+
         return view('cortex/tenants::managerarea.pages.tenant', compact('tenant', 'countries', 'languages', 'tags'));
     }
 
@@ -74,5 +74,4 @@ class TenantsController extends AuthenticatedController
             'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
-
 }
