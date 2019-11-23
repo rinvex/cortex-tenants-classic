@@ -22,6 +22,7 @@ class TenantTransformer extends TransformerAbstract
 
         return $this->escape([
             'id' => (string) $tenant->getRouteKey(),
+            'DT_RowId' => 'row_'.$tenant->getRouteKey(),
             'name' => (string) $tenant->name,
             'email' => (string) $tenant->email,
             'phone' => (string) $tenant->phone,
