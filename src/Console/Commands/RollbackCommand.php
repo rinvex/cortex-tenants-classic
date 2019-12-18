@@ -31,7 +31,6 @@ class RollbackCommand extends BaseRollbackCommand
     {
         if (file_exists($path = 'database/migrations/cortex/tenants')) {
             $this->call('migrate:reset', [
-                '--step' => true,
                 '--path' => $path,
                 '--force' => $this->option('force'),
             ]);

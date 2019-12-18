@@ -65,7 +65,7 @@ class TenantsServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $dispatcher): void
     {
         // Bind route models and constrains
-        $router->pattern('tenant', '[a-zA-Z0-9-]+');
+        $router->pattern('tenant', '[a-zA-Z0-9-_]+');
         $router->model('tenant', config('rinvex.tenants.models.tenant'));
 
         // Map relations
