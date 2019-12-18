@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v3.1.1] - 2019-12-18
+- Add DT_RowId field to datatables
+- Fix route regex pattern to include underscores
+  - This way it's compatible with validation rule `alpha_dash`
+- Fix `migrate:reset` args as it doesn't accept --step
+
 ## [v3.1.0] - 2019-11-23
 - Allow manager to edit his tenant details
 
@@ -86,7 +92,8 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
-[v3.0.5]: https://github.com/rinvex/cortex-tenants/compare/v3.0.4...v3.0.5
+[v3.1.1]: https://github.com/rinvex/cortex-tenants/compare/v3.1.0...v3.1.1
+[v3.1.0]: https://github.com/rinvex/cortex-tenants/compare/v3.0.4...v3.1.0
 [v3.0.4]: https://github.com/rinvex/cortex-tenants/compare/v3.0.3...v3.0.4
 [v3.0.3]: https://github.com/rinvex/cortex-tenants/compare/v3.0.2...v3.0.3
 [v3.0.2]: https://github.com/rinvex/cortex-tenants/compare/v3.0.1...v3.0.2
