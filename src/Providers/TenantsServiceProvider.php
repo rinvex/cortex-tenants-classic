@@ -102,5 +102,6 @@ class TenantsServiceProvider extends ServiceProvider
         ! $this->app->runningInConsole() || $this->publishesViews('cortex/tenants', true);
         ! $this->app->runningInConsole() || $this->publishesConfig('cortex/tenants', true);
         ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tenants', true);
+        ! $this->app['config']['cortex.tenants.autoload_migrations'] || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
