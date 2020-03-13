@@ -98,9 +98,10 @@ class TenantsServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tenants', true);
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tenants', true);
-        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/tenants', true);
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tenants', true);
+        $this->publishesLang('cortex/tenants', true);
+        $this->publishesViews('cortex/tenants', true);
+        $this->publishesConfig('cortex/tenants', true);
+        $this->publishesMigrations('cortex/tenants', true);
+        ! $this->autoloadMigrations('cortex.tenants') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
