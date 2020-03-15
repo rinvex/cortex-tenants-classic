@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.0.3] - 2020-03-16
+- Update proengsoft/laravel-jsvalidation composer package
+
 ## [v4.0.2] - 2020-03-15
 - Fix incompatible package version league/fractal
 
@@ -109,6 +112,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.0.3]: https://github.com/rinvex/cortex-tenants/compare/v4.0.2...v4.0.3
 [v4.0.2]: https://github.com/rinvex/cortex-tenants/compare/v4.0.1...v4.0.2
 [v4.0.1]: https://github.com/rinvex/cortex-tenants/compare/v4.0.0...v4.0.1
 [v4.0.0]: https://github.com/rinvex/cortex-tenants/compare/v3.1.2...v4.0.0
