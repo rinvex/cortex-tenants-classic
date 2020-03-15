@@ -52,7 +52,7 @@
         "davejamesmiller/laravel-breadcrumbs": "^5.3.0",
         "laravel/helpers": "^1.2.0",
         "laravelcollective/html": "^6.1.0",
-        "league/fractal": "^0.19.0",
+        "league/fractal": "^0.18.0",
         "proengsoft/laravel-jsvalidation": "^2.5.0",
         "propaganistas/laravel-phone": "^4.2.0",
         "rinvex/laravel-composer": "^4.0.0",
