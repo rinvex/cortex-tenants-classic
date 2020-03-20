@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Models;
 
 use Rinvex\Tags\Traits\Taggable;
+use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
@@ -70,7 +70,7 @@ class Tenant extends BaseTenant implements HasMedia
     use Auditable;
     use LogsActivity;
     use HashidsTrait;
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasSocialAttributes;
 
     /**

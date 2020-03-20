@@ -13,7 +13,7 @@ class MigrateCommand extends BaseMigrateCommand
      *
      * @var string
      */
-    protected $signature = 'cortex:migrate:tenants {--force : Force the operation to run when in production.}';
+    protected $signature = 'cortex:migrate:tenants {--f|force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
@@ -31,7 +31,11 @@ class MigrateCommand extends BaseMigrateCommand
     {
         parent::handle();
 
-        if (file_exists($path = 'database/migrations/cortex/tenants')) {
+        $path = config('cortex.tenants.autoload_migrations') ?
+            'app/cortex/tenants/database/migrations' :
+            'database/migrations/cortex/tenants';
+
+        if (file_exists($path)) {
             $this->call('migrate', [
                 '--step' => true,
                 '--path' => $path,

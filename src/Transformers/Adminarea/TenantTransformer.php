@@ -13,6 +13,12 @@ class TenantTransformer extends TransformerAbstract
     use Escaper;
 
     /**
+     * Transform tenant model.
+     *
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @throws \Exception
+     *
      * @return array
      */
     public function transform(Tenant $tenant): array
