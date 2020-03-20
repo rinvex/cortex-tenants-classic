@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Cortex\Tenants\Models\Tenant;
 use Rinvex\Menus\Models\MenuItem;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Rinvex\Menus\Models\MenuGenerator;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Tenant $tenant) {
     $menu->findByTitleOrAdd(trans('cortex/foundation::common.crm'), 50, 'fa fa-briefcase', [], function (MenuItem $dropdown) use ($tenant) {
