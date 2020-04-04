@@ -33,22 +33,22 @@ class PublishCommand extends BasePublishCommand
 
         switch ($this->option('resource')) {
             case 'lang':
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-lang', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::lang', '--force' => $this->option('force')]);
                 break;
             case 'views':
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-views', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::views', '--force' => $this->option('force')]);
                 break;
             case 'config':
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-config', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::config', '--force' => $this->option('force')]);
                 break;
             case 'migrations':
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-migrations', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::migrations', '--force' => $this->option('force')]);
                 break;
             default:
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-lang', '--force' => $this->option('force')]);
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-views', '--force' => $this->option('force')]);
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-config', '--force' => $this->option('force')]);
-                $this->call('vendor:publish', ['--tag' => 'cortex-tenants-migrations', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::lang', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::views', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::config', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'cortex/tenants::migrations', '--force' => $this->option('force')]);
                 break;
         }
 

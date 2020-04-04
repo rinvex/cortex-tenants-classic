@@ -78,6 +78,7 @@ class TenantsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/managerarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
+        ! $this->autoloadMigrations('cortex/tenants') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
@@ -102,6 +103,5 @@ class TenantsServiceProvider extends ServiceProvider
         $this->publishesViews('cortex/tenants', true);
         $this->publishesConfig('cortex/tenants', true);
         $this->publishesMigrations('cortex/tenants', true);
-        ! $this->autoloadMigrations('cortex.tenants') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
