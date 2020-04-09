@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.0.6] - 2020-04-09
+- Tweak artisan command registration
+- Add missing config publishing command
+- Refactor publish command and allow multiple resource values
+
 ## [v4.0.5] - 2020-04-04
 - Enforce consistent artisan command tag namespacing
 - Enforce consistent package namespace
@@ -125,6 +130,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.0.6]: https://github.com/rinvex/cortex-tenants/compare/v4.0.5...v4.0.6
 [v4.0.5]: https://github.com/rinvex/cortex-tenants/compare/v4.0.4...v4.0.5
 [v4.0.4]: https://github.com/rinvex/cortex-tenants/compare/v4.0.3...v4.0.4
 [v4.0.3]: https://github.com/rinvex/cortex-tenants/compare/v4.0.2...v4.0.3
