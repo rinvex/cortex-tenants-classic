@@ -157,10 +157,10 @@ class Tenant extends BaseTenant implements HasMedia
         $this->setTable(config('rinvex.tenants.tables.tenants'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
-            'name' => 'required|string|max:150',
-            'description' => 'nullable|string|max:10000',
+            'name' => 'required|string|strip_tags|max:150',
+            'description' => 'nullable|string|strip_tags|max:10000',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
-            'website' => 'nullable|string|max:150',
+            'website' => 'nullable|string|strip_tags|max:150',
             'phone' => 'required|phone:AUTO',
             'country_code' => 'required|alpha|size:2|country',
             'language_code' => 'required|alpha|size:2|language',
@@ -169,10 +169,10 @@ class Tenant extends BaseTenant implements HasMedia
             'address' => 'nullable|string',
             'postal_code' => 'nullable|string',
             'launch_date' => 'nullable|date_format:Y-m-d',
-            'timezone' => 'required|string|timezone',
+            'timezone' => 'required|string|max:150|timezone',
             'currency' => 'required|string|size:3',
             'social' => 'nullable',
-            'style' => 'nullable|string|max:150',
+            'style' => 'nullable|string|strip_tags|max:150',
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
         ]);
