@@ -29,17 +29,17 @@ Breadcrumbs::register('adminarea.tenants.create', function (BreadcrumbsGenerator
 
 Breadcrumbs::register('adminarea.tenants.edit', function (BreadcrumbsGenerator $breadcrumbs, Tenant $tenant) {
     $breadcrumbs->parent('adminarea.tenants.index');
-    $breadcrumbs->push($tenant->name, route('adminarea.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->push(strip_tags($tenant->name), route('adminarea.tenants.edit', ['tenant' => $tenant]));
 });
 
 Breadcrumbs::register('adminarea.tenants.logs', function (BreadcrumbsGenerator $breadcrumbs, Tenant $tenant) {
     $breadcrumbs->parent('adminarea.tenants.index');
-    $breadcrumbs->push($tenant->name, route('adminarea.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->push(strip_tags($tenant->name), route('adminarea.tenants.edit', ['tenant' => $tenant]));
     $breadcrumbs->push(trans('cortex/tenants::common.logs'), route('adminarea.tenants.logs', ['tenant' => $tenant]));
 });
 
 Breadcrumbs::register('adminarea.tenants.media.index', function (BreadcrumbsGenerator $breadcrumbs, Tenant $tenant) {
     $breadcrumbs->parent('adminarea.tenants.index');
-    $breadcrumbs->push($tenant->name, route('adminarea.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->push(strip_tags($tenant->name), route('adminarea.tenants.edit', ['tenant' => $tenant]));
     $breadcrumbs->push(trans('cortex/tenants::common.media'), route('adminarea.tenants.media.index', ['tenant' => $tenant]));
 });
