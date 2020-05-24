@@ -10,8 +10,10 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Cortex\Foundation\Events\CrudPerformed;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
@@ -72,6 +74,7 @@ class Tenant extends BaseTenant implements HasMedia
     use HashidsTrait;
     use InteractsWithMedia;
     use HasSocialAttributes;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -118,6 +121,18 @@ class Tenant extends BaseTenant implements HasMedia
         'style' => 'string',
         'is_active' => 'boolean',
         'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CrudPerformed::class,
+        'deleted' => CrudPerformed::class,
+        'restored' => CrudPerformed::class,
+        'updated' => CrudPerformed::class,
     ];
 
     /**
