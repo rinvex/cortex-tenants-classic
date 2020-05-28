@@ -10,7 +10,7 @@ Route::domain(domain())->group(function () {
 
         // Tenants Routes
              Route::name('tenants.')->prefix('tenants')->group(function () {
-                 Route::get('/')->name('index')->uses('TenantsController@index');
+                 Route::match(['get', 'post'], '/')->name('index')->uses('TenantsController@index');
                  Route::get('import')->name('import')->uses('TenantsController@import');
                  Route::post('import')->name('stash')->uses('TenantsController@stash');
                  Route::post('hoard')->name('hoard')->uses('TenantsController@hoard');
