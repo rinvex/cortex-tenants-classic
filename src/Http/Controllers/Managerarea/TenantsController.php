@@ -71,7 +71,7 @@ class TenantsController extends AuthenticatedController
 
         return intend([
             'back' => true,
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => strip_tags($tenant->name)])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
 }

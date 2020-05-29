@@ -50,7 +50,7 @@ class TenantsMediaController extends AuthenticatedController
 
         return intend([
             'back' => true,
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => strip_tags($media->getRouteKey())])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/foundation::common.media'), 'identifier' => $media->getRouteKey()])],
         ]);
     }
 }
