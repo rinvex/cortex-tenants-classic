@@ -22,18 +22,6 @@ class TenantsDataTable extends AbstractDataTable
     protected $transformer = TenantTransformer::class;
 
     /**
-     * Get the query object to be processed by dataTables.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
-     */
-    public function query()
-    {
-        $query = app($this->model)->query();
-
-        return $this->applyScopes($query);
-    }
-
-    /**
      * Display ajax response.
      *
      * @return \Illuminate\Http\JsonResponse
