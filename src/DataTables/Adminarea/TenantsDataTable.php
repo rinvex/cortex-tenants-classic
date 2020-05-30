@@ -22,18 +22,6 @@ class TenantsDataTable extends AbstractDataTable
     protected $transformer = TenantTransformer::class;
 
     /**
-     * Get the query object to be processed by dataTables.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
-     */
-    public function query()
-    {
-        $query = app($this->model)->query();
-
-        return $this->applyScopes($query);
-    }
-
-    /**
      * Display ajax response.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -72,6 +60,7 @@ class TenantsDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.tenants.edit\', {tenant: full.id})+"\">"+data+"</a>"';
 
         return [
+            'id' => ['checkboxes' => '{"selectRow": true}', 'exportable' => false, 'printable' => false],
             'name' => ['title' => trans('cortex/tenants::common.name'), 'render' => $link.'+(full.is_active ? " <i class=\"text-success fa fa-check\"></i>" : " <i class=\"text-danger fa fa-close\"></i>")', 'responsivePriority' => 0],
             'email' => ['title' => trans('cortex/tenants::common.email')],
             'phone' => ['title' => trans('cortex/tenants::common.phone')],

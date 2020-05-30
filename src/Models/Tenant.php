@@ -8,10 +8,15 @@ use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
@@ -72,6 +77,7 @@ class Tenant extends BaseTenant implements HasMedia
     use HashidsTrait;
     use InteractsWithMedia;
     use HasSocialAttributes;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -121,6 +127,18 @@ class Tenant extends BaseTenant implements HasMedia
     ];
 
     /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => ModelCreated::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
+    ];
+
+    /**
      * Indicates whether to log only dirty attributes or all.
      *
      * @var bool
@@ -157,10 +175,10 @@ class Tenant extends BaseTenant implements HasMedia
         $this->setTable(config('rinvex.tenants.tables.tenants'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
-            'name' => 'required|string|max:150',
+            'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:10000',
             'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
-            'website' => 'nullable|string|max:150',
+            'website' => 'nullable|url|max:1500',
             'phone' => 'required|phone:AUTO',
             'country_code' => 'required|alpha|size:2|country',
             'language_code' => 'required|alpha|size:2|language',
@@ -169,10 +187,10 @@ class Tenant extends BaseTenant implements HasMedia
             'address' => 'nullable|string',
             'postal_code' => 'nullable|string',
             'launch_date' => 'nullable|date_format:Y-m-d',
-            'timezone' => 'required|string|timezone',
+            'timezone' => 'required|string|max:150|timezone',
             'currency' => 'required|string|size:3',
             'social' => 'nullable',
-            'style' => 'nullable|string|max:150',
+            'style' => 'nullable|string|strip_tags|max:150',
             'is_active' => 'sometimes|boolean',
             'tags' => 'nullable|array',
         ]);

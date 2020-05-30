@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.0.8] - 2020-05-30
+- Add datatables checkbox column for bulk actions
+- Use getRouteKey() attribute for all redirect identifiers
+- Drop useless datatable query() method override
+- Drop using strip_tags on redirect identifiers as they will use ->getRouteKey() which is already safe
+- Add support for datatable listing get and post requests
+- Refactor model CRUD dispatched events
+- Remove useless "DT_RowId" fielld from transformers
+- Register channel broadcasting routes
+- Fire custom model events from CRUD actions
+- Rename datatables container names
+- Load module routes automatically
+- Strip tags breadcrumbs of potential user inputs
+- Strip tags of language phrase parameters with potential user inputs
+- Escape language phrases
+- Update model validation rules
+- Add strip_tags validation rule to string fields
+- Remove default indent size config
+- Fix compatibility with recent rinvex/laravel-menus package update
+
 ## [v4.0.7] - 2020-04-12
 - Fix ServiceProvider registerCommands method compatibility
 
@@ -133,6 +153,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.0.8]: https://github.com/rinvex/cortex-tenants/compare/v4.0.7...v4.0.8
 [v4.0.7]: https://github.com/rinvex/cortex-tenants/compare/v4.0.6...v4.0.7
 [v4.0.6]: https://github.com/rinvex/cortex-tenants/compare/v4.0.5...v4.0.6
 [v4.0.5]: https://github.com/rinvex/cortex-tenants/compare/v4.0.4...v4.0.5
