@@ -46,9 +46,6 @@ class TenantsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.tenants');
-
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
         || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
@@ -73,16 +70,6 @@ class TenantsServiceProvider extends ServiceProvider
             'tenant' => config('rinvex.tenants.models.tenant'),
         ]);
 
-        // Load resources
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tenants');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tenants');
-        ! $this->autoloadMigrations('cortex/tenants') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
-        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
-            ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
-            ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
-        });
-
         // Inject tenantable middleware
         // before route bindings substitution
         $this->app->booted(function () {
@@ -95,11 +82,5 @@ class TenantsServiceProvider extends ServiceProvider
             $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
             $router->pushMiddlewareToGroup('web', Tenantable::class);
         });
-
-        // Publish Resources
-        $this->publishesLang('cortex/tenants', true);
-        $this->publishesViews('cortex/tenants', true);
-        $this->publishesConfig('cortex/tenants', true);
-        $this->publishesMigrations('cortex/tenants', true);
     }
 }
