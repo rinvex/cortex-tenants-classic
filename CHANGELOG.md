@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.2.0] - 2020-06-15
+- Autoload config, views, language, menus, breadcrumbs, and migrations
+  - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
+- Merge additional fillable, casts, and rules instead of overriding
+- Only display tenant edit menu if manager has permission to update
+- Move tenant edit link to header menu
+- Drop PHP 7.2 & 7.3 support from travis
+
+## [v4.1.1] - 2020-05-30
+- Update composer dependencies
+
 ## [v4.1.0] - 2020-05-30
 - With the significance of recent updates, new minor release required
 
@@ -156,6 +167,8 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.2.0]: https://github.com/rinvex/cortex-tenants/compare/v4.1.1...v4.2.0
+[v4.1.1]: https://github.com/rinvex/cortex-tenants/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/rinvex/cortex-tenants/compare/v4.0.8...v4.1.0
 [v4.0.8]: https://github.com/rinvex/cortex-tenants/compare/v4.0.7...v4.0.8
 [v4.0.7]: https://github.com/rinvex/cortex-tenants/compare/v4.0.6...v4.0.7

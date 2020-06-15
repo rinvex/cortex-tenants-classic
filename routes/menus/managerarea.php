@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Rinvex\Menus\Models\MenuItem;
 use Rinvex\Menus\Models\MenuGenerator;
 
-Menu::register('managerarea.sidebar', function (MenuGenerator $menu) {
+Menu::register('managerarea.header.user', function (MenuGenerator $menu) {
     $tenant = config('rinvex.tenants.active');
-    $menu->findByTitleOrAdd(trans('cortex/tenants::common.tenant'), 50, 'fa fa-briefcase', 'header', [], function (MenuItem $dropdown) use ($tenant) {
-        $dropdown->route(['managerarea.tenants.edit'], trans('cortex/tenants::common.tenant'), 20, 'fa fa-building-o')->ifCan('update', $tenant);
-    });
+    $menu->dropdown(function (MenuItem $dropdown) use ($tenant) {
+        $dropdown->route(['managerarea.tenants.edit'], trans('cortex/auth::common.settings'), 10, 'fa fa-building-o')->ifCan('update', $tenant);
+    }, $tenant->name, 9, 'fa fa-briefcase');
 });

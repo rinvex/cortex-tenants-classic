@@ -80,53 +80,6 @@ class Tenant extends BaseTenant implements HasMedia
     use FiresCustomModelEvent;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [
-        'slug',
-        'name',
-        'description',
-        'email',
-        'website',
-        'phone',
-        'language_code',
-        'country_code',
-        'state',
-        'city',
-        'address',
-        'postal_code',
-        'launch_date',
-        'timezone',
-        'currency',
-        'social',
-        'style',
-        'is_active',
-    ];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $casts = [
-        'slug' => 'string',
-        'email' => 'string',
-        'website' => 'string',
-        'phone' => 'string',
-        'country_code' => 'string',
-        'language_code' => 'string',
-        'state' => 'string',
-        'city' => 'string',
-        'address' => 'string',
-        'postal_code' => 'string',
-        'launch_date' => 'string',
-        'timezone' => 'string',
-        'currency' => 'string',
-        'social' => 'array',
-        'style' => 'string',
-        'is_active' => 'boolean',
-        'deleted_at' => 'datetime',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -172,28 +125,13 @@ class Tenant extends BaseTenant implements HasMedia
     {
         parent::__construct($attributes);
 
+        $this->mergeFillable(['social', 'style']);
+
+        $this->mergeCasts(['social' => 'array', 'style' => 'string']);
+
+        $this->mergeRules(['social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array']);
+
         $this->setTable(config('rinvex.tenants.tables.tenants'));
-        $this->setRules([
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tenants.tables.tenants').',slug',
-            'name' => 'required|string|strip_tags|max:150',
-            'description' => 'nullable|string|max:10000',
-            'email' => 'required|email|min:3|max:150|unique:'.config('rinvex.tenants.tables.tenants').',email',
-            'website' => 'nullable|url|max:1500',
-            'phone' => 'required|phone:AUTO',
-            'country_code' => 'required|alpha|size:2|country',
-            'language_code' => 'required|alpha|size:2|language',
-            'state' => 'nullable|string',
-            'city' => 'nullable|string',
-            'address' => 'nullable|string',
-            'postal_code' => 'nullable|string',
-            'launch_date' => 'nullable|date_format:Y-m-d',
-            'timezone' => 'required|string|max:150|timezone',
-            'currency' => 'required|string|size:3',
-            'social' => 'nullable',
-            'style' => 'nullable|string|strip_tags|max:150',
-            'is_active' => 'sometimes|boolean',
-            'tags' => 'nullable|array',
-        ]);
     }
 
     /**
