@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.0] - 2020-06-19
+- Update composer dependencies
+- Refactor route parameters to container service binding
+- Exclude www subdomain from not found thrown exception
+- Move active tenant activation to module bootstrapping (in service provider boot stage)
+- Move unbinding route parameters to UnbindRouteParameters middleware
+- Add missing FormRequest import
+- Refactor active tenant to container service binding, instead of runtime config value
+- Introducing module early bootstrapping feature
+- Stick to composer version constraints recommendations and ease minimum required version of modules
+
 ## [v4.2.0] - 2020-06-15
 - Autoload config, views, language, menus, breadcrumbs, and migrations
   - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
@@ -167,6 +178,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.0]: https://github.com/rinvex/cortex-tenants/compare/v4.2.0...v5.0.0
 [v4.2.0]: https://github.com/rinvex/cortex-tenants/compare/v4.1.1...v4.2.0
 [v4.1.1]: https://github.com/rinvex/cortex-tenants/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/rinvex/cortex-tenants/compare/v4.0.8...v4.1.0
