@@ -6,6 +6,7 @@ namespace Cortex\Tenants\Models;
 
 use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
+use Rinvex\Support\Traits\Macroable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Events\ModelCreated;
@@ -73,6 +74,7 @@ class Tenant extends BaseTenant implements HasMedia
 {
     use Taggable;
     use Auditable;
+    use Macroable;
     use LogsActivity;
     use HashidsTrait;
     use InteractsWithMedia;
