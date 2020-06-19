@@ -18,8 +18,8 @@ class Tenantable
      */
     public function handle($request, Closure $next)
     {
-        $subdomain = $request->route('subdomain');
-        $tenant = app('rinvex.tenants.tenant')->where('slug', $subdomain)->first();
+        $subdomain = app('request.subdomain');
+        $tenant = app('request.tenant');
 
         if ($subdomain && $subdomain !== 'www' && ! $tenant) {
             return intend([
