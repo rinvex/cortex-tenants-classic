@@ -28,7 +28,7 @@ class TenantFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        $tenant = config('rinvex.tenants.active');
+        $tenant = app('request.tenant');
         $tenant->updateRulesUniques();
 
         return $tenant->getRules();

@@ -45,7 +45,7 @@ class TenantsMediaController extends AuthenticatedController
      */
     public function destroy(Media $media)
     {
-        $tenant = config('rinvex.tenants.active');
+        $tenant = app('request.tenant');
         $tenant->media()->where($media->getKeyName(), $media->getKey())->first()->delete();
 
         return intend([

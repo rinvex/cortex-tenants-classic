@@ -18,10 +18,10 @@ class Tenantable
      */
     public function handle($request, Closure $next)
     {
-        $subdomain = $request->route('subdomain');
-        $tenant = app('rinvex.tenants.tenant')->where('slug', $subdomain)->first();
+        $subdomain = app('request.subdomain');
+        $tenant = app('request.tenant');
 
-        if ($subdomain && ! $tenant) {
+        if ($subdomain && $subdomain !== 'www' && ! $tenant) {
             return intend([
                 'url' => route('frontarea.home'),
                 'with' => ['warning' => trans('cortex/foundation::messages.resource_not_found', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $subdomain])],
@@ -30,12 +30,6 @@ class Tenantable
 
         // Scope bouncer
         (! $tenant || ! app()->bound(\Silber\Bouncer\Bouncer::class)) || app(\Silber\Bouncer\Bouncer::class)->scope()->to($tenant->getKey());
-
-        // unBind {subdomain} route parameter
-        ! $request->route('subdomain') || $request->route()->forgetParameter('subdomain');
-
-        // Activate current tenant
-        ! $tenant || config(['rinvex.tenants.active' => $tenant]);
 
         return $next($request);
     }
