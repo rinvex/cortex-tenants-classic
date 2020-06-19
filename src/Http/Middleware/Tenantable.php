@@ -31,9 +31,6 @@ class Tenantable
         // Scope bouncer
         (! $tenant || ! app()->bound(\Silber\Bouncer\Bouncer::class)) || app(\Silber\Bouncer\Bouncer::class)->scope()->to($tenant->getKey());
 
-        // unBind {subdomain} route parameter
-        ! $request->route('subdomain') || $request->route()->forgetParameter('subdomain');
-
         // Activate current tenant
         ! $tenant || config(['rinvex.tenants.active' => $tenant]);
 
