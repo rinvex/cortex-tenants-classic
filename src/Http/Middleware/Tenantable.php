@@ -31,9 +31,6 @@ class Tenantable
         // Scope bouncer
         (! $tenant || ! app()->bound(\Silber\Bouncer\Bouncer::class)) || app(\Silber\Bouncer\Bouncer::class)->scope()->to($tenant->getKey());
 
-        // Activate current tenant
-        ! $tenant || config(['rinvex.tenants.active' => $tenant]);
-
         return $next($request);
     }
 }
