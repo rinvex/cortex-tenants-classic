@@ -21,7 +21,7 @@ class Tenantable
         $subdomain = $request->route('subdomain');
         $tenant = app('rinvex.tenants.tenant')->where('slug', $subdomain)->first();
 
-        if ($subdomain && ! $tenant) {
+        if ($subdomain && $subdomain !== 'www' && ! $tenant) {
             return intend([
                 'url' => route('frontarea.home'),
                 'with' => ['warning' => trans('cortex/foundation::messages.resource_not_found', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $subdomain])],
