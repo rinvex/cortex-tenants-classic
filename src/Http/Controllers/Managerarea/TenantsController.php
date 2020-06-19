@@ -23,7 +23,7 @@ class TenantsController extends AuthenticatedController
      */
     protected function form()
     {
-        $tenant = config('rinvex.tenants.active');
+        $tenant = app('request.tenant');
         $countries = collect(countries())->map(function ($country, $code) {
             return [
                 'id' => $code,
@@ -48,7 +48,8 @@ class TenantsController extends AuthenticatedController
      */
     protected function process(TenantFormRequest $request)
     {
-        $tenant = config('rinvex.tenants.active');
+        $tenant = app('request.tenant');
+
         // Prepare required input fields
         $data = $request->validated();
 
