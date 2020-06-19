@@ -6,6 +6,7 @@ namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
 use Cortex\Tenants\Models\Tenant;
 use Cortex\Foundation\Http\Controllers\AuthenticatedController;
+use Cortex\Tenants\Http\Requests\Managerarea\TenantFormRequest;
 
 class TenantsController extends AuthenticatedController
 {
