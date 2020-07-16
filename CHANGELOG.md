@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.1.0] - 2020-07-16
+- Utilize timezones
+- Use app('request.user') instead of $currentUser
+
 ## [v5.0.2] - 2020-06-21
 - Automatically redirect www. subdomain to homepage without error message.
 - Only query the tenant if we have a subdomain
@@ -185,6 +189,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.1.0]: https://github.com/rinvex/cortex-tenants/compare/v5.0.2...v5.1.0
 [v5.0.2]: https://github.com/rinvex/cortex-tenants/compare/v5.0.1...v5.0.2
 [v5.0.1]: https://github.com/rinvex/cortex-tenants/compare/v5.0.0...v5.0.1
 [v5.0.0]: https://github.com/rinvex/cortex-tenants/compare/v4.2.0...v5.0.0

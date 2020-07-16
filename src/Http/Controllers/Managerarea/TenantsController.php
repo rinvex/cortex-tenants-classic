@@ -43,37 +43,34 @@ class TenantsController extends AuthenticatedController
      * Process stored/updated tenant.
      *
      * @param \Cortex\Tenants\Http\Requests\Managerarea\TenantFormRequest $request
-     * @param \Cortex\Tenants\Models\Tenant                               $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     protected function process(TenantFormRequest $request)
     {
-        $tenant = app('request.tenant');
-
         // Prepare required input fields
         $data = $request->validated();
 
         ! $request->hasFile('profile_picture')
-        || $tenant->addMediaFromRequest('profile_picture')
+        || app('request.tenant')->addMediaFromRequest('profile_picture')
                        ->sanitizingFileName(function ($fileName) {
                            return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
                        })
                        ->toMediaCollection('profile_picture', config('cortex.auth.media.disk'));
 
         ! $request->hasFile('cover_photo')
-        || $tenant->addMediaFromRequest('cover_photo')
+        || app('request.tenant')->addMediaFromRequest('cover_photo')
                        ->sanitizingFileName(function ($fileName) {
                            return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
                        })
                        ->toMediaCollection('cover_photo', config('cortex.auth.media.disk'));
 
         // Save tenant
-        $tenant->fill($data)->save();
+        app('request.tenant')->fill($data)->save();
 
         return intend([
             'back' => true,
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->getRouteKey()])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => app('request.tenant')->getRouteKey()])],
         ]);
     }
 }

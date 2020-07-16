@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Rinvex\Support\Traits\Macroable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Rinvex\Support\Traits\HasTimezones;
 use Cortex\Foundation\Events\ModelCreated;
 use Cortex\Foundation\Events\ModelDeleted;
 use Cortex\Foundation\Events\ModelUpdated;
@@ -77,6 +78,7 @@ class Tenant extends BaseTenant implements HasMedia
     use Macroable;
     use LogsActivity;
     use HashidsTrait;
+    use HasTimezones;
     use InteractsWithMedia;
     use HasSocialAttributes;
     use FiresCustomModelEvent;
