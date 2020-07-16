@@ -15,6 +15,7 @@ return [
     'postal_code' => 'Postal Code',
     'city' => 'City',
     'timezone' => 'Timezone',
+    'select_timezone' => 'Select Timezone',
     'currency' => 'Currency',
     'launch_date' => 'Launch Date',
     'country' => 'Country',
