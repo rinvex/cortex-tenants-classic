@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
 use Cortex\Tenants\Models\Tenant;
-use Cortex\Foundation\Http\Controllers\AuthenticatedController;
+use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Managerarea\TenantFormRequest;
 
-class TenantsController extends AuthenticatedController
+class TenantsController extends AuthorizedController
 {
     /**
      * {@inheritdoc}
@@ -46,7 +46,7 @@ class TenantsController extends AuthenticatedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function process(TenantFormRequest $request)
+    public function update(TenantFormRequest $request)
     {
         // Prepare required input fields
         $data = $request->validated();
