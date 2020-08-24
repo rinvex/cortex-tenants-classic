@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Adminarea;
 
 use Exception;
+use Illuminate\Http\Request;
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
@@ -135,13 +136,40 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Show tenant create/edit form.
+     * Create new tenant.
      *
+     * @param \Illuminate\Http\Request      $request
      * @param \Cortex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\View\View
      */
-    protected function form(Tenant $tenant)
+    public function create(Request $request, Tenant $tenant)
+    {
+        return $this->form($request, $tenant);
+    }
+
+    /**
+     * Edit given tenant.
+     *
+     * @param \Illuminate\Http\Request      $request
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Request $request, Tenant $tenant)
+    {
+        return $this->form($request, $tenant);
+    }
+
+    /**
+     * Show tenant create/edit form.
+     *
+     * @param \Illuminate\Http\Request      $request
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Request $request, Tenant $tenant)
     {
         $countries = collect(countries())->map(function ($country, $code) {
             return [

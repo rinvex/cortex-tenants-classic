@@ -7,9 +7,9 @@ namespace Cortex\Tenants\Http\Controllers\Managerarea;
 use Illuminate\Support\Str;
 use Cortex\Tenants\Models\Tenant;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Cortex\Foundation\Http\Controllers\AuthenticatedController;
+use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
-class TenantsMediaController extends AuthenticatedController
+class TenantsMediaController extends AuthorizedController
 {
     /**
      * {@inheritdoc}

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
+use Illuminate\Http\Request;
 use Cortex\Tenants\Models\Tenant;
-use Cortex\Foundation\Http\Controllers\AuthenticatedController;
+use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Tenants\Http\Requests\Managerarea\TenantFormRequest;
 
-class TenantsController extends AuthenticatedController
+class TenantsController extends AuthorizedController
 {
     /**
      * {@inheritdoc}
@@ -16,15 +17,29 @@ class TenantsController extends AuthenticatedController
     protected $resource = Tenant::class;
 
     /**
-     * Show tenant create/edit form.
+     * Edit given tenant.
      *
+     * @param \Illuminate\Http\Request      $request
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Request $request)
+    {
+        $tenant = app('request.tenant');
+
+        return $this->form($request, $tenant);
+    }
+
+    /**
+     * Show tenant edit form.
+     *
+     * @param \Illuminate\Http\Request      $request
      * @param \Cortex\Tenants\Models\Tenant $tenant
      *
      * @return \Illuminate\View\View
      */
-    protected function form()
+    protected function form(Request $request, Tenant $tenant)
     {
-        $tenant = app('request.tenant');
         $countries = collect(countries())->map(function ($country, $code) {
             return [
                 'id' => $code,
@@ -46,7 +61,7 @@ class TenantsController extends AuthenticatedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function process(TenantFormRequest $request)
+    public function update(TenantFormRequest $request)
     {
         // Prepare required input fields
         $data = $request->validated();
