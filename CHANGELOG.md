@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.1.1] - 2020-08-25
+- Enforce controller API consistency
+- Merge pull request #107 from mohamed-hendawy/develop
+- apply authorization on tenant actions in managerarea
+- Activate module after installation
+
 ## [v5.1.0] - 2020-07-16
 - Utilize timezones
 - Use app('request.user') instead of $currentUser
@@ -189,6 +195,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.1.1]: https://github.com/rinvex/cortex-tenants/compare/v5.1.0...v5.1.1
 [v5.1.0]: https://github.com/rinvex/cortex-tenants/compare/v5.0.2...v5.1.0
 [v5.0.2]: https://github.com/rinvex/cortex-tenants/compare/v5.0.1...v5.0.2
 [v5.0.1]: https://github.com/rinvex/cortex-tenants/compare/v5.0.0...v5.0.1
