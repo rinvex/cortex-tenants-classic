@@ -17,6 +17,7 @@ return [
     'timezone' => 'Timezone',
     'select_timezone' => 'Select Timezone',
     'currency' => 'Currency',
+    'select_currency' => 'Select Currency',
     'launch_date' => 'Launch Date',
     'country' => 'Country',
     'language' => 'Language',
