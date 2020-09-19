@@ -19,7 +19,7 @@ class TenantsController extends AuthorizedController
     /**
      * Edit given tenant.
      *
-     * @param \Illuminate\Http\Request      $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\View\View
      */
@@ -55,7 +55,7 @@ class TenantsController extends AuthorizedController
     }
 
     /**
-     * Process stored/updated tenant.
+     * Update given tenant.
      *
      * @param \Cortex\Tenants\Http\Requests\Managerarea\TenantFormRequest $request
      *
@@ -63,29 +63,44 @@ class TenantsController extends AuthorizedController
      */
     public function update(TenantFormRequest $request)
     {
+        $tenant = app('request.tenant');
+
+        return $this->process($request, $tenant);
+    }
+
+    /**
+     * Process stored/updated tenant.
+     *
+     * @param \Illuminate\Http\Request      $request
+     * @param \Cortex\Tenants\Models\Tenant $tenant
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    protected function process(Request $request, Tenant $tenant)
+    {
         // Prepare required input fields
         $data = $request->validated();
 
         ! $request->hasFile('profile_picture')
-        || app('request.tenant')->addMediaFromRequest('profile_picture')
+        || $tenant->addMediaFromRequest('profile_picture')
                        ->sanitizingFileName(function ($fileName) {
                            return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
                        })
                        ->toMediaCollection('profile_picture', config('cortex.auth.media.disk'));
 
         ! $request->hasFile('cover_photo')
-        || app('request.tenant')->addMediaFromRequest('cover_photo')
+        || $tenant->addMediaFromRequest('cover_photo')
                        ->sanitizingFileName(function ($fileName) {
                            return md5($fileName).'.'.pathinfo($fileName, PATHINFO_EXTENSION);
                        })
                        ->toMediaCollection('cover_photo', config('cortex.auth.media.disk'));
 
         // Save tenant
-        app('request.tenant')->fill($data)->save();
+        $tenant->fill($data)->save();
 
         return intend([
             'back' => true,
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => app('request.tenant')->getRouteKey()])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->getRouteKey()])],
         ]);
     }
 }
