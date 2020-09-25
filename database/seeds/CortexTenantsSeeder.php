@@ -13,6 +13,10 @@ class CortexTenantsSeeder extends Seeder
      */
     public function run()
     {
+        $accessAbilities = [
+            ['name' => 'update-tenant', 'title' => 'Update Tenant'],
+        ];
+
         $abilities = [
             ['name' => 'list', 'title' => 'List tenants', 'entity_type' => 'tenant'],
             ['name' => 'import', 'title' => 'Import tenants', 'entity_type' => 'tenant'],
@@ -21,6 +25,12 @@ class CortexTenantsSeeder extends Seeder
             ['name' => 'delete', 'title' => 'Delete tenants', 'entity_type' => 'tenant'],
             ['name' => 'audit', 'title' => 'Audit tenants', 'entity_type' => 'tenant'],
         ];
+
+        collect($accessAbilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->firstOrCreate([
+                'name' => $ability['name'],
+            ], $ability);
+        });
 
         collect($abilities)->each(function (array $ability) {
             app('cortex.auth.ability')->firstOrCreate([
