@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.1.3] - 2020-09-26
+- Fix managerarea update-tenant ability
+
 ## [v5.1.2] - 2020-09-19
 - Update currency field to dropdown menu
 - Enforce controller API consistency
@@ -199,6 +202,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.1.3]: https://github.com/rinvex/cortex-tenants/compare/v5.1.2...v5.1.3
 [v5.1.2]: https://github.com/rinvex/cortex-tenants/compare/v5.1.1...v5.1.2
 [v5.1.1]: https://github.com/rinvex/cortex-tenants/compare/v5.1.0...v5.1.1
 [v5.1.0]: https://github.com/rinvex/cortex-tenants/compare/v5.0.2...v5.1.0
