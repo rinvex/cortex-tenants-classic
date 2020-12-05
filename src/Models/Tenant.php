@@ -10,15 +10,11 @@ use Rinvex\Support\Traits\Macroable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
+
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
@@ -81,19 +77,6 @@ class Tenant extends BaseTenant implements HasMedia
     use HasTimezones;
     use InteractsWithMedia;
     use HasSocialAttributes;
-    use FiresCustomModelEvent;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'created' => ModelCreated::class,
-        'deleted' => ModelDeleted::class,
-        'restored' => ModelRestored::class,
-        'updated' => ModelUpdated::class,
-    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
