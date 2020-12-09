@@ -35,7 +35,7 @@ class TenantsController extends AuthorizedController
     {
         return $tenantsDataTable->with([
             'id' => 'adminarea-cortex-tenants-tenants-index',
-            'pusher' => ['entity' => 'tenant', 'channel' => 'rinvex.tenants.tenants.index'],
+            'pusher' => ['entity' => 'tenant', 'channel' => 'cortex.tenants.tenants.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
