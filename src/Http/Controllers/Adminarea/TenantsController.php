@@ -34,7 +34,8 @@ class TenantsController extends AuthorizedController
     public function index(TenantsDataTable $tenantsDataTable)
     {
         return $tenantsDataTable->with([
-            'id' => 'adminarea-tenants-index',
+            'id' => 'adminarea-cortex-tenants-tenants-index',
+            'pusher' => ['entity' => 'tenant', 'channel' => 'cortex.tenants.tenants.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
@@ -50,8 +51,8 @@ class TenantsController extends AuthorizedController
     {
         return $logsDataTable->with([
             'resource' => $tenant,
-            'tabs' => 'adminarea.tenants.tabs',
-            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-logs",
+            'tabs' => 'adminarea.cortex.tenants.tenants.tabs',
+            'id' => "adminarea-cortex-tenants-tenants-{$tenant->getRouteKey()}-logs",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -67,9 +68,9 @@ class TenantsController extends AuthorizedController
     {
         return $importRecordsDataTable->with([
             'resource' => $tenant,
-            'tabs' => 'adminarea.tenants.tabs',
-            'url' => route('adminarea.tenants.stash'),
-            'id' => "adminarea-tenants-{$tenant->getRouteKey()}-import",
+            'tabs' => 'adminarea.cortex.tenants.tenants.tabs',
+            'url' => route('adminarea.cortex.tenants.tenants.stash'),
+            'id' => "adminarea-cortex-tenants-tenants-{$tenant->getRouteKey()}-import",
         ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
@@ -130,8 +131,8 @@ class TenantsController extends AuthorizedController
     {
         return $importLogsDatatable->with([
             'resource' => trans('cortex/tenants::common.tenant'),
-            'tabs' => 'adminarea.tenants.tabs',
-            'id' => 'adminarea-tenants-import-logs',
+            'tabs' => 'adminarea.cortex.tenants.tenants.tabs',
+            'id' => 'adminarea-cortex-tenants-tenants-import-logs',
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -242,7 +243,7 @@ class TenantsController extends AuthorizedController
         $tenant->fill($data)->save();
 
         return intend([
-            'url' => route('adminarea.tenants.index'),
+            'url' => route('adminarea.cortex.tenants.tenants.index'),
             'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
@@ -261,7 +262,7 @@ class TenantsController extends AuthorizedController
         $tenant->delete();
 
         return intend([
-            'url' => route('adminarea.tenants.index'),
+            'url' => route('adminarea.cortex.tenants.tenants.index'),
             'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tenants::common.tenant'), 'identifier' => $tenant->name])],
         ]);
     }
