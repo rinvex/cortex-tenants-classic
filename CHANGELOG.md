@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.1.4] - 2020-12-11
+- Move custom eloquent model events to module layer from core package layer
+- Rename broadcast channels file to avoid accessarea naming
+- Rename routes, channels, menus, breadcrumbs, datatable & form IDs to follow same modular naming conventions
+- Tweak datatables realtime
+- Move Eloquent Events to core package responsibility
+- Type hint Authorizable user parameter
+- Enforce consistent datatables request object usage
+
 ## [v5.1.3] - 2020-09-26
 - Fix managerarea update-tenant ability
 
@@ -202,6 +211,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.1.4]: https://github.com/rinvex/cortex-tenants/compare/v5.1.3...v5.1.4
 [v5.1.3]: https://github.com/rinvex/cortex-tenants/compare/v5.1.2...v5.1.3
 [v5.1.2]: https://github.com/rinvex/cortex-tenants/compare/v5.1.1...v5.1.2
 [v5.1.1]: https://github.com/rinvex/cortex-tenants/compare/v5.1.0...v5.1.1
