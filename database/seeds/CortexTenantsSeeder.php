@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Cortex\Tenants\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CortexTenantsSeeder extends Seeder

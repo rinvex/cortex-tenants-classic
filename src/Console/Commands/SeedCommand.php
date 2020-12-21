@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Console\Commands;
 
 use Illuminate\Console\Command;
+use Cortex\Tenants\Database\Seeders\CortexTenantsSeeder;
 
 class SeedCommand extends Command
 {
@@ -31,7 +32,7 @@ class SeedCommand extends Command
     {
         $this->alert($this->description);
 
-        $this->call('db:seed', ['--class' => 'CortexTenantsSeeder']);
+        $this->call('db:seed', ['--class' => CortexTenantsSeeder::class]);
 
         $this->line('');
     }

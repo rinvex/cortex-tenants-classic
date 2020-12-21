@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator;
 
-Breadcrumbs::register('managerarea.cortex.tenants.tenants.edit', function (BreadcrumbsGenerator $breadcrumbs) {
+Breadcrumbs::register('managerarea.cortex.tenants.tenants.edit', function (Generator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('managerarea.home'));
     $breadcrumbs->push(strip_tags(app('request.tenant')->name), route('managerarea.cortex.tenants.tenants.edit', ['tenant' => app('request.tenant')]));
 });
-Breadcrumbs::register('managerarea.cortex.tenants.tenants.media.index', function (BreadcrumbsGenerator $breadcrumbs) {
+Breadcrumbs::register('managerarea.cortex.tenants.tenants.media.index', function (Generator $breadcrumbs) {
     $breadcrumbs->parent('managerarea.cortex.tenants.tenants.edit');
     $breadcrumbs->push(trans('cortex/tenants::common.media'), route('managerarea.cortex.tenants.tenants.media.index', ['tenant' => app('request.tenant')]));
 });
