@@ -41,7 +41,7 @@
         }
     ],
     "require": {
-        "php": "^7.4.0",
+        "php": "^7.4.0 || ^8.0.0",
         "illuminate/auth": "^8.0.0 || ^9.0.0",
         "illuminate/console": "^8.0.0 || ^9.0.0",
         "illuminate/http": "^8.0.0 || ^9.0.0",
