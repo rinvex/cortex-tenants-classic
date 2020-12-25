@@ -16,6 +16,5 @@ Route::domain('{subdomain}.'.domain())->group(function () {
                      Route::delete('{media}')->name('destroy')->uses('TenantsMediaController@destroy');
                  });
              });
-
          });
 });

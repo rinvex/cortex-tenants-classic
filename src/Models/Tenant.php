@@ -18,34 +18,33 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
-
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * Cortex\Tenants\Models\Tenant.
  *
- * @property int                                                                           $id
- * @property string                                                                        $slug
- * @property array                                                                         $name
- * @property array                                                                         $description
- * @property string                                                                        $email
- * @property string                                                                        $website
- * @property string                                                                        $phone
- * @property string                                                                        $language_code
- * @property string                                                                        $country_code
- * @property string                                                                        $state
- * @property string                                                                        $city
- * @property string                                                                        $address
- * @property string                                                                        $postal_code
- * @property string                                                                        $launch_date
- * @property string                                                                        $timezone
- * @property string                                                                        $currency
- * @property string                                                                        $social
- * @property bool                                                                          $is_active
- * @property string                                                                        $style
- * @property \Carbon\Carbon|null                                                           $created_at
- * @property \Carbon\Carbon|null                                                           $updated_at
- * @property \Carbon\Carbon|null                                                           $deleted_at
+ * @property int                 $id
+ * @property string              $slug
+ * @property array               $name
+ * @property array               $description
+ * @property string              $email
+ * @property string              $website
+ * @property string              $phone
+ * @property string              $language_code
+ * @property string              $country_code
+ * @property string              $state
+ * @property string              $city
+ * @property string              $address
+ * @property string              $postal_code
+ * @property string              $launch_date
+ * @property string              $timezone
+ * @property string              $currency
+ * @property string              $social
+ * @property bool                $is_active
+ * @property string              $style
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tenants\Models\Tenant whereAddress($value)
