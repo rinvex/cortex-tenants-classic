@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Cortex\Tenants\Models\Tenant;
-use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 Breadcrumbs::register('adminarea.cortex.tenants.tenants.index', function (Generator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('adminarea.home'));
