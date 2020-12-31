@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 Breadcrumbs::register('managerarea.cortex.tenants.tenants.edit', function (Generator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('managerarea.home'));
