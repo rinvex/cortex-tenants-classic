@@ -15,10 +15,10 @@ use Cortex\Tenants\Console\Commands\UnloadCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
-use Cortex\Tenants\Console\Commands\RollbackCommand;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Tenants\Console\Commands\ActivateCommand;
 use Cortex\Tenants\Console\Commands\AutoloadCommand;
+use Cortex\Tenants\Console\Commands\RollbackCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Cortex\Tenants\Console\Commands\DeactivateCommand;
 
