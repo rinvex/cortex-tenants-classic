@@ -5,10 +5,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.4] - 2021-01-02
+- Move cortex:autoload & cortex:activate commands to cortex/foundation module responsibility
+
 ## [v6.0.3] - 2021-01-01
 - Move cortex:autoload & cortex:activate commands to cortex/foundation module responsibility
-    - This is because :autoload & :activate commands are registered only if the module already autoloaded, so there is no way we can execute commands of unloaded modules
-    - cortex/foundation module is always autoloaded, so it's the logical and reasonable place to register these :autoload & :activate module commands and control other modules from outside
+  - This is because :autoload & :activate commands are registered only if the module already autoloaded, so there is no way we can execute commands of unloaded modules
+  - cortex/foundation module is always autoloaded, so it's the logical and reasonable place to register these :autoload & :activate module commands and control other modules from outside
 
 ## [v6.0.2] - 2020-12-31
 - Rename seeders directory
@@ -227,6 +230,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.4]: https://github.com/rinvex/cortex-tenants/compare/v6.0.3...v6.0.4
 [v6.0.3]: https://github.com/rinvex/cortex-tenants/compare/v6.0.2...v6.0.3
 [v6.0.2]: https://github.com/rinvex/cortex-tenants/compare/v6.0.1...v6.0.2
 [v6.0.1]: https://github.com/rinvex/cortex-tenants/compare/v6.0.0...v6.0.1
