@@ -11,16 +11,12 @@ use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Tenants\Http\Middleware\Tenantable;
 use Cortex\Tenants\Console\Commands\SeedCommand;
-use Cortex\Tenants\Console\Commands\UnloadCommand;
 use Cortex\Tenants\Console\Commands\InstallCommand;
 use Cortex\Tenants\Console\Commands\MigrateCommand;
 use Cortex\Tenants\Console\Commands\PublishCommand;
 use Cortex\Tenants\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Cortex\Tenants\Console\Commands\ActivateCommand;
-use Cortex\Tenants\Console\Commands\AutoloadCommand;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Cortex\Tenants\Console\Commands\DeactivateCommand;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -32,11 +28,6 @@ class TenantsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        ActivateCommand::class => 'command.cortex.tenants.activate',
-        DeactivateCommand::class => 'command.cortex.tenants.deactivate',
-        AutoloadCommand::class => 'command.cortex.tenants.autoload',
-        UnloadCommand::class => 'command.cortex.tenants.unload',
-
         SeedCommand::class => 'command.cortex.tenants.seed',
         InstallCommand::class => 'command.cortex.tenants.install',
         MigrateCommand::class => 'command.cortex.tenants.migrate',
