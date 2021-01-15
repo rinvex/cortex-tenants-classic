@@ -172,6 +172,10 @@ class TenantsController extends AuthorizedController
      */
     protected function form(Request $request, Tenant $tenant)
     {
+        if(! $tenant->exists && $request->has('replicate') && $replicated = $tenant->resolveRouteBinding($request->get('replicate'))){
+            $tenant = $replicated->replicate();
+        }
+
         $countries = collect(countries())->map(function ($country, $code) {
             return [
                 'id' => $code,
