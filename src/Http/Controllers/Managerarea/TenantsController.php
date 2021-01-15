@@ -40,7 +40,7 @@ class TenantsController extends AuthorizedController
      */
     protected function form(Request $request, Tenant $tenant)
     {
-        if(! $tenant->exists && $request->has('replicate') && $replicated = $tenant->resolveRouteBinding($request->get('replicate'))){
+        if (! $tenant->exists && $request->has('replicate') && $replicated = $tenant->resolveRouteBinding($request->get('replicate'))) {
             $tenant = $replicated->replicate();
         }
 
