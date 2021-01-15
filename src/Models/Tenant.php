@@ -132,8 +132,6 @@ class Tenant extends BaseTenant implements HasMedia
         $this->mergeCasts(['social' => 'array', 'style' => 'string']);
 
         $this->mergeRules(['social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array']);
-
-        $this->setTable(config('rinvex.tenants.tables.tenants'));
     }
 
     /**
