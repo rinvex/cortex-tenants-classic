@@ -22,7 +22,7 @@ class TenantsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = Tenant::class;
+    protected $resource = 'rinvex.tenants.models.tenant';
 
     /**
      * List all tenants.

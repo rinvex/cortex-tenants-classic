@@ -16,7 +16,7 @@ class TenantsMediaController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = Tenant::class;
+    protected $resource = 'rinvex.tenants.models.tenant';
 
     /**
      * {@inheritdoc}
