@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.6] - 2021-02-06
+- Add support for runtime configurable model to allow model override (fix abilities/permission issues)
+- Skip publishing module resources unless explicitly specified, for simplicity
+
 ## [v6.0.5] - 2021-01-15
 - Add model replication feature
 - Remove duplicate `setTable` method call override as it's already called in parent class
@@ -234,6 +238,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.6]: https://github.com/rinvex/cortex-tenants/compare/v6.0.5...v6.0.6
 [v6.0.5]: https://github.com/rinvex/cortex-tenants/compare/v6.0.4...v6.0.5
 [v6.0.4]: https://github.com/rinvex/cortex-tenants/compare/v6.0.3...v6.0.4
 [v6.0.3]: https://github.com/rinvex/cortex-tenants/compare/v6.0.2...v6.0.3
