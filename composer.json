@@ -60,7 +60,7 @@
         "rinvex/laravel-menus": "^5.0.0",
         "rinvex/laravel-support": "^5.0.0",
         "rinvex/laravel-tenants": "^6.0.0",
-        "silber/bouncer": "v1.0.0-rc.10",
+        "rinvex/tmp-josephsilber-bouncer": "^1.0.0",
         "spatie/laravel-activitylog": "^3.16.0",
         "spatie/laravel-medialibrary": "^9.4.0",
         "spatie/laravel-schemaless-attributes": "^1.8.0",
