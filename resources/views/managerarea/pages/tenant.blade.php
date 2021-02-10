@@ -448,7 +448,7 @@
                                         {{ Form::button(trans('cortex/tenants::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::managerarea.partials.timestamps', ['model' => $tenant])
+                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $tenant])
 
                                 </div>
 

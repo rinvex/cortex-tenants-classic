@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.8] - 2021-02-11
+- Replace form timestamps with common blade view
+
 ## [v6.0.7] - 2021-02-07
 - Replace silber/bouncer package with custom modified tmp version
 
@@ -241,6 +244,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.8]: https://github.com/rinvex/cortex-tenants/compare/v6.0.7...v6.0.8
 [v6.0.7]: https://github.com/rinvex/cortex-tenants/compare/v6.0.6...v6.0.7
 [v6.0.6]: https://github.com/rinvex/cortex-tenants/compare/v6.0.5...v6.0.6
 [v6.0.5]: https://github.com/rinvex/cortex-tenants/compare/v6.0.4...v6.0.5
