@@ -98,7 +98,7 @@ class TenantsController extends AuthorizedController
      */
     public function hoard(ImportFormRequest $request)
     {
-        foreach ((array) $request->get('selected_ids') as $recordId) {
+        foreach ((array) $request->input('selected_ids') as $recordId) {
             $record = app('cortex.foundation.import_record')->find($recordId);
 
             try {
@@ -172,7 +172,7 @@ class TenantsController extends AuthorizedController
      */
     protected function form(Request $request, Tenant $tenant)
     {
-        if (! $tenant->exists && $request->has('replicate') && $replicated = $tenant->resolveRouteBinding($request->get('replicate'))) {
+        if (! $tenant->exists && $request->has('replicate') && $replicated = $tenant->resolveRouteBinding($request->input('replicate'))) {
             $tenant = $replicated->replicate();
         }
 
