@@ -220,7 +220,7 @@ class TenantsController extends AuthorizedController
      * Process stored/updated tenant.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Tenants\Models\Tenant           $tenant
+     * @param \Cortex\Tenants\Models\Tenant       $tenant
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
