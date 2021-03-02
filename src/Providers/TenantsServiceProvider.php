@@ -10,30 +10,12 @@ use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Tenants\Http\Middleware\Tenantable;
-use Cortex\Tenants\Console\Commands\SeedCommand;
-use Cortex\Tenants\Console\Commands\InstallCommand;
-use Cortex\Tenants\Console\Commands\MigrateCommand;
-use Cortex\Tenants\Console\Commands\PublishCommand;
-use Cortex\Tenants\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
 {
     use ConsoleTools;
-
-    /**
-     * The commands to be registered.
-     *
-     * @var array
-     */
-    protected $commands = [
-        SeedCommand::class => 'command.cortex.tenants.seed',
-        InstallCommand::class => 'command.cortex.tenants.install',
-        MigrateCommand::class => 'command.cortex.tenants.migrate',
-        PublishCommand::class => 'command.cortex.tenants.publish',
-        RollbackCommand::class => 'command.cortex.tenants.rollback',
-    ];
 
     /**
      * Register any application services.
@@ -49,9 +31,6 @@ class TenantsServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
         || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
-
-        // Register console commands
-        $this->registerCommands($this->commands);
     }
 
     /**
