@@ -31,7 +31,7 @@ class Tenantable
         }
 
         // Scope bouncer
-        (! $tenant || ! app()->bound(\Silber\Bouncer\Bouncer::class)) || app(\Silber\Bouncer\Bouncer::class)->scope()->to($tenant->getKey());
+        (! $tenant || ! app()->has(\Silber\Bouncer\Bouncer::class)) || app(\Silber\Bouncer\Bouncer::class)->scope()->to($tenant->getKey());
 
         return $next($request);
     }
