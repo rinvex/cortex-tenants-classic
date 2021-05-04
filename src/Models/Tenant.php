@@ -14,11 +14,13 @@ use Cortex\Tenants\Events\TenantCreated;
 use Cortex\Tenants\Events\TenantDeleted;
 use Cortex\Tenants\Events\TenantUpdated;
 use Cortex\Tenants\Events\TenantRestored;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Support\Traits\HasSocialAttributes;
 use Rinvex\Tenants\Models\Tenant as BaseTenant;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
 /**
  * Cortex\Tenants\Models\Tenant.
@@ -129,9 +131,19 @@ class Tenant extends BaseTenant implements HasMedia
 
         $this->mergeFillable(['social', 'style']);
 
-        $this->mergeCasts(['social' => 'array', 'style' => 'string']);
+        $this->mergeCasts(['social' => SchemalessAttributes::class, 'style' => 'string']);
 
         $this->mergeRules(['social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array']);
+    }
+
+    /**
+     * Scope with social schemaless attributes.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithSocial(): Builder
+    {
+        return $this->social->modelCast();
     }
 
     /**
