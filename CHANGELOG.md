@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.13] - 2021-05-11
+- Fix constructor initialization order (fill attributes should come next after merging fillables & rules)
+
 ## [v6.0.12] - 2021-05-07
 - Upgrade to GitHub-native Dependabot
 - Rename migrations to always run after rinvex core packages
@@ -260,6 +263,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.13]: https://github.com/rinvex/cortex-tenants/compare/v6.0.12...v6.0.13
 [v6.0.12]: https://github.com/rinvex/cortex-tenants/compare/v6.0.11...v6.0.12
 [v6.0.11]: https://github.com/rinvex/cortex-tenants/compare/v6.0.10...v6.0.11
 [v6.0.10]: https://github.com/rinvex/cortex-tenants/compare/v6.0.9...v6.0.10
