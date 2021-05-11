@@ -127,13 +127,13 @@ class Tenant extends BaseTenant implements HasMedia
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->mergeFillable(['social', 'style']);
 
         $this->mergeCasts(['social' => SchemalessAttributes::class, 'style' => 'string']);
 
         $this->mergeRules(['social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array']);
+
+        parent::__construct($attributes);
     }
 
     /**
