@@ -18,7 +18,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @includeWhen($tenant->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
+    @includeWhen($tenant->exists, 'cortex/foundation::managerarea.partials.modal', ['id' => 'delete-confirmation'])
 
     <div class="content-wrapper">
         <section class="content-header">
@@ -448,7 +448,7 @@
                                         {{ Form::button(trans('cortex/tenants::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $tenant])
+                                    @include('cortex/foundation::managerarea.partials.timestamps', ['model' => $tenant])
 
                                 </div>
 
