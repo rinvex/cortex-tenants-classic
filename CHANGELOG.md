@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.15] - 2021-05-25
+- Replace deprecated `Breadcrumbs::register` with `Breadcrumbs::for`
+- Update composer dependencies diglactic/laravel-breadcrumbs to v7
+
 ## [v6.0.14] - 2021-05-24
 - Fix datatables export issues
 - Drop common blade views in favor for accessarea specific views
@@ -267,6 +271,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.15]: https://github.com/rinvex/cortex-tenants/compare/v6.0.14...v6.0.15
 [v6.0.14]: https://github.com/rinvex/cortex-tenants/compare/v6.0.13...v6.0.14
 [v6.0.13]: https://github.com/rinvex/cortex-tenants/compare/v6.0.12...v6.0.13
 [v6.0.12]: https://github.com/rinvex/cortex-tenants/compare/v6.0.11...v6.0.12
