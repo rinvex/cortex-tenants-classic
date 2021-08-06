@@ -6,8 +6,8 @@ namespace Cortex\Tenants\DataTables\Adminarea;
 
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Database\Eloquent\Builder;
+use Cortex\Tenants\Transformers\TenantTransformer;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Tenants\Transformers\Adminarea\TenantTransformer;
 
 class TenantsDataTable extends AbstractDataTable
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Tenants\Transformers\Adminarea;
+namespace Cortex\Tenants\Transformers;
 
 use Cortex\Tenants\Models\Tenant;
 use Rinvex\Support\Traits\Escaper;
