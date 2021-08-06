@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.0.17] - 2021-08-07
+- Upgrade spatie/laravel-activitylog to v4
+
 ## [v6.0.16] - 2021-08-06
 - Retrieve only active tenants
 - Simplify route prefixes
@@ -277,6 +280,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.0.17]: https://github.com/rinvex/cortex-tenants/compare/v6.0.16...v6.0.17
 [v6.0.16]: https://github.com/rinvex/cortex-tenants/compare/v6.0.15...v6.0.16
 [v6.0.15]: https://github.com/rinvex/cortex-tenants/compare/v6.0.14...v6.0.15
 [v6.0.14]: https://github.com/rinvex/cortex-tenants/compare/v6.0.13...v6.0.14
