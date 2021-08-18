@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.0.0] - 2021-08-18
+- Breaking Change: requires rinvex/laravel-tenants v7
+- Require rinvex/laravel-tenants v7
+- Add central_pattern() and tenant_pattern() global helpers
+- Add domain field to tenants
+- Move tenant retrieval and registration to rinvex/laravel-tenants responsibility
+- Remove useless Tenantable middleware, this is now the responsibility of rinvex/laravel-tenants
+- Register routes to either central or tenant domains
+- Move route binding, patterns, and middleware to module bootstrap
+
 ## [v6.0.17] - 2021-08-07
 - Upgrade spatie/laravel-activitylog to v4
 
@@ -280,6 +290,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.0.0]: https://github.com/rinvex/cortex-tenants/compare/v6.0.17...v7.0.0
 [v6.0.17]: https://github.com/rinvex/cortex-tenants/compare/v6.0.16...v6.0.17
 [v6.0.16]: https://github.com/rinvex/cortex-tenants/compare/v6.0.15...v6.0.16
 [v6.0.15]: https://github.com/rinvex/cortex-tenants/compare/v6.0.14...v6.0.15
