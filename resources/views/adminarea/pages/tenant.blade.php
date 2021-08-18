@@ -58,7 +58,7 @@
 
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
 
                                     {{-- Slug --}}
                                     <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
@@ -67,6 +67,20 @@
 
                                         @if ($errors->has('slug'))
                                             <span class="help-block">{{ $errors->first('slug') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2">
+
+                                    {{-- Domain --}}
+                                    <div class="form-group{{ $errors->has('domain') ? ' has-error' : '' }}">
+                                        {{ Form::label('domain', trans('cortex/tenants::common.domain'), ['class' => 'control-label']) }}
+                                        {{ Form::text('domain', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tenants::common.domain')]) }}
+
+                                        @if ($errors->has('domain'))
+                                            <span class="help-block">{{ $errors->first('domain') }}</span>
                                         @endif
                                     </div>
 

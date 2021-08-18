@@ -59,7 +59,7 @@
         "rinvex/languages": "^5.0.0",
         "rinvex/laravel-menus": "^5.0.0",
         "rinvex/laravel-support": "^5.0.0",
-        "rinvex/laravel-tenants": "^6.0.0",
+        "rinvex/laravel-tenants": "^7.0.0",
         "rinvex/tmp-josephsilber-bouncer": "^1.0.0",
         "spatie/laravel-activitylog": "^4.0.0",
         "spatie/laravel-medialibrary": "^9.4.0",
@@ -74,6 +74,9 @@
         "phpunit/phpunit": "^9.5.0"
     },
     "autoload": {
+        "files": [
+            "src/Support/helpers.php"
+        ],
         "psr-4": {
             "Cortex\\Tenants\\": "src/",
             "Cortex\\Tenants\\Database\\Factories\\": "database/factories/",

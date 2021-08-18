@@ -40,6 +40,7 @@ return [
     'cover_photo' => 'Cover Photo',
     'profile_picture' => 'Profile Picture',
     'tags' => 'Tags',
+    'domain' => 'Domain',
     'twitter' => 'Twitter',
     'facebook' => 'Facebook',
     'linkedin' => 'LinkedIn',

@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Providers;
 
-use Illuminate\Routing\Router;
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
-use Illuminate\Contracts\Events\Dispatcher;
-use Cortex\Tenants\Http\Middleware\Tenantable;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -38,28 +34,11 @@ class TenantsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router, Dispatcher $dispatcher): void
+    public function boot(): void
     {
-        // Bind route models and constrains
-        $router->pattern('tenant', '[a-zA-Z0-9-_]+');
-        $router->model('tenant', config('rinvex.tenants.models.tenant'));
-
         // Map relations
         Relation::morphMap([
             'tenant' => config('rinvex.tenants.models.tenant'),
         ]);
-
-        // Inject tenantable middleware
-        // before route bindings substitution
-        $this->app->booted(function () {
-            $router = $this->app['router'];
-
-            $pointer = array_search(SubstituteBindings::class, $router->middlewarePriority);
-            $before = array_slice($router->middlewarePriority, 0, $pointer);
-            $after = array_slice($router->middlewarePriority, $pointer);
-
-            $router->middlewarePriority = array_merge($before, [Tenantable::class], $after);
-            $router->pushMiddlewareToGroup('web', Tenantable::class);
-        });
     }
 }
