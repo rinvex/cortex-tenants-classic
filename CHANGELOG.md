@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.1.0] - 2021-08-22
+- Drop PHP v7 support, and upgrade rinvex package dependencies to next major version
+
 ## [v7.0.2] - 2021-08-18
 - Update composer dependency cortex/foundation to v7
 
@@ -296,6 +299,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.1.0]: https://github.com/rinvex/cortex-tenants/compare/v7.0.2...v7.1.0
 [v7.0.2]: https://github.com/rinvex/cortex-tenants/compare/v7.0.1...v7.0.2
 [v7.0.1]: https://github.com/rinvex/cortex-tenants/compare/v7.0.0...v7.0.1
 [v7.0.0]: https://github.com/rinvex/cortex-tenants/compare/v6.0.17...v7.0.0
