@@ -10,9 +10,9 @@ if (! function_exists('central_pattern')) {
      */
     function central_pattern()
     {
-        $centralDomainPatterns = implode('|', central_domains());
+        $centralDomains = implode('|', central_domains());
 
-        return "^(${centralDomainPatterns})$";
+        return "^(${centralDomains})$";
     }
 }
 
@@ -24,8 +24,8 @@ if (! function_exists('tenant_pattern')) {
      */
     function tenant_pattern()
     {
-        $cetralDomains = central_pattern();
+        $centralPattern = central_pattern();
 
-        return "^((?!-|${cetralDomains})[a-zA-Z0–9-]{1,63}(?<!-)\\.)+[a-zA-Z]{2,63}$";
+        return "^((?!-|${centralPattern})[a-zA-Z0–9-]{1,63}(?<!-)\\.)+[a-zA-Z]{2,63}$";
     }
 }
