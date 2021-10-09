@@ -2,30 +2,32 @@
 
 declare(strict_types=1);
 
-if (! function_exists('central_pattern')) {
+if (! function_exists('route_domains')) {
     /**
-     * Return central domain patterns.
+     * Return route domains array.
      *
-     * @return string
+     * @return array
      */
-    function central_pattern()
+    function route_domains(): array
     {
-        $centralDomains = implode('|', central_domains());
+        $routeDomains = collect(config('app.domains'))->filter(fn ($accessareas) => in_array(request()->accessarea(), $accessareas))->keys();
 
-        return "^(${centralDomains})$";
+        ! app('request.tenant') || $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain)->prepend(app('request.tenant')->domain);
+
+        return $routeDomains->toArray();
     }
 }
 
-if (! function_exists('tenant_pattern')) {
+if (! function_exists('route_domains_pattern')) {
     /**
-     * Return tenant domain patterns.
+     * Return route domains pattern.
      *
      * @return string
      */
-    function tenant_pattern()
+    function route_domains_pattern()
     {
-        $centralPattern = central_pattern();
+        $routeDomainsPattern = implode('|', route_domains());
 
-        return "^((?!-|${centralPattern})[a-zA-Z0–9-]{1,63}(?<!-)\\.)+[a-zA-Z]{2,63}$";
+        return "^($routeDomainsPattern)$";
     }
 }
