@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.1.1] - 2021-10-11
+- Rename route parameter 'central_domain' to 'routeDomain'
+- Override app.url & session.domain config options
+- Register routeDomain pattern
+- Refactor global helpers route_domains & route_domains_pattern
+- Rename variables for consistency
+
 ## [v7.1.0] - 2021-08-22
 - Drop PHP v7 support, and upgrade rinvex package dependencies to next major version
 
@@ -299,6 +306,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.1.1]: https://github.com/rinvex/cortex-tenants/compare/v7.1.0...v7.1.1
 [v7.1.0]: https://github.com/rinvex/cortex-tenants/compare/v7.0.2...v7.1.0
 [v7.0.2]: https://github.com/rinvex/cortex-tenants/compare/v7.0.1...v7.0.2
 [v7.0.1]: https://github.com/rinvex/cortex-tenants/compare/v7.0.0...v7.0.1
