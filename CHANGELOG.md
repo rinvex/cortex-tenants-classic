@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 - Rename route parameter 'central_domain' to 'routeDomain'
 - Override app.url & session.domain config options
 - Register routeDomain pattern
-- Refactor global helpers route_domains & route_domains_pattern
+- Refactor global helpers route_domains & route_pattern
 - Rename variables for consistency
 
 ## [v7.1.0] - 2021-08-22
