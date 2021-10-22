@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.1.2] - 2021-10-22
+- Refactor route domain variables to be accessarea specific
+- Update .styleci.yml fixers
+
 ## [v7.1.1] - 2021-10-11
 - Rename route parameter 'central_domain' to 'routeDomain'
 - Override app.url & session.domain config options
@@ -306,6 +310,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.1.2]: https://github.com/rinvex/cortex-tenants/compare/v7.1.1...v7.1.2
 [v7.1.1]: https://github.com/rinvex/cortex-tenants/compare/v7.1.0...v7.1.1
 [v7.1.0]: https://github.com/rinvex/cortex-tenants/compare/v7.0.2...v7.1.0
 [v7.0.2]: https://github.com/rinvex/cortex-tenants/compare/v7.0.1...v7.0.2
