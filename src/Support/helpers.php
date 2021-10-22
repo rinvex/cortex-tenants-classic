@@ -28,6 +28,6 @@ if (! function_exists('route_domains_pattern')) {
     {
         $routeDomainsPattern = implode('|', route_domains());
 
-        return "^($routeDomainsPattern)$";
+        return "^({$routeDomainsPattern})$";
     }
 }
