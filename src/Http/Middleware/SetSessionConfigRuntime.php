@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
 
 class SetSessionConfigRuntime
@@ -36,7 +36,10 @@ class SetSessionConfigRuntime
 
             $session = config('session');
             Cookie::setDefaultPathAndDomain(
-                $session['path'], $session['domain'], $session['secure'], $session['same_site'] ?? null
+                $session['path'],
+                $session['domain'],
+                $session['secure'],
+                $session['same_site'] ?? null
             );
         }
 
