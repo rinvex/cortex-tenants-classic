@@ -30,7 +30,7 @@ if (! function_exists('route_pattern')) {
      */
     function route_pattern(string $accessarea): string
     {
-        $routeDomainsPattern = implode('|', route_domains($accessarea));
+        $routeDomainsPattern = implode('|', array_map('preg_quote', route_domains($accessarea)));
 
         return "^({$routeDomainsPattern})$";
     }
