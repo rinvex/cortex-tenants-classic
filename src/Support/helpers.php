@@ -32,6 +32,6 @@ if (! function_exists('route_pattern')) {
     {
         $routeDomainsPattern = implode('|', array_map('preg_quote', route_domains($accessarea)));
 
-        return "^({$routeDomainsPattern})$";
+        return "^($routeDomainsPattern)$";
     }
 }
