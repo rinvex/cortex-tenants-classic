@@ -7,7 +7,7 @@ use Cortex\Tenants\Http\Middleware\SetSessionConfigRuntime;
 return function () {
     // Bind route models and constrains
     Route::pattern('tenant', '[a-zA-Z0-9-_]+');
-    Route::pattern('absentarea', '[a-zA-Z0-9\-\.]+');
+    Route::pattern('absentarea', '^([a-zA-Z0-9\-\.]+)$');
     Route::pattern('centralarea', route_pattern());
     Route::pattern('frontarea', route_pattern('frontarea'));
     Route::pattern('adminarea', route_pattern('adminarea'));
