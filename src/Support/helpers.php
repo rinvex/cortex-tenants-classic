@@ -6,13 +6,13 @@ if (! function_exists('route_domains')) {
     /**
      * Return route domains array.
      *
-     * @param string $accessarea
+     * @param string|null $accessarea
      *
      * @return array
      */
-    function route_domains(string $accessarea): array
+    function route_domains(string $accessarea = null): array
     {
-        $routeDomains = collect(config('app.domains'))->filter(fn ($accessareas) => in_array($accessarea, $accessareas))->keys();
+        $routeDomains = $accessarea ? collect(config('app.domains'))->filter(fn ($accessareas) => in_array($accessarea, $accessareas))->keys() : collect(config('app.domains'))->keys();
 
         (! app()->has('request.tenant') || ! app('request.tenant') || ! in_array($accessarea, ['managerarea', 'tenantarea'])) || $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain)->prepend(app('request.tenant')->domain);
 
@@ -24,11 +24,11 @@ if (! function_exists('route_pattern')) {
     /**
      * Return route pattern.
      *
-     * @param string $accessarea
+     * @param string|null $accessarea
      *
      * @return string
      */
-    function route_pattern(string $accessarea): string
+    function route_pattern(string $accessarea = null): string
     {
         $routeDomainsPattern = implode('|', array_map('preg_quote', route_domains($accessarea)));
 
