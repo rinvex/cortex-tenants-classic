@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.1.4] - 2022-01-02
+- Update absentarea route domain pattern
+- Add support for centralarea & absentarea
+- Remove useless complex string variable from the regex
+
 ## [v7.1.3] - 2021-10-25
 - Escape Regex characters in domain names for route patterns
 
@@ -313,6 +318,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.1.4]: https://github.com/rinvex/cortex-tenants/compare/v7.1.3...v7.1.4
 [v7.1.3]: https://github.com/rinvex/cortex-tenants/compare/v7.1.2...v7.1.3
 [v7.1.2]: https://github.com/rinvex/cortex-tenants/compare/v7.1.1...v7.1.2
 [v7.1.1]: https://github.com/rinvex/cortex-tenants/compare/v7.1.0...v7.1.1
