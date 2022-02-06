@@ -7,7 +7,6 @@ namespace Cortex\Tenants\Providers;
 use Cortex\Tenants\Models\Tenant;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
-use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TenantsServiceProvider extends ServiceProvider
 {
@@ -27,18 +26,5 @@ class TenantsServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
         || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
-        // Map relations
-        Relation::morphMap([
-            'tenant' => config('rinvex.tenants.models.tenant'),
-        ]);
     }
 }
