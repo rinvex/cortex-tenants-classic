@@ -59,7 +59,7 @@ class TenantsController extends AuthorizedController
      *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
      * @param \Cortex\Foundation\Importers\InsertImporter        $importer
-     * @param \Cortex\Tenants\Models\Tenant $tenant
+     * @param \Cortex\Tenants\Models\Tenant                      $tenant
      *
      * @return void
      */
