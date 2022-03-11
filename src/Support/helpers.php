@@ -26,6 +26,24 @@ if (! function_exists('route_domains')) {
     }
 }
 
+if (! function_exists('default_route_domains')) {
+    /**
+     * Return default route domains array.
+     *
+     * @return array
+     */
+    function default_route_domains(): array
+    {
+        $routeDomains = [];
+
+        app('accessareas')->each(function ($accessarea) use (&$routeDomains) {
+            $routeDomains[$accessarea->slug] = get_str_contains(request()->getHost(), $routeDomain = route_domains($accessarea->slug)) ?: $routeDomain[0] ?? route_domains('frontarea')[0];
+        });
+
+        return $routeDomains;
+    }
+}
+
 if (! function_exists('route_pattern')) {
     /**
      * Return route pattern.
