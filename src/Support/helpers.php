@@ -12,11 +12,17 @@ if (! function_exists('route_domains')) {
      */
     function route_domains(string $accessarea = null): array
     {
+        static $cachedDomains = null;
+
+        if (isset($cachedDomains[$accessarea])) {
+            return $cachedDomains[$accessarea];
+        }
+
         $routeDomains = $accessarea ? collect(config('app.domains'))->filter(fn ($accessareas) => in_array($accessarea, $accessareas))->keys() : collect(config('app.domains'))->keys();
 
         (! app()->has('request.tenant') || ! app('request.tenant') || ! in_array($accessarea, ['managerarea', 'tenantarea'])) || $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain)->prepend(app('request.tenant')->domain);
 
-        return $routeDomains->toArray();
+        return $cachedDomains[$accessarea] = $routeDomains->toArray();
     }
 }
 
