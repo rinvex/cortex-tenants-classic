@@ -13,10 +13,7 @@ Route::domain('{adminarea}')->group(function () {
         // Tenants Routes
              Route::name('cortex.tenants.tenants.')->prefix('tenants')->group(function () {
                  Route::match(['get', 'post'], '/')->name('index')->uses([TenantsController::class, 'index']);
-                 Route::get('import')->name('import')->uses([TenantsController::class, 'import']);
-                 Route::post('import')->name('stash')->uses([TenantsController::class, 'stash']);
-                 Route::post('hoard')->name('hoard')->uses([TenantsController::class, 'hoard']);
-                 Route::get('import/logs')->name('import.logs')->uses([TenantsController::class, 'importLogs']);
+                 Route::post('import')->name('import')->uses([TenantsController::class, 'import']);
                  Route::get('create')->name('create')->uses([TenantsController::class, 'create']);
                  Route::post('create')->name('store')->uses([TenantsController::class, 'store']);
                  Route::get('{tenant}')->name('show')->uses([TenantsController::class, 'show']);
