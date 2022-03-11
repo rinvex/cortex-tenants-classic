@@ -29,7 +29,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @includeWhen($tenant->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'tenant', 'model' => $tenant, 'resource' => trans('cortex/tenants::common.tenant'), 'routePrefix' => 'adminarea.cortex.tenants.tenants.'])
+                @includeWhen($tenant->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'tenant', 'model' => $tenant, 'resource' => trans('cortex/tenants::common.tenant'), 'routePrefix' => 'adminarea.cortex.tenants.tenants'])
                 {!! Menu::render('adminarea.cortex.tenants.tenants.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
