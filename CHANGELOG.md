@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.1] - 2022-03-12
+- Add global helper to get default_route_domains
+- Cache route_domains results to avoid many useless calls
+- WIP Refactor & Simplify datatables import functionality
+- Update composer dependency codedungeon/phpunit-result-printer
+- Enforce form actions routePrefix consistency
+- Add datatables routePrefix support
+
 ## [v7.2.0] - 2022-02-14
 - Update composer dependencies to Laravel v9
 - Use PHP v8 nullsafe operator
@@ -325,6 +333,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.1]: https://github.com/rinvex/cortex-tenants/compare/v7.2.0...v7.2.1
 [v7.2.0]: https://github.com/rinvex/cortex-tenants/compare/v7.1.4...v7.2.0
 [v7.1.4]: https://github.com/rinvex/cortex-tenants/compare/v7.1.3...v7.1.4
 [v7.1.3]: https://github.com/rinvex/cortex-tenants/compare/v7.1.2...v7.1.3
