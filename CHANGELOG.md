@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.2] - 2022-05-17
+- Add support for menu list item attributes
+- Fix correct naming for daterangepicker from datepicker
+- Override Spatie Media model to support Hashids
+- fix edit tenants routes (#155)
+
 ## [v7.2.1] - 2022-03-12
 - Add global helper to get default_route_domains
 - Cache route_domains results to avoid many useless calls
@@ -333,6 +339,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.2]: https://github.com/rinvex/cortex-tenants/compare/v7.2.1...v7.2.2
 [v7.2.1]: https://github.com/rinvex/cortex-tenants/compare/v7.2.0...v7.2.1
 [v7.2.0]: https://github.com/rinvex/cortex-tenants/compare/v7.1.4...v7.2.0
 [v7.1.4]: https://github.com/rinvex/cortex-tenants/compare/v7.1.3...v7.1.4
