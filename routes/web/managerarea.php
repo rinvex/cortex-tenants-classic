@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Cortex\Tenants\Http\Controllers\Managerarea\TenantsController;
 use Cortex\Tenants\Http\Controllers\Managerarea\TenantsMediaController;
 
 Route::domain('{managerarea}')->group(function () {
@@ -11,8 +12,8 @@ Route::domain('{managerarea}')->group(function () {
 
              // Managerarea Home route
              Route::name('cortex.tenants.tenants.')->prefix('tenants')->group(function () {
-                 Route::get('edit')->name('edit')->uses('TenantsController@edit');
-                 Route::put('edit')->name('update')->uses('TenantsController@update');
+                 Route::get('edit')->name('edit')->uses([TenantsController::class, 'edit']);
+                 Route::put('edit')->name('update')->uses([TenantsController::class, 'update']);
 
                  Route::name('media.')->prefix('media')->group(function () {
                      Route::delete('{media}')->name('destroy')->uses([TenantsMediaController::class, 'destroy']);

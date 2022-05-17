@@ -251,7 +251,7 @@
                                     {{-- Launch Date --}}
                                     <div class="form-group has-feedback{{ $errors->has('launch_date') ? ' has-error' : '' }}">
                                         {{ Form::label('launch_date', trans('cortex/tenants::common.launch_date'), ['class' => 'control-label']) }}
-                                        {{ Form::text('launch_date', null, ['class' => 'form-control datepicker', 'data-locale' => '{"format": "YYYY-MM-DD"}', 'data-single-date-picker' => 'true', 'data-show-dropdowns' => 'true', 'data-auto-apply' => 'true']) }}
+                                        {{ Form::text('launch_date', null, ['class' => 'form-control daterangepicker', 'data-locale' => '{"format": "YYYY-MM-DD"}', 'data-single-date-picker' => 'true', 'data-show-dropdowns' => 'true', 'data-auto-apply' => 'true']) }}
                                         <span class="fa fa-calendar form-control-feedback"></span>
 
                                         @if ($errors->has('launch_date'))

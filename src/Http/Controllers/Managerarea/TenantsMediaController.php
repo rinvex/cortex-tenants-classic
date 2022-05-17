@@ -6,7 +6,7 @@ namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
 use Illuminate\Support\Str;
 use Cortex\Tenants\Models\Tenant;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Cortex\Foundation\Models\Media;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
 class TenantsMediaController extends AuthorizedController
@@ -39,7 +39,7 @@ class TenantsMediaController extends AuthorizedController
     /**
      * Destroy given tenant media.
      *
-     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
+     * @param \Cortex\Foundation\Models\Media $media
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
