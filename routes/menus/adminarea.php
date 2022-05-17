@@ -8,7 +8,7 @@ use Cortex\Foundation\Models\Media;
 use Rinvex\Menus\Models\MenuGenerator;
 
 Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
-    $menu->findByTitleOrAdd(trans('cortex/foundation::common.crm'), 50, 'fa fa-briefcase', 'header', [], function (MenuItem $dropdown) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.crm'), 50, 'fa fa-briefcase', 'header', [], [], function (MenuItem $dropdown) {
         $dropdown->route(['adminarea.cortex.tenants.tenants.index'], trans('cortex/tenants::common.tenants'), 20, 'fa fa-building-o')->ifCan('list', app('rinvex.tenants.tenant'))->activateOnRoute('adminarea.cortex.tenants.tenants');
     });
 });
