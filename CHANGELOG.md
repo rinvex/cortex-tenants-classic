@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.3] - 2022-06-20
+- Update composer dependencies
+  - league/fractal to ^0.20.0 from ^0.19.0
+  - yajra/laravel-datatables-html to ^9.0.0 from ^4.41.0
+  - yajra/laravel-datatables-fractal to ^9.0.0 from ^1.6.0
+  - yajra/laravel-datatables-buttons to ^9.0.0 from ^4.13.0
+  - yajra/laravel-datatables-oracle to ^10.0.0 from ^9.19.0
+
 ## [v7.2.2] - 2022-05-17
 - Add support for menu list item attributes
 - Fix correct naming for daterangepicker from datepicker
@@ -339,6 +347,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.3]: https://github.com/rinvex/cortex-tenants/compare/v7.2.2...v7.2.3
 [v7.2.2]: https://github.com/rinvex/cortex-tenants/compare/v7.2.1...v7.2.2
 [v7.2.1]: https://github.com/rinvex/cortex-tenants/compare/v7.2.0...v7.2.1
 [v7.2.0]: https://github.com/rinvex/cortex-tenants/compare/v7.1.4...v7.2.0
