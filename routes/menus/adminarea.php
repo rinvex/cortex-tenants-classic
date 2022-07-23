@@ -15,7 +15,7 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
 
 Menu::register('adminarea.cortex.tenants.tenants.tabs', function (MenuGenerator $menu, Tenant $tenant, Media $media) {
     $menu->route(['adminarea.cortex.tenants.tenants.import'], trans('cortex/tenants::common.records'))->ifCan('import', $tenant)->if(Route::is('adminarea.cortex.tenants.tenants.import*'));
-    $menu->route(['adminarea.cortex.tenants.tenants.import.logs'], trans('cortex/tenants::common.logs'))->ifCan('import', $tenant)->if(Route::is('adminarea.cortex.tenants.tenants.import*'));
+    $menu->route(['adminarea.cortex.tenants.tenants.import.logs'], trans('cortex/tenants::common.logs'))->ifCan('audit', $tenant)->if(Route::is('adminarea.cortex.tenants.tenants.import*'));
     $menu->route(['adminarea.cortex.tenants.tenants.create'], trans('cortex/tenants::common.details'))->ifCan('create', $tenant)->if(Route::is('adminarea.cortex.tenants.tenants.create'));
     $menu->route(['adminarea.cortex.tenants.tenants.edit', ['tenant' => $tenant]], trans('cortex/tenants::common.details'))->ifCan('update', $tenant)->if($tenant->exists);
     $menu->route(['adminarea.cortex.tenants.tenants.logs', ['tenant' => $tenant]], trans('cortex/tenants::common.logs'))->ifCan('audit', $tenant)->if($tenant->exists);
