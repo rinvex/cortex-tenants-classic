@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.5] - 2022-07-24
+- Fix datatables checkbox select-row options
+- Fix audit ability check for import logs
+- Add missing export ability
+
 ## [v7.2.4] - 2022-06-22
 - Fix datatables ajax method signature
 
@@ -350,6 +355,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.5]: https://github.com/rinvex/cortex-tenants/compare/v7.2.4...v7.2.5
 [v7.2.4]: https://github.com/rinvex/cortex-tenants/compare/v7.2.3...v7.2.4
 [v7.2.3]: https://github.com/rinvex/cortex-tenants/compare/v7.2.2...v7.2.3
 [v7.2.2]: https://github.com/rinvex/cortex-tenants/compare/v7.2.1...v7.2.2
