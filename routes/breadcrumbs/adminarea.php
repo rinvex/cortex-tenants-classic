@@ -7,7 +7,7 @@ use Diglactic\Breadcrumbs\Generator;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 Breadcrumbs::for('adminarea.cortex.tenants.tenants.index', function (Generator $breadcrumbs) {
-    $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('adminarea.home'));
+    $breadcrumbs->parent('adminarea.home');
     $breadcrumbs->push(trans('cortex/tenants::common.tenants'), route('adminarea.cortex.tenants.tenants.index'));
 });
 
@@ -17,8 +17,7 @@ Breadcrumbs::for('adminarea.cortex.tenants.tenants.import', function (Generator 
 });
 
 Breadcrumbs::for('adminarea.cortex.tenants.tenants.import.logs', function (Generator $breadcrumbs) {
-    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.index');
-    $breadcrumbs->push(trans('cortex/tenants::common.import'), route('adminarea.cortex.tenants.tenants.import'));
+    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.import');
     $breadcrumbs->push(trans('cortex/tenants::common.logs'), route('adminarea.cortex.tenants.tenants.import.logs'));
 });
 
@@ -33,13 +32,11 @@ Breadcrumbs::for('adminarea.cortex.tenants.tenants.edit', function (Generator $b
 });
 
 Breadcrumbs::for('adminarea.cortex.tenants.tenants.logs', function (Generator $breadcrumbs, Tenant $tenant) {
-    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.index');
-    $breadcrumbs->push(strip_tags($tenant->name), route('adminarea.cortex.tenants.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.edit', $tenant);
     $breadcrumbs->push(trans('cortex/tenants::common.logs'), route('adminarea.cortex.tenants.tenants.logs', ['tenant' => $tenant]));
 });
 
 Breadcrumbs::for('adminarea.cortex.tenants.tenants.media.index', function (Generator $breadcrumbs, Tenant $tenant) {
-    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.index');
-    $breadcrumbs->push(strip_tags($tenant->name), route('adminarea.cortex.tenants.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->parent('adminarea.cortex.tenants.tenants.edit', $tenant);
     $breadcrumbs->push(trans('cortex/tenants::common.media'), route('adminarea.cortex.tenants.tenants.media.index', ['tenant' => $tenant]));
 });
