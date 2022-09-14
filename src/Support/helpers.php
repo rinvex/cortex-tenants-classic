@@ -20,8 +20,12 @@ if (! function_exists('route_domains')) {
 
         $routeDomains = $accessarea ? collect(config('app.domains'))->filter(fn ($accessareas) => in_array($accessarea, $accessareas))->keys() : collect(config('app.domains'))->keys();
 
-        (! app()->has('request.tenant') || ! app('request.tenant') || ! in_array($accessarea, ['managerarea', 'tenantarea'])) || $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain)->prepend(app('request.tenant')->domain);
-
+        if(app()->has('request.tenant') && app('request.tenant') && in_array($accessarea, ['managerarea', 'tenantarea'])){
+            $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain);
+            if(!empty(app('request.tenant')->domain)){
+                $routeDomains->prepend(app('request.tenant')->domain);
+            }
+        }
         return $cachedDomains[$accessarea] = $routeDomains->toArray();
     }
 }
