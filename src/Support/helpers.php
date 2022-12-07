@@ -22,7 +22,8 @@ if (! function_exists('route_domains')) {
 
         if(app()->has('request.tenant') && app('request.tenant') && in_array($accessarea, ['managerarea', 'tenantarea'])){
             $routeDomains = $routeDomains->map(fn ($routeDomain) => app('request.tenant')->slug.'.'.$routeDomain);
-            if(!empty(app('request.tenant')->domain)){
+            
+            if(! empty(app('request.tenant')->domain)) {
                 $routeDomains->prepend(app('request.tenant')->domain);
             }
         }
