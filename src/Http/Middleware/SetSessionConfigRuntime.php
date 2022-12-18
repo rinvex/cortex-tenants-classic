@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
 
@@ -30,7 +29,7 @@ class SetSessionConfigRuntime
             // Dynamically change session domain config on the fly.
             // This method enforces session isolation between domains (including subdomains).
             // That means users who are signed in any subdomain or top level domain, will not be signed in other domains.
-            if (array_key_exists($domain, config('app.domains')) || Str::endsWith($domain, array_keys(config('app.domains'))) || (app('request.tenant') && app('request.tenant')->domain == $domain)) {
+            if (array_key_exists($domain, config('app.domains')) || Str::endsWith($domain, array_keys(config('app.domains'))) || (app('request.tenant') && app('request.tenant')->domain === $domain)) {
                 config()->set('session.domain', '.'.$domain);
             }
             // @TODO: we need add support for selective domain session sharing (with cross-domain cookie sharing as well)
