@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.7] - 2022-12-30
+- Whitelist datatable columns to avoid invalid columns sent from client-side which might be a security issue in some scenarios
+- Isolate login between all domains & subdomains by default and support tenant domains
+- exclude tenant domain if empty (#157)
+
 ## [v7.2.6] - 2022-08-30
 - Clean the breadcrumbs definition and utilize parent features
 
@@ -358,6 +363,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.7]: https://github.com/rinvex/cortex-tenants/compare/v7.2.6...v7.2.7
 [v7.2.6]: https://github.com/rinvex/cortex-tenants/compare/v7.2.5...v7.2.6
 [v7.2.5]: https://github.com/rinvex/cortex-tenants/compare/v7.2.4...v7.2.5
 [v7.2.4]: https://github.com/rinvex/cortex-tenants/compare/v7.2.3...v7.2.4
