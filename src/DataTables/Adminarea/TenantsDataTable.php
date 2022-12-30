@@ -46,6 +46,7 @@ class TenantsDataTable extends AbstractDataTable
                 ! $languageCode || $builder->where('language_code', $languageCode);
             })
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
+            ->whitelist(array_keys($this->getColumns()))
             ->make(true);
     }
 
