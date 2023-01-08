@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Tenants\Http\Middleware\SetSessionConfigRuntime;
 
 return function () {
@@ -18,9 +17,4 @@ return function () {
 
     // prepend middleware to the 'web' middleware group
     Route::prependMiddlewareToGroup('web', SetSessionConfigRuntime::class);
-
-    // Map relations
-    Relation::morphMap([
-        'tenant' => config('rinvex.tenants.models.tenant'),
-    ]);
 };
