@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tenants\Console\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Rinvex\Tenants\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
+#[AsCommand(name: 'cortex:migrate:tenants')]
 class MigrateCommand extends BaseMigrateCommand
 {
     /**
