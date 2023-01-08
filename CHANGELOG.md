@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v8.0.0] - 2023-01-09
+- Drop PHP v8.0 support and update composer dependencies
+- Move Relation::morphMap to vendor core package
+- Utilize PHP 8.1 attributes feature for artisan commands
+
 ## [v7.2.7] - 2022-12-30
 - Whitelist datatable columns to avoid invalid columns sent from client-side which might be a security issue in some scenarios
 - Isolate login between all domains & subdomains by default and support tenant domains
@@ -363,6 +368,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v8.0.0]: https://github.com/rinvex/cortex-tenants/compare/v7.2.7...v8.0.0
 [v7.2.7]: https://github.com/rinvex/cortex-tenants/compare/v7.2.6...v7.2.7
 [v7.2.6]: https://github.com/rinvex/cortex-tenants/compare/v7.2.5...v7.2.6
 [v7.2.5]: https://github.com/rinvex/cortex-tenants/compare/v7.2.4...v7.2.5
