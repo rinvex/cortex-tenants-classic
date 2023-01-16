@@ -6,9 +6,10 @@ use Cortex\Tenants\Models\Tenant;
 use Diglactic\Breadcrumbs\Generator;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
-Breadcrumbs::for('managerarea.cortex.tenants.tenants.edit', function (Generator $breadcrumbs, Tenant $tenant) {
+Breadcrumbs::for('managerarea.cortex.tenants.tenants.edit', function (Generator $breadcrumbs) {
+    $tenant = app('request.tenant');
     $breadcrumbs->parent('managerarea.home');
-    $breadcrumbs->push(strip_tags(app('request.tenant')->name), route('managerarea.cortex.tenants.tenants.edit', ['tenant' => $tenant]));
+    $breadcrumbs->push(strip_tags($tenant->name), route('managerarea.cortex.tenants.tenants.edit', ['tenant' => $tenant]));
 });
 
 Breadcrumbs::for('managerarea.cortex.tenants.tenants.media.index', function (Generator $breadcrumbs, Tenant $tenant) {
