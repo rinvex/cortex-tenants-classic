@@ -9,7 +9,6 @@ Route::domain('{managerarea}')->group(function () {
     Route::name('managerarea.')
          ->middleware(['web', 'nohttpcache', 'can:access-managerarea'])
          ->prefix(route_prefix('managerarea'))->group(function () {
-
              // Managerarea Home route
              Route::name('cortex.tenants.tenants.')->prefix('tenants')->group(function () {
                  Route::get('edit')->name('edit')->uses([TenantsController::class, 'edit']);
