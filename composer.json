@@ -52,7 +52,7 @@
         "diglactic/laravel-breadcrumbs": "^8.0.0",
         "laravelcollective/html": "^6.3.0",
         "league/fractal": "^0.20.0",
-        "proengsoft/laravel-jsvalidation": "^4.7.0",
+        "proengsoft/laravel-jsvalidation": "^4.8.0",
         "propaganistas/laravel-phone": "^5.0.0",
         "rinvex/laravel-composer": "^7.0.0",
         "rinvex/countries": "^9.0.0",
