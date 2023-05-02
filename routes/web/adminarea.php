@@ -9,8 +9,7 @@ Route::domain('{adminarea}')->group(function () {
     Route::name('adminarea.')
          ->middleware(['web', 'nohttpcache', 'can:access-adminarea'])
          ->prefix(route_prefix('adminarea'))->group(function () {
-
-        // Tenants Routes
+             // Tenants Routes
              Route::name('cortex.tenants.tenants.')->prefix('tenants')->group(function () {
                  Route::match(['get', 'post'], '/')->name('index')->uses([TenantsController::class, 'index']);
                  Route::post('import')->name('import')->uses([TenantsController::class, 'import']);
