@@ -24,7 +24,8 @@ class TenantsServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Bind eloquent models to IoC container
-        $this->app['config']['rinvex.tenants.models.tenant'] === Tenant::class
-        || $this->app->alias('rinvex.tenants.tenant', Tenant::class);
+        $this->registerModels([
+            'rinvex.tenants.tenant' => Tenant::class,
+        ]);
     }
 }
