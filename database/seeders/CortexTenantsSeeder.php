@@ -17,6 +17,7 @@ class CortexTenantsSeeder extends Seeder
     {
         $accessAbilities = [
             ['name' => 'update-tenant', 'title' => 'Update Tenant'],
+            ['name' => 'access-managerarea', 'title' => 'Access managerarea'],
         ];
 
         $abilities = [
@@ -27,6 +28,11 @@ class CortexTenantsSeeder extends Seeder
             ['name' => 'update', 'title' => 'Update tenants', 'entity_type' => 'tenant'],
             ['name' => 'delete', 'title' => 'Delete tenants', 'entity_type' => 'tenant'],
             ['name' => 'audit', 'title' => 'Audit tenants', 'entity_type' => 'tenant'],
+        ];
+
+        $accessareas = [
+            ['name' => 'managerarea', 'slug' => 'managerarea', 'is_protected' => true, 'is_scoped' => false, 'is_indexable' => false, 'prefix' => 'managerarea'],
+            ['name' => 'tenantarea', 'slug' => 'tenantarea', 'is_protected' => true],
         ];
 
         collect($accessAbilities)->each(function (array $ability) {
@@ -40,6 +46,12 @@ class CortexTenantsSeeder extends Seeder
                 'name' => $ability['name'],
                 'entity_type' => $ability['entity_type'],
             ], $ability);
+        });
+
+        collect($accessareas)->each(function (array $accessarea) {
+            app('cortex.foundation.accessarea')->firstOrCreate([
+                'slug' => $accessarea['slug'],
+            ], $accessarea);
         });
     }
 }

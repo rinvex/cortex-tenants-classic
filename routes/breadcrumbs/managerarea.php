@@ -6,6 +6,10 @@ use Cortex\Tenants\Models\Tenant;
 use Diglactic\Breadcrumbs\Generator;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
+Breadcrumbs::for('managerarea.home', function (Generator $breadcrumbs) {
+    $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.app('request.tenant')->name, route('managerarea.home'));
+});
+
 Breadcrumbs::for('managerarea.cortex.tenants.tenants.edit', function (Generator $breadcrumbs) {
     $tenant = app('request.tenant');
     $breadcrumbs->parent('managerarea.home');
