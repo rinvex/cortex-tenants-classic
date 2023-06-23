@@ -5,18 +5,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v8.2.0] - 2023-06-23
+- Fix cortex/auth::common.timezone language phrase namespace
+- Apply fixes from StyleCI (#188)
+- Move tenant features to cortex/tenants module from cortex/foundation
+- Improve eloquent models IoC container binding
+- Decoupling: Move global helpers, route patterns and middleware to cortex/foundation module
+- Fix changelog format
+
 ## [v8.1.0] - 2023-05-02
-74bbc1e - Add support for Laravel v11, and drop support for Laravel v9
-f60945a - Upgrade yajra/laravel-datatables-oracle to v10.4 from v10.0
-1fe1035 - Upgrade yajra/laravel-datatables-html to v10.0 from v9.0
-0d6c958 - Upgrade yajra/laravel-datatables-buttons to v10.0 from v9.0
-1297d07 - Upgrade spatie/laravel-schemaless-attributes to v2.4 from v2.3
-d87c90a - Upgrade spatie/laravel-activitylog to v4.7 from v4.4
-76fe565 - Upgrade proengsoft/laravel-jsvalidation to v4.8 from v4.7
-4f8e693 - Update yajra/laravel-datatables-fractal to v10.0 from v9.0
-fa47d39 - Update propaganistas/laravel-phone to v5.0 from v4.4
-6b9e8d4 - Update phpunit to v10.1 from v9.5
-91981e9 - fix edit tenant breadcrumbs (#160)
+- Add support for Laravel v11, and drop support for Laravel v9
+- Upgrade yajra/laravel-datatables-oracle to v10.4 from v10.0
+- Upgrade yajra/laravel-datatables-html to v10.0 from v9.0
+- Upgrade yajra/laravel-datatables-buttons to v10.0 from v9.0
+- Upgrade spatie/laravel-schemaless-attributes to v2.4 from v2.3
+- Upgrade spatie/laravel-activitylog to v4.7 from v4.4
+- Upgrade proengsoft/laravel-jsvalidation to v4.8 from v4.7
+- Update yajra/laravel-datatables-fractal to v10.0 from v9.0
+- Update propaganistas/laravel-phone to v5.0 from v4.4
+- Update phpunit to v10.1 from v9.5
+- fix edit tenant breadcrumbs (#160)
 
 ## [v8.0.0] - 2023-01-09
 - Drop PHP v8.0 support and update composer dependencies
@@ -381,6 +389,7 @@ fa47d39 - Update propaganistas/laravel-phone to v5.0 from v4.4
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v8.2.0]: https://github.com/rinvex/cortex-tenants/compare/v8.1.0...v8.2.0
 [v8.1.0]: https://github.com/rinvex/cortex-tenants/compare/v8.0.0...v8.1.0
 [v8.0.0]: https://github.com/rinvex/cortex-tenants/compare/v7.2.7...v8.0.0
 [v7.2.7]: https://github.com/rinvex/cortex-tenants/compare/v7.2.6...v7.2.7

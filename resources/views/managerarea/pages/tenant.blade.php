@@ -1,5 +1,5 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::managerarea.layouts.default')
+@extends('cortex/tenants::managerarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
@@ -18,7 +18,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @includeWhen($tenant->exists, 'cortex/foundation::managerarea.partials.modal', ['id' => 'delete-confirmation'])
+    @includeWhen($tenant->exists, 'cortex/tenants::managerarea.partials.modal', ['id' => 'delete-confirmation'])
 
     <div class="content-wrapper">
         <section class="content-header">
@@ -207,9 +207,9 @@
 
                                     {{-- Timezone --}}
                                     <div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
-                                        {{ Form::label('timezone', trans('cortex/tenants::common.timezone'), ['class' => 'control-label']) }}
+                                        {{ Form::label('timezone', trans('cortex/auth::common.timezone'), ['class' => 'control-label']) }}
                                         {{ Form::hidden('timezone', '', ['class' => 'skip-validation', 'id' => 'timezone_hidden']) }}
-                                        {{ Form::select('timezone', timezones(), null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tenants::common.select_timezone'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                        {{ Form::select('timezone', timezones(), null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/auth::common.select_timezone'), 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('timezone'))
                                             <span class="help-block">{{ $errors->first('timezone') }}</span>
@@ -448,7 +448,7 @@
                                         {{ Form::button(trans('cortex/tenants::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::managerarea.partials.timestamps', ['model' => $tenant])
+                                    @include('cortex/tenants::managerarea.partials.timestamps', ['model' => $tenant])
 
                                 </div>
 
