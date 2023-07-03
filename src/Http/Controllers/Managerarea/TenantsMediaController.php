@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Tenants\Http\Controllers\Managerarea;
 
 use Illuminate\Support\Str;
-use Cortex\Tenants\Models\Tenant;
 use Cortex\Foundation\Models\Media;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
