@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v8.2.1] - 2023-07-03
+- Fix migration paths
+
 ## [v8.2.0] - 2023-06-23
 - Fix cortex/auth::common.timezone language phrase namespace
 - Apply fixes from StyleCI (#188)
@@ -389,6 +392,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v8.2.1]: https://github.com/rinvex/cortex-tenants/compare/v8.2.0...v8.2.1
 [v8.2.0]: https://github.com/rinvex/cortex-tenants/compare/v8.1.0...v8.2.0
 [v8.1.0]: https://github.com/rinvex/cortex-tenants/compare/v8.0.0...v8.1.0
 [v8.0.0]: https://github.com/rinvex/cortex-tenants/compare/v7.2.7...v8.0.0
