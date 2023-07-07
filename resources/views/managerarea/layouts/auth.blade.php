@@ -13,7 +13,6 @@
     <link href="{{ mix('css/theme-managerarea.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @stack('styles')
-    @livewireStyles
 
     {{-- Scripts --}}
     <script>
@@ -36,7 +35,6 @@
 
     {{-- Scripts --}}
     @stack('inline-scripts')
-    @livewireScripts
     <script src="{{ route('frontarea.cortex.foundation.turbo.js') }}" data-turbolinks-eval="false" data-turbo-eval="false"></script>
 
     {{-- Alerts --}}
