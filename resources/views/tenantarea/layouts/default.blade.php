@@ -42,7 +42,6 @@
 
     {{-- Scripts --}}
     @stack('inline-scripts')
-    <script src="{{ route('frontarea.cortex.foundation.turbo.js') }}" data-turbolinks-eval="false" data-turbo-eval="false"></script>
 
     {{-- Alerts --}}
     @alerts('default')
