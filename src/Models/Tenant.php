@@ -108,7 +108,10 @@ class Tenant extends BaseTenant implements HasMedia
 
         $this->mergeCasts(['social' => SchemalessAttributes::class, 'style' => 'string']);
 
-        $this->mergeRules(['social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array']);
+        $this->mergeRules([
+            'social' => 'nullable', 'style' => 'nullable|string|strip_tags|max:150', 'tags' => 'nullable|array',
+            'email' => ['required', ...config('validation.rules.email'), 'unique:'.config('rinvex.tenants.models.tenant').',email'],
+        ]);
 
         parent::__construct($attributes);
     }
