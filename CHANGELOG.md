@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v8.3.1] - 2023-08-17
+- Seed the new 'view' ability
+- Override email validation rule to follow the new configuration option
+
 ## [v8.3.0] - 2023-07-12
 - Drop using turbolinks
 - Drop using Livewire
@@ -399,6 +403,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v8.3.1]: https://github.com/rinvex/cortex-tenants/compare/v8.3.0...v8.3.1
 [v8.3.0]: https://github.com/rinvex/cortex-tenants/compare/v8.2.2...v8.3.0
 [v8.2.2]: https://github.com/rinvex/cortex-tenants/compare/v8.2.1...v8.2.2
 [v8.2.1]: https://github.com/rinvex/cortex-tenants/compare/v8.2.0...v8.2.1
