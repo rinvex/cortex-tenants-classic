@@ -22,6 +22,7 @@ class CortexTenantsSeeder extends Seeder
 
         $abilities = [
             ['name' => 'list', 'title' => 'List tenants', 'entity_type' => 'tenant'],
+            ['name' => 'view', 'title' => 'View tenants', 'entity_type' => 'tenant'],
             ['name' => 'import', 'title' => 'Import tenants', 'entity_type' => 'tenant'],
             ['name' => 'export', 'title' => 'Export tenants', 'entity_type' => 'tenant'],
             ['name' => 'create', 'title' => 'Create tenants', 'entity_type' => 'tenant'],
