@@ -319,7 +319,7 @@
                                                 <span class="btn btn-default btn-file">
                                                     {{ trans('cortex/tenants::common.browse') }}
                                                     {{-- Skip Javascrip validation for file input fields to avoid size validation conflict with jquery.validator --}}
-                                                    {{ Form::file('profile_picture', ['class' => 'form-control skip-validation', 'id' => 'profile_picture_browse']) }}
+                                                    {{ Form::file('cover_photo', ['class' => 'form-control skip-validation', 'id' => 'cover_photo_browse']) }}
                                                 </span>
                                             </span>
                                         </div>
